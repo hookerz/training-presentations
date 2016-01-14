@@ -598,43 +598,43 @@ var stack = new Stack();
 					<pre><code class="hljs" data-trim contenteditable>
 function Queue() {
 
-  var Node = function(element) {
-  	this.element = element;
-    this.next = null;
-  };
+	var Node = function(element) {
+		this.element = element;
+		this.next = null;
+	};
 
-  this.length = 0;
-  this.head = null;
-  this.tail = null;
+	this.length = 0;
+	this.head = null;
+	this.tail = null;
 
-  this.enqueue = function(element) {
-    this.length++;
-    var node = new Node(element);
-    if (!this.head) {
-    	this.head = node;
-      this.tail = node;
-    } else {
+	this.enqueue = function(element) {
+		this.length++;
+		var node = new Node(element);
+		if (!this.head) {
+			this.head = node;
+			this.tail = node;
+		} else {
 			this.tail.next = node;
-      this.tail = node;
-    }
-  }.bind(this);
+			this.tail = node;
+		}
+	}.bind(this);
 
 	this.dequeue = function() {
 		var dequeued = this.head;
 		if (this.head) {
-		 this.head = this.head.next;
+			this.head = this.head.next;
 		}
 		this.length--;
 		return dequeued;
 	}.bind(this);
 
-  this.size = function() {
-  	return this.length;
-  };
+	this.size = function() {
+		return this.length;
+	};
 
-  this.isEmpty = function() {
-  	return this.length === 0;
-  }.bind(this);
+	this.isEmpty = function() {
+		return this.length === 0;
+	}.bind(this);
 
 }
 
