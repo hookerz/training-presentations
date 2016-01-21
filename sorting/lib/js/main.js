@@ -1,4 +1,8 @@
-// append arrays
+// append the arrays
+for (i=0;i<introNums.length;i++) {
+    $("#introNums").append("<li class='intro-list'><img src='images/" + introNums[i] + ".png'/></li>");
+}
+
 for (i=0;i<egBubbleArr.length;i++) {
     $("#egBubble").append("<li class='bubble-list-index-" + egBubbleArr[i] +"'><img src='images/" + egBubbleArr[i] + ".png'/></li>");
 }
@@ -19,8 +23,12 @@ tl.to('.intro-slide h1', 0.75, {autoAlpha: 1, top: 0, ease: Power1.easeOut}, 0.2
 tl.to('.intro-slide h2', 0.75, {autoAlpha: 1, top: 0, ease: Power1.easeOut}, 0.5);
 tl.to('.intro-slide img', 0.75, {autoAlpha: 1, top: 0, scale: 1, ease: Back.easeOut}, 0.75);
 
+// intro nums animation
+TweenMax.staggerTo('.intro-list', 0.5, {autoAlpha: 1, top: 0, ease: Power2.easeOut}, 0.05);
+TweenMax.staggerTo('.intro-list', 0.5, {yoyo: true, repeat: -1, top: 40, repeatDelay: 0.025, ease: Power1.easeInOut}, 0.05);
+
 // native sort animation
-$('#quickReal').on('click', function() {
+$('#nativeReal').on('click', function() {
 
 	egNativeArr.sort();
 	

@@ -34,11 +34,13 @@ var BubbleDemo = function() {
 					arr[j-1] = arr[j];
 					arr[j] = temp;
 
-					// if out of two items, left is bigger than the item on right
+					// if left is bigger than the item on right
 					// switch them with GSAP
 					tl.to(left, 0.5, {y: 125, ease: Power4.easeOut});
-					tl.to(left, 0.5, {x: (width * j) - left.position().left + 10, ease:Power2.easeInOut});
-					tl.to(right, 0.5, {x: width * (j-1) - right.position().left + 10, ease:Power2.easeInOut});
+					// tl.to(left, 0.5, {x: (width * j) - left.position().left + 15, ease:Power2.easeInOut});
+					// tl.to(right, 0.5, {x: width * (j-1) - right.position().left + 15, ease:Power2.easeInOut});
+					tl.to(left, 0.5, {x: (width * j) - left.position().left, ease:Power2.easeInOut});
+					tl.to(right, 0.5, {x: width * (j-1) - right.position().left, ease:Power2.easeInOut});
 					tl.to(left, 0.5, {y: 0, ease: Back.easeOut});
 				}
 
