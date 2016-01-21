@@ -28,17 +28,17 @@ var MergeDemo = function() {
 		// identify leftmost item, hightlight green and bump it down
 		for (var i = 0; i < left.length; i++) {
 			tl.to($('.merge-list-index-' + left[i]).find('img'), 0.5, {borderColor: 'green'});
-			tl.to($('.merge-list-index-' + left[i]).find('img'), 0.5, {y: '+=80', ease: Power2.easeOut});
+			tl.to($('.merge-list-index-' + left[i]).find('img'), 0.5, {y: '+=100', ease: Power2.easeOut});
 		};
 
 		// identify rightmost item, hightlight green and bump it down
 		for (var i = 0; i < right.length; i++) {
 			tl.to($('.merge-list-index-' + right[i]).find('img'), 0.5, {borderColor: 'blue'});
-			tl.to($('.merge-list-index-' + right[i]).find('img'), 0.5, {y: '+=80', ease: Power2.easeOut});
+			tl.to($('.merge-list-index-' + right[i]).find('img'), 0.5, {y: '+=100', ease: Power2.easeOut});
 		};
 
-		return this.merge(this.mergeSort(left, tl),this.mergeSort(right, tl), tl);
-
+		return this.merge(this.mergeSort(left, tl),this.mergeSort(right, tl), tl);		
+		
 	};
 
 	this.merge = function(left, right, tl) {
@@ -48,22 +48,28 @@ var MergeDemo = function() {
 		var rLen = right.length;
 		var l = 0;
 		var r = 0;
-		var width = $('#egMerge ul li').width();
+		var width = $('.merge-list-index-' + right[r]).width();
 
 		while(l < lLen && r < rLen) {
 
-			if(left[l] < right[r]) {   
+			if(left[l] < right[r]) {
+
+				tl.to($('.merge-list-index-' + left[l]).find('img'), 0.5, {borderColor: 'black'});
+
 				result.push(left[l++]); // if left item is less than right item, do nothing
+				
 			}
 			else {
 
 				// otherwise, switch the position
-				tl.to($('.merge-list-index-' + left[l]).find('img'), 0.5, {x: '+=65', ease: Power4.easeInOut});
-				tl.to($('.merge-list-index-' + right[r]).find('img'), 0.5, {x: '-=65', ease: Power4.easeInOut});
+				tl.to($('.merge-list-index-' + left[l]).find('img'), 0.5, {x: '+=' + width, ease: Power4.easeInOut});
+				tl.to($('.merge-list-index-' + right[r]).find('img'), 0.5, {x: '-=' + width, ease: Power4.easeInOut});
 
 				result.push(right[r++]);				
 
 			}
+
+			tl.to($('.merge-list-index-' + right[r]).find('img'), 0.5, {borderColor: 'black'});
 		}
 
 		result = result.concat(left.slice(l)).concat(right.slice(r));
@@ -71,10 +77,7 @@ var MergeDemo = function() {
 		// when in the right position, bump up in place
 		for (var i = 0; i < result.length; i++) {
 
-			tl.to($('.merge-list-index-' + result[i]).find('img'), 0.5, {y: '-=80', ease: Back.easeOut, onComplete: function() {
-				TweenMax.to($('.merge-list-index-' + result[i]).find('img'), 0.5, {borderColor: 'black'});
-			}});
-
+			tl.to($('.merge-list-index-' + result[i]).find('img'), 0.5, {y: '-=100', ease: Back.easeOut});
 		};
 
 		return result; // return new array

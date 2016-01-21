@@ -85,7 +85,9 @@
 	        <section>
 	        	<h2>Javascript Sorting Algorithms</h2>
 	        	<p>Lets have some fun with numbers!</p>
-	        	<img src="images/nums-ordered.png" alt="Ordered numbers list" class="num-list-img">
+	        	<!-- <img src="images/nums-ordered.png" alt="Ordered numbers list" class="num-list-img"> -->
+	        	<br>
+	        	<ul id="introNums"></ul>
 	        </section>
 
 			<section>
@@ -134,7 +136,6 @@ function bubbleSort(arr){
 					<button id="sortReal">Sort</button>
 					<br>
 					<ul id="egBubble"></ul>
-					<ul id="bubbleDump"></ul>
 
 				</section>
 			</section>
@@ -248,13 +249,7 @@ function merge(left, right) {
 				<button id="mergeReal">Sort</button>
 				<br>
 			  	<ul id="egMerge"></ul>
-				<br>
-				<div id="indiviualArrays"></div>
-				<br>
-				<ul id="leftDump" style="float: left;"></ul>
-				<ul id="rightDump" style="float: right;"></ul>
-				<br>
-				<ul id="mergeDump" style="position: relative; top: 100px;"></ul>
+
 			  </section>
 
 			  <section>
@@ -277,6 +272,15 @@ function merge(left, right) {
 	        	</section>
 
 	        	<section>
+	        		<aside class="notes">
+	        			<small>
+	        				<ul>
+	        					<li>compare function paramater - arr.sort([compareFunction]) -</li>
+	        					<li>Optional. Specifies a function that defines the sort order. If omitted, the array is sorted according to each character's Unicode code point value, according to the string conversion of each element.</li>
+	        				</ul>
+	        			</small>
+	        		</aside>
+
 	        		<h2>Native Sort Method</h2>
 	        		<p>The default sort order is according to string Unicode code. Simply just call sort()</p>
 	        		<pre>
@@ -298,7 +302,7 @@ myArray.sort();
 	        	  <section>
 		  	  		<h2>Native Sort Method</h2>
 		  	  		<br>
-		  			<button id="quickReal">Sort</button>
+		  			<button id="nativeReal">Sort</button>
 		  			<br>
 	        	  	<ul id="egSort"></ul>
 	        		<ul id="sortDump"></ul>
@@ -310,6 +314,16 @@ myArray.sort();
 	        	  </section>
 
 	        	  <section>
+	        	  	<aside class="notes">
+	        	  		<small>
+	        	  			<ul>
+	        	  				<li>if the array length is 22 or less, insertion sort is used instead.</li>
+	        	  				<li>comparison between values is made using a comparefn at all times. Either the built-in one or one that you pass through.</li>
+	        	  				<li>there’s no “return” because the function works directly on the dot-delimited array.</li>
+	        	  			</ul>
+	        	  		</small>
+	        	  	</aside>
+
 		  	  		<h2>Native Sort Method</h2>
 		  	  		<p>All playing aside, the <a href="http://www.w3schools.com/jsref/jsref_sort.asp">sort()</a> method is great but its not the solve all. By default, the sort() method sorts the elements alphabetically and ascending. However, numbers will not be sorted correctly (40 comes before 5). To sort numbers, you must add a function that compare numbers.</p>
 	        	  </section>
@@ -342,6 +356,7 @@ myArray.sort();
 	          </section>
 	          
 	          <section>
+
 	          	<h2>Let's' Talk Performance</h2>
 	          	<p>Fun is good. Check out some other creative ways to visualize different sorting algorithms!</p>
 	          	<a href="https://www.youtube.com/watch?v=lyZQPjUT5B4" target="_blank">Bubble sort with Hungarian folk dance</a>
@@ -365,6 +380,7 @@ myArray.sort();
     <script src="lib/js/TweenMax.js"></script>
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
+
     <script src="lib/js/utilities.js"></script>
     <script src="lib/js/bubble.js"></script>
     <script src="lib/js/merge.js"></script>

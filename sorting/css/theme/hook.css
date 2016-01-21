@@ -339,7 +339,7 @@ button {
   cursor: pointer;
   text-transform: uppercase;
   font-weight: bold;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   padding: 5px 10px;
 }
 
@@ -366,11 +366,17 @@ button {
 #egSort li,
 #sortDump li,
 #leftDump li,
-#rightDump li {
+#rightDump li,
+#introNums li {
   list-style: none;
   display: inline-block;
   padding: 10px;
   max-width: 100px;
+}
+
+#egBubble li,
+#egMerge li {
+  padding: 0;
 }
 
 #bubbleDump li,
@@ -392,7 +398,7 @@ button {
 #sortDump li,
 #leftDump li,
 #rightDump li {
-  max-width: 50px;
+  max-width: 75px;
   position: relative;
 }
 
@@ -400,10 +406,11 @@ button {
   border-color: red;
 }
 
-#indiviualArrays ul li {
+#introNums li {
   list-style: none;
   display: inline-block;
   padding: 10px;
+  width: 100%;
   max-width: 50px;
   position: relative;
   visibility: hidden;
