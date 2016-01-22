@@ -1,0 +1,167 @@
+@import 'nib'
+@import 'vendor/normalize.css'
+@import 'base'
+
+.logo
+  position absolute
+  top 0
+  left 0
+  z-index 99999999999
+
+.logo a img
+	width 100px
+	
+#logo
+    position fixed
+    left 20px
+    top 20px
+    width 100%
+    max-width 55px
+    z-index 9999 
+	
+	.logo-fill
+		fill #EE1D54
+		-webkit-transition fill 0.3s ease-in-out 
+		-moz-transition fill 0.3s ease-in-out 
+		-ms-transition fill 0.3s ease-in-out 
+		-o-transition fill 0.3s ease-in-out 
+		transition fill 0.3s ease-in-out
+
+#logoLink:hover .logo-fill
+	fill #FFF
+	
+// custom styles copy pasta from old build
+strong {
+  color: #FF0050;
+}
+
+.num-list-img {
+  padding: 10px !important;
+}
+
+.num-single-digit {
+  margin-top: 50px !important;
+  width: 50px !important;
+  position: relative !important;
+}
+
+.presentation-list li{
+  font-size: 16px !important; 
+}
+
+.intro-slide h1,
+.intro-slide h2,
+.intro-slide img {
+  position: relative;
+  top: 20px;
+  visibility: hidden;
+  
+}
+
+.intro-slide img {
+  -webkit-transform: scale(0.75);
+     -moz-transform: scale(0.75);
+      -ms-transform: scale(0.75);
+       -o-transform: scale(0.75);
+          transform: scale(0.75);
+}
+
+button {
+  margin: 0 auto;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 12px;
+  color: black;
+}
+
+#egBubble,
+#bubbleDump,
+#egMerge,
+#mergeDump,
+#egSort,
+#sortDump,
+#leftDump,
+#rightDump {
+  margin: 0;
+  padding: 0;
+}
+
+#egBubble {
+  position: relative;
+}
+
+#egBubble li,
+#bubbleDump li,
+#egMerge li,
+#mergeDump li,
+#egSort li,
+#sortDump li,
+#leftDump li,
+#rightDump li,
+#introNums li {
+  list-style: none;
+  display: inline-block;
+  padding: 10px;
+  max-width: 100px;
+}
+
+#egBubble li,
+#egMerge li {
+  padding: 0;
+}
+
+#bubbleDump li,
+#mergeDump li,
+#sortDump li {
+  position: relative;
+  /*visibility: hidden;
+  top: 30px;*/
+}
+
+#sortDump li {
+  visibility: hidden;
+  top: 30px;
+}
+
+#egMerge li,
+#egSort li,
+#mergeDump li,
+#sortDump li,
+#leftDump li,
+#rightDump li {
+  max-width: 75px;
+  position: relative;
+}
+
+.border-highlite {
+  border-color: red;
+}
+
+#introNums li {
+  list-style: none;
+  display: inline-block;
+  padding: 10px;
+  width: 100%;
+  max-width: 50px;
+  position: relative;
+  visibility: hidden;
+  top: 20px;
+}
+
+#mergeDump li,
+#leftDump li,
+#rightDump li {
+  visibility: hidden;
+  top: 30px;
+}
+
+#sortJoke,
+#sortJokeImg {
+  position: relative;
+  top: 30px;
+  visibility: hidden;
+}
