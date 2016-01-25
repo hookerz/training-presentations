@@ -82,6 +82,16 @@ var Merge = function() {
       tl.to($('.merge-list-index-' + result[i]).find('img'), 0.5, {y: '-=100', ease: Back.easeOut});
     };
 
+    // flash the final sorted array
+    if (result.length === 8) {
+      console.log('final array');
+
+      for (var i = 0; i < result.length; i++) {
+        tl.set($('.merge-list-item').find('img'), {borderColor: 'black'});
+        tl.to($('.merge-list-item').find('img'), 0.75, {delay: 0.05, yoyo: true, repeat: -1, borderColor: 'white', ease: Power1.easeInOut});
+      };
+    };
+
     return result; // return new array
 
   };

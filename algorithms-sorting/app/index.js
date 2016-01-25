@@ -21,11 +21,11 @@ for (var i = 0; i < introNums.length; i++) {
 };
 
 for (i=0;i<egBubbleArr.length;i++) {
-    $("#egBubble").append("<li class='bubble-list-index-" + egBubbleArr[i] +"'><img src='images/" + egBubbleArr[i] + ".png'/></li>");
+    $("#egBubble").append("<li class='bubble-list-item bubble-list-index-" + egBubbleArr[i] +"'><img src='images/" + egBubbleArr[i] + ".png'/></li>");
 }
 
 for (i=0;i<egMergeArr.length;i++) {
-    $("#egMerge").append("<li class='merge-list-index-" + egMergeArr[i] +"'><img src='images/" + egMergeArr[i] + ".png'/></li>");
+    $("#egMerge").append("<li class='merge-list-item merge-list-index-" + egMergeArr[i] +"'><img src='images/" + egMergeArr[i] + ".png'/></li>");
 }
 
 for (i=0;i<egNativeArr.length;i++) {
@@ -76,6 +76,8 @@ $('#mergeReal').on('click', function() {
 $('#nativeReal').on('click', function() {
 
 	egNativeArr.sort();
+
+	$("#sortDump").empty();
 	
 	$('#egSort').css('display', 'none');
 	

@@ -49,7 +49,16 @@ var Bubble = function() {
         tl.to(right.find('img'), 0.5, {borderColor: 'black'});
       }
     }
+
+    // when finished, flash border color white
+    for (var i = 0; i < arr.length; i++) {
+      
+      tl.to($('.bubble-list-item').find('img'), 0.5, {yoyo: true, repeat: -1, borderColor: 'white', ease: Power1.easeInOut});
+      console.log('for arr ', arr[i]);
+    };
+
     return arr;
+
   };
 
 };
