@@ -9,44 +9,46 @@ standards scaffold docs:  https://github.com/hookerz/gulp-hook-standards-scaffol
 
 Markup - Here's a barebones example
 <pre>
-    <body>
-    	<head>
-    		<link rel="stylesheet" href="css/reveal.css">
-    		<link rel="stylesheet" href="css/zenburn.css">
-    		<link rel="stylesheet" href="css/hook.css">
-    		<link rel="stylesheet" href="css/index.css">
-    	</head>
-        <div class="reveal">
-            <div class="slides">
-                <section>Slide 1</section>
-                <section>Slide 2</section>
-            </div>
-        </div>
-        <script src="js/head.min.js"></script>
-        <script src="js/reveal.min.js"></script>
-        <script>
-            // Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+    <code>
+    	    <body>
+    	    	<head>
+    	    		<link rel="stylesheet" href="css/reveal.css">
+    	    		<link rel="stylesheet" href="css/zenburn.css">
+    	    		<link rel="stylesheet" href="css/hook.css">
+    	    		<link rel="stylesheet" href="css/index.css">
+    	    	</head>
+    	        <div class="reveal">
+    	            <div class="slides">
+    	                <section>Slide 1</section>
+    	                <section>Slide 2</section>
+    	            </div>
+    	        </div>
+    	        <script src="js/head.min.js"></script>
+    	        <script src="js/reveal.min.js"></script>
+    	        <script>
+    	            // Full list of configuration options available at:
+    				// https://github.com/hakimel/reveal.js#configuration
+    				Reveal.initialize({
+    					controls: true,
+    					progress: true,
+    					history: true,
+    					center: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+    					transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'js/plugin/zoom-js/zoom.js', async: true },
-					{ src: 'js/plugin/notes/notes.js', async: true }
-				]
-			});
-        </script>
-    </body>
+    					// Optional reveal.js plugins
+    					dependencies: [
+    						{ src: 'js/classList.js', condition: function() { return !document.body.classList; } },
+    						{ src: 'js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    						{ src: 'js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+    						{ src: 'js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    						{ src: 'js/plugin/zoom-js/zoom.js', async: true },
+    						{ src: 'js/plugin/notes/notes.js', async: true }
+    					]
+    				});
+    	        </script>
+    	    </body>
+    </code>
 
 </pre>
 
@@ -55,15 +57,17 @@ The presentation markup hierarchy needs to be .reveal > .slides > section where 
 Markup - Vertical slides
 
 <pre>
-	<div class="reveal">
-	    <div class="slides">
-	        <section>Single Horizontal Slide</section>
-	        <section>
-	            <section>Vertical Slide 1</section>
-	            <section>Vertical Slide 2</section>
-	        </section>
-	    </div>
-	</div>
+	<code>
+		<div class="reveal">
+		    <div class="slides">
+		        <section>Single Horizontal Slide</section>
+		        <section>
+		            <section>Vertical Slide 1</section>
+		            <section>Vertical Slide 2</section>
+		        </section>
+		    </div>
+		</div>
+	</code>
 </pre>
 
 reveal.js repo/docs:  https://github.com/hakimel/reveal.js/
