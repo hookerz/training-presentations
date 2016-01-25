@@ -1,8 +1,5 @@
-# Presentation Scaffold using reveal.js
+# Javascript Sorting Algorithms
 
-# This scaffold is based off the hook standards scaffold:  https://github.com/hookerz/gulp-hook-standards-scaffold
-# standards scaffold docs:  https://github.com/hookerz/gulp-hook-standards-scaffold/blob/master/README.md
+This is a presentation on different javascript sorting algorithms.  It was built with [reveal.js](https://github.com/hakimel/reveal.js/).
 
-# reveal.js repo:  https://github.com/hakimel/reveal.js/
-
-The presentation markup hierarchy needs to be .reveal > .slides > section where the section represents one slide and can be repeated indefinitely. If you place multiple section elements inside of another section they will be shown as vertical slides. The first of the vertical slides is the "root" of the others (at the top), and will be included in the horizontal sequence
+An introduction to simple sorting algorithms used in javascript.  Compares the bubble sorting, merge sorting and the native js method of sorting data.  Presentation contains animated visual sorting methods using GSAP as well as performance between the methods.  Talks about the native sort() in comparison as well as performance tests.
