@@ -4,9 +4,7 @@ A collection of informative and resourceful presentations dealing with all thing
 
 # Presentation Scaffold using reveal.js
 
-The presentation base scaffold is based off the hook standards scaffold:  https://github.com/hookerz/gulp-hook-standards-scaffold
-<br>
-standards scaffold docs:  https://github.com/hookerz/gulp-hook-standards-scaffold/blob/master/README.md
+The presentation base scaffold is based off the [hook standards scaffold](https://github.com/hookerz/gulp-hook-standards-scaffold)
 
 Markup - Here's a barebones example
 ```html
@@ -53,7 +51,7 @@ Markup - Here's a barebones example
 </pre>
 ```
 
-The presentation markup hierarchy needs to be .reveal > .slides > section where the section represents one slide and can be repeated indefinitely. If you place multiple section elements inside of another section they will be shown as vertical slides. The first of the vertical slides is the "root" of the others (at the top), and will be included in the horizontal sequence.
+The presentation markup hierarchy needs to be `.reveal > .slides > section` where the section represents one slide and can be repeated indefinitely. If you place multiple section elements inside of another section they will be shown as vertical slides. The first of the vertical slides is the "root" of the others (at the top), and will be included in the horizontal sequence.
 
 Markup - Vertical slides
 ```html
@@ -70,5 +68,5 @@ Markup - Vertical slides
 </pre>
 ```
 
-reveal.js repo/docs:  https://github.com/hakimel/reveal.js/
+reveal.js [repo/docs](https://github.com/hakimel/reveal.js/)  
 
