@@ -1,7 +1,3 @@
 # Training Presentations
 
-Presentation URL's
-
-Javascript Algorithms: Sorting - http://hookerz.github.io/training-presentations/algorithms-sorting/#/
-
-Javascript Algorithms: Stacks & Queues - http://hookerz.github.io/training-presentations/stacks-and-queues/#/
+GH-pages branch for display of presentations in master branch.
