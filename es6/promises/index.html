@@ -67,7 +67,7 @@
 
 				<section data-transition="concave">
 
-					<h2 style="color: #fff;">The Javascript Execution Model</h2>
+					<h3 style="color: #fff;">The Javascript Execution Model</h3>
 
 					<img src="images/jem.png" alt="Javascript Execution Model">
 
@@ -174,10 +174,12 @@
 
 				<section data-transition="concave">
 
-					<pre><code class="hljs" data-trim contenteditable>
-let promise = new Promise( (resolve, reject) => {
+					<h3 style="color: #fff;">Promise</h3>
 
-});
+					<pre><code class="hljs" data-trim contenteditable>
+// promise example
+
+let promise = new Promise( function(resolve, reject) {});
 					</code></pre>
 
 					<img src="images/states.png" alt="Promise States">
@@ -191,6 +193,173 @@ let promise = new Promise( (resolve, reject) => {
 							<li>A promise is pending if the resolve or reject callback have yet to be invoked.</li>
 							<li>Finally, a promise is settled if it's either fulfilled or rejected, but not pending.</li>
 							<li>The only exception to these rules is if a Promise object is invoked with the resolve callback, then the promise object is either fulfilled or rejected depending on whehter the passed promise object is fulfilled or rejected.</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<h3 style="color: #fff;">then()</h3>
+
+					<pre><code class="hljs" data-trim contenteditable>
+// then example
+
+let promise = new Promise( function(resolve, reject) {});
+
+promise.then(function(value) {}, function(reason) {});
+					</code></pre>
+
+					<img src="images/states.png" alt="Promise States">
+
+
+					<aside class="notes">
+						<ul>
+							<li>The then() method of a Promise object lets us perform a task once a Promise has been fulfilled or rejected.</li>
+							<li>It takes two arguments, onFullfilled and onRejected.</li>
+							<li>onFullfilled obviously returns the value of a successful call.</li>
+							<li>onRejected similarly returns the reason for a rejection call.</li>
+							<li>The then() method always returns a new Promise object that is created internally.</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<h3 style="color: #fff;">catch()</h3>
+
+					<pre><code class="hljs" data-trim contenteditable>
+// catch example
+
+let promise = new Promise( function(resolve, reject) {});
+
+// meh
+promise.then(null, function(reason) {});
+
+// pretty
+promise.catch(function(reason) {});
+
+
+					</code></pre>
+
+					<img src="images/states.png" alt="Promise States">
+
+
+					<aside class="notes">
+						<ul>
+							<li>The catch() method works very much in the same way as the then() method, with just one major exception:</li>
+							<li>It only takes one argument, the onRejected callback.</li>
+							<li>The catch()) method also always returns a new Promise object that is created internally.</li>
+							<li>As you can see in the code written above, the catch method is a much cleanier/easier way of catching errors rather than using the then() method.</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<h3 style="color: #fff;">resolve()</h3>
+
+					<pre><code class="hljs" data-trim contenteditable>
+// resolve example
+
+let p1 = Promise.resolve(4);
+
+p1.then(function(value) {
+  console.log(value); // Output: 4
+});
+
+Promise.resolve(p1).then(function(value) {
+  console.log(value); // Output: 4
+});
+
+Promise.resolve({name: 'Zed'}).then(function(value) {
+  console.log(value.name); // Output: Zed
+});
+					</code></pre>
+
+					<aside class="notes">
+						<ul>
+							<li>The resolve() method takes a value and return sa promise object that resolves the passed value.</li>
+							<li>This method is basically used to convert a value to a promise object.</li>
+							<li>It can prove useful when you find yourself with a value that may or may not be a promise, but you wish to use it as a Promise.</li>
+							<li>For example:  jQuery Promises have different interfaces than ES6 Promises, so you can use the resolve() method to convert jQuery Promises into ES6 Promieses.</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<h3 style="color: #fff;">reject()</h3>
+					<pre><code class="hljs" data-trim contenteditable>
+// reject example
+
+let p1 = Promise.reject(4);
+
+p1.catch(function(value) {
+
+  console.log(value); // Output: 4
+
+});
+
+Promise.reject({name: 'Zed'}).catch(function(value) {
+
+  console.log(value.name); // Output: Zed
+
+});
+					</code></pre>
+
+					<aside class="notes">
+						<ul>
+							<li>The reject() method takes a value and returns a rejected promise object with the passed value as the reason.</li>
+							<li>Unlike the resolve() method, the reject() method is used for debugging purposes - not for converting values into Promises.</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<h3 style="color: #fff;">race()</h3>
+					<pre><code class="hljs" data-trim contenteditable>
+// race example
+
+let p1 = new Promise(function(resolve, reject) {
+
+  setTimeout(function(){
+    resolve("Fulfillment Value 1");
+  }, 1000);
+
+});
+
+let p2 = new Promise(function(resolve, reject) {
+
+  setTimeout(function(){
+    resolve("fulfillment Value 2");
+  }, 2000);
+
+});
+
+let arr = [p1, p2];
+
+Promise.race(arr).then(function(value) {
+
+  console.log(value); // Output: Fulfillment Value 1
+
+}, function(reason) {
+
+  console.log(reason);
+
+});
+					</code></pre>
+
+					<aside class="notes">
+						<ul>
+							<li>The race method is similar to the all() method in that it takes an iterable object as the argument.</li>
+							<li>This method returns a Promise that fulfills or rjects as soon as one of the iterable objects is fulfilled.</li>
+							<li>As the name suggests, teh race() method is used to race between Promises to see which one finishes first.</li>
 						</ul>
 					</aside>
 
