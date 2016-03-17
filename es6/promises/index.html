@@ -97,7 +97,7 @@
 					<aside class="notes">
 						<ul>
 							<li>
-								This pen displays some of the main problems of a world without promises or a library with the same method.
+								This pen displays some of the main problems of a world without promises.
 							</li>
 							<li>
 								It's difficult to catch exceptions, as I would have to register error handling for every file I'm requesting.
@@ -192,7 +192,7 @@ let promise = new Promise( function(resolve, reject) {});
 							<li>A promise is rejected if the reject callback is invoked or an exception occurs in the executor scope.</li>
 							<li>A promise is pending if the resolve or reject callback have yet to be invoked.</li>
 							<li>Finally, a promise is settled if it's either fulfilled or rejected, but not pending.</li>
-							<li>The only exception to these rules is if a Promise object is invoked with the resolve callback, then the promise object is either fulfilled or rejected depending on whehter the passed promise object is fulfilled or rejected.</li>
+							<li>The only exception to these rules is if a Promise object is invoked with the resolve callback, then the promise object is either fulfilled or rejected depending on whether the passed promise object is fulfilled or rejected.</li>
 						</ul>
 					</aside>
 
@@ -267,21 +267,27 @@ promise.catch(function(reason) {});
 let p1 = Promise.resolve(4);
 
 p1.then(function(value) {
+
   console.log(value); // Output: 4
+
 });
 
 Promise.resolve(p1).then(function(value) {
+
   console.log(value); // Output: 4
+
 });
 
 Promise.resolve({name: 'Zed'}).then(function(value) {
+
   console.log(value.name); // Output: Zed
+
 });
 					</code></pre>
 
 					<aside class="notes">
 						<ul>
-							<li>The resolve() method takes a value and return sa promise object that resolves the passed value.</li>
+							<li>The resolve() method takes a value and returns a promise object that resolves the passed value.</li>
 							<li>This method is basically used to convert a value to a promise object.</li>
 							<li>It can prove useful when you find yourself with a value that may or may not be a promise, but you wish to use it as a Promise.</li>
 							<li>For example:  jQuery Promises have different interfaces than ES6 Promises, so you can use the resolve() method to convert jQuery Promises into ES6 Promieses.</li>
@@ -322,14 +328,14 @@ Promise.reject({name: 'Zed'}).catch(function(value) {
 
 				<section data-transition="concave">
 
-					<h3 style="color: #fff;">race()</h3>
+					<h3 style="color: #fff;">all()</h3>
 					<pre><code class="hljs" data-trim contenteditable>
-// race example
+// all example
 
 let p1 = new Promise(function(resolve, reject) {
 
   setTimeout(function(){
-    resolve("Fulfillment Value 1");
+    resolve();
   }, 1000);
 
 });
@@ -337,7 +343,48 @@ let p1 = new Promise(function(resolve, reject) {
 let p2 = new Promise(function(resolve, reject) {
 
   setTimeout(function(){
-    resolve("fulfillment Value 2");
+    resolve();
+  }, 2000);
+
+});
+
+let arr = [p1, p2];
+
+Promise.all(arr).then(function(value) {
+
+  console.log(value); // Output: Done | Logged after 2 seconds.
+
+});
+					</code></pre>
+
+					<aside class="notes">
+						<ul>
+							<li>The all() method takes an iterable object as an argument and returns a Promise that fulfills when all of the Promises in teh iterable object have been fulfilled.</li>
+							<li>This is extremely useful when we want to execute a task after some asynchronous operations have finished.</li>
+							<li>If any of the passsed Promises get rejected, then the method immediately returns a new rejected promise.</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<h3 style="color: #fff;">race()</h3>
+					<pre><code class="hljs" data-trim contenteditable>
+// race example
+
+let p1 = new Promise(function(resolve, reject) {
+
+  setTimeout(function() {
+    resolve("Fulfillment Value 1");
+  }, 1000);
+
+});
+
+let p2 = new Promise(function(resolve, reject) {
+
+  setTimeout(function() {
+    resolve("Fulfillment Value 2");
   }, 2000);
 
 });
