@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Promises | Finally... they're here!</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/zenburn.css">
+		<link rel="stylesheet" href="css/hook.css">
+		<link rel="stylesheet" href="css/index.css">
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- hook svg -->
+			<a href="http://www.byhook.com" target="_blank" id="logoLink">
+				<svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				   viewBox="0 0 88 131" style="enable-background:new 0 0 88 131;" xml:space="preserve">
+				  <g>
+				    <g>
+				      <path class="logo-fill" d="M63.7,0.1L63.7,0.1C44.3,0.1,44.3,14.9,44.3,24v14.7c0,9.1,0,23.9,19.3,23.9h0C83,62.7,83,47.9,83,38.7V24
+				        C83,14.9,83,0.1,63.7,0.1z M68.2,42.2c0,2.2,0,5.7-4.6,5.7s-4.6-3.5-4.6-5.7V20.6c0-2.2,0-5.7,4.6-5.7s4.6,3.5,4.6,5.7V42.2z"/>
+				      <path class="logo-fill" d="M24,1.2v21.6c0,0.7-0.5,1.2-1.2,1.2h-6.9c-0.7,0-1.2-0.5-1.2-1.2V1.2c0-0.7-0.5-1.2-1.2-1.2H1.2
+				        C0.5,0,0,0.5,0,1.2V24v14.8v22.7c0,0.7,0.5,1.2,1.2,1.2h12.3c0.7,0,1.2-0.5,1.2-1.2V39.9c0-0.7,0.5-1.2,1.2-1.2h6.9
+				        c0.7,0,1.2,0.5,1.2,1.2v21.6c0,0.7,0.5,1.2,1.2,1.2h12.3c0.7,0,1.2-0.5,1.2-1.2V38.8V24V1.2c0-0.7-0.5-1.2-1.2-1.2H25.2
+				        C24.5,0,24,0.5,24,1.2z"/>
+				    </g>
+				    <path class="logo-fill" d="M19.3,68.5L19.3,68.5C0,68.5,0,83.2,0,92.4v14.7c0,9.1,0,23.9,19.3,23.9h0c19.3,0,19.3-14.7,19.3-23.9V92.4
+				      C38.7,83.2,38.7,68.5,19.3,68.5z M23.9,110.5c0,2.2,0,5.7-4.6,5.7h0c-4.6,0-4.6-3.5-4.6-5.7V88.9c0-2.2,0-5.7,4.6-5.7h0
+				      c4.6,0,4.6,3.5,4.6,5.7V110.5z"/>
+				    <path class="logo-fill" d="M72.5,131H87c0.8,0,1.3-0.8,0.9-1.5l-15.8-29.3c-0.1-0.3-0.2-0.6,0-0.9l12.5-29.6c0.3-0.7-0.2-1.4-0.9-1.4
+				      H69.8c-0.4,0-0.8,0.2-0.9,0.6l-9.2,21.8C59.5,91.1,59,91,59,90.6V69.4c0-0.6-0.5-1-1-1H45.3c-0.6,0-1,0.5-1,1V130c0,0.6,0.5,1,1,1
+				      H58c0.6,0,1-0.5,1-1v-21.6c0-0.4,0.5-0.5,0.6-0.2l12,22.3C71.8,130.8,72.1,131,72.5,131z"/>
+				  </g>
+				</svg>
+			</a>
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-transition="concave">
+
+					<h1 style="color: #fff; text-decoration: underline;">Promises</h1>
+
+					<h4>Finally... they're here!</h4>
+
+					<p>
+						<small>Created by <a href="http://bradmurphydev.com" target="_blank">Brad Murphy</a> / <a href="http://byhook.com" target="_blank">Hook Studios</a></small>
+					</p>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<h2 style="color: #fff;">The Javascript Execution Model</h2>
+
+					<img src="images/jem.png" alt="Javascript Execution Model">
+
+					<aside class="notes">
+						<ul>
+							<li>
+								JavaScript code is executed in a single thread, that is, two pieces of script cannot run at same time. Each website opened in browser gets a single thread for downloading, parsing, and executing the website which we call the main thread.
+							</li>
+							<li>
+								The main thread also maintains a queue, which has asynchronous tasks queued to be executed one by one - they can be event handlers, callbacks or any other kind of task.
+							</li>
+							<li>
+								The problem is one long running queue task can stop the execution of all other queue tasks and the main script.
+							</li>
+							<li>
+								However, the main thread executes the tasks of this queue whenever possible. This is what makes it possible for executing the code asynchronously.
+							</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<a href="http://codepen.io/bradmurphy/pen/794a0c1c1be58ddd36cf8b4a0ae69b99" target="_blank">CLICK ME</a>
+
+					<aside class="notes">
+						<ul>
+							<li>
+								This pen displays some of the main problems of a world without promises or a library with the same method.
+							</li>
+							<li>
+								It's difficult to catch exceptions, as I would have to register error handling for every file I'm requesting.
+							</li>
+							<li>
+								The code is harder to read, it's difficult to follow the code flow due to nested function calls.
+							</li>
+							<li>
+								Lastly, it's difficult to maintain the state of the asynchronous operation.
+							</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<p style="text-align: left;">define asynchronous programming:</p>
+					<p style="text-align: left;"><em>Events are those occurring independently of the main program flow. Actions are executed in a non-blocking scheme, allowing the main program flow to continue processing.</em></p>
+
+					<aside class="notes">
+						<p>Promises are the answer.  Promises can be potentially long running and not necessarily complete operations. Instead of blocking and waiting for the long-running computation to complete, the pattern returns an object which represents the promised result.</p>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<p>This is obviously not the first time we have heard of promises....</p>
+
+					<ul>
+						<li class="fragment">Founded in 1976 by Daniel Friedman and David Wise.</li>
+						<li class="fragment">Java, C#, C++, Ruby, Python, Perl, etc.</li>
+						<li class="fragment">MultiLisp and Act 1</li>
+						<li class="fragment">More prevalent than ever.</li>
+					</ul>
+
+					<aside class="notes">
+						<ul>
+							<li>Promises were founded in 1976 by Daniel Friedman and David Wise.</li>
+							<li>They're used in several other languages.</li>
+							<li>Promises were first implemented in MultiLisp and Act 1.</li>
+							<li>Recently, mainstream languages have implemented support for promises due to the request–response model of message passing in the modern web and user interfaces.</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<h3>So how does a Promise actually work?</h3>
+
+					<img src="images/callbacks.png" alt="Callback Hell">
+
+					<aside class="notes">
+						<p>The executor is executed synchronously, but the executor is executing an asynchronous operation.  Therefore, the executor can return before the asynchronous operation is finished.</p>
+						<p>This is what enables us to get a resolve or reject callback, letting us handle asynchronous operations much more easily.</p>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<img src="images/money.gif" alt="Show Me The Money">
+
+					<p>I know what you're thinking, let's see this in action...</p>
+					<p><a href="http://codepen.io/bradmurphy/pen/2ed5db265c575e028b922f81518b0e34" target="_blank">ES6</a> / <a href="http://codepen.io/bradmurphy/pen/d94e686a1d8f0fff1ef914c8dacc7f7d" target="_blank">Bluebird</a></p>
+
+					<aside class="notes">
+						<p>As you can see in both of these examples - Promises make everything a lot simpler.  All files are passed into one request and from that single request, we can handle everything we need to.</p>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<pre><code class="hljs" data-trim contenteditable>
+let promise = new Promise( (resolve, reject) => {
+
+});
+					</code></pre>
+
+					<img src="images/states.png" alt="Promise States">
+
+
+					<aside class="notes">
+						<ul>
+							<li>Promises are always in one of four different states:</li>
+							<li>A promise is fulfilled if the resolve callback is invoked with a non-Promise object as an argument or no argument.</li>
+							<li>A promise is rejected if the reject callback is invoked or an exception occurs in the executor scope.</li>
+							<li>A promise is pending if the resolve or reject callback have yet to be invoked.</li>
+							<li>Finally, a promise is settled if it's either fulfilled or rejected, but not pending.</li>
+							<li>The only exception to these rules is if a Promise object is invoked with the resolve callback, then the promise object is either fulfilled or rejected depending on whehter the passed promise object is fulfilled or rejected.</li>
+						</ul>
+					</aside>
+
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+		<!-- <script src="js/vendor.js"></script> -->
+		<script src="js/main.build.js"></script>
+
+	</body>
+</html>
