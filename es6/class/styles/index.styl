@@ -1,0 +1,35 @@
+@import 'nib'
+@import 'vendor/normalize.css'
+@import 'base'
+
+.logo
+  position absolute
+  top 0
+  left 0
+  z-index 99999999999
+
+.logo a img
+	width 100px
+	
+#logo
+    position fixed
+    left 20px
+    top 20px
+    width 100%
+    max-width 55px
+    z-index 9999 
+	
+	.logo-fill
+		fill #EE1D54
+		-webkit-transition fill 0.3s ease-in-out 
+		-moz-transition fill 0.3s ease-in-out 
+		-ms-transition fill 0.3s ease-in-out 
+		-o-transition fill 0.3s ease-in-out 
+		transition fill 0.3s ease-in-out
+
+#logoLink:hover .logo-fill
+	fill #FFF
+	
+strong
+	color #EE1D54 !important
+	
