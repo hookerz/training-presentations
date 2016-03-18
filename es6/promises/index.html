@@ -115,17 +115,6 @@
 
 				<section data-transition="concave">
 
-					<p style="text-align: left;">define asynchronous programming:</p>
-					<p style="text-align: left;"><em>Events are those occurring independently of the main program flow. Actions are executed in a non-blocking scheme, allowing the main program flow to continue processing.</em></p>
-
-					<aside class="notes">
-						<p>Promises are the answer.  Promises can be potentially long running and not necessarily complete operations. Instead of blocking and waiting for the long-running computation to complete, the pattern returns an object which represents the promised result.</p>
-					</aside>
-
-				</section>
-
-				<section data-transition="concave">
-
 					<p>This is obviously not the first time we have heard of promises....</p>
 
 					<ul>
@@ -148,26 +137,65 @@
 
 				<section data-transition="concave">
 
-					<h3>So how does a Promise actually work?</h3>
-
-					<img src="images/callbacks.png" alt="Callback Hell">
+					<p style="text-align: left;">define asynchronous programming:</p>
+					<p style="text-align: left;"><em>Events are those occurring independently of the main program flow. Actions are executed in a non-blocking scheme, allowing the main program flow to continue processing.</em></p>
 
 					<aside class="notes">
-						<p>The executor is executed synchronously, but the executor is executing an asynchronous operation.  Therefore, the executor can return before the asynchronous operation is finished.</p>
-						<p>This is what enables us to get a resolve or reject callback, letting us handle asynchronous operations much more easily.</p>
+						<p>Promises are the answer.  Promises can be potentially long running and not necessarily complete operations. Instead of blocking and waiting for the long-running computation to complete, the pattern returns an object which represents the promised result.</p>
 					</aside>
 
 				</section>
 
 				<section data-transition="concave">
 
-					<img src="images/money.gif" alt="Show Me The Money">
+					<h3>Why Promises?</h3>
 
-					<p>I know what you're thinking, let's see this in action...</p>
-					<p><a href="http://codepen.io/bradmurphy/pen/2ed5db265c575e028b922f81518b0e34" target="_blank">ES6</a> / <a href="http://codepen.io/bradmurphy/pen/d94e686a1d8f0fff1ef914c8dacc7f7d" target="_blank">Bluebird</a></p>
+					<pre><code class="hljs" data-trim contenteditable>
+// callback approach
+async1(function(){
+    async2(function(){
+        async3(function(){
+            ....
+        });
+    });
+});
+
+// promise approach
+let task1 = async1();
+let task2 = task1.then(async2);
+let task3 = task2.then(async3);
+
+task3.catch(function(){
+    // solve your thrown errors from task1, task2, task3 here
+});
+
+// promise approach with chaining
+async1(function(){..})
+    .then(async2)
+    .then(async3)
+    .catch(function() {
+        // solve your thrown errors here
+    });
+					</code></pre>
 
 					<aside class="notes">
-						<p>As you can see in both of these examples - Promises make everything a lot simpler.  All files are passed into one request and from that single request, we can handle everything we need to.</p>
+						<ul>
+							<li>It removes the common code issues we run into that the event and callback patterns have.</li>
+							<li>It makes the code easier to read, understand and debug.  Also known as avoiding callback hell.</li>
+						</ul>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<h3>So how does a Promise actually work?</h3>
+
+					<img src="images/callbacks.png" alt="Callback Hell">
+
+					<aside class="notes">
+						<p>The executor (the callback that holds the reject and resolved callbacks) is executed synchronously, but the executor is executing an asynchronous operation.  Therefore, the executor can return before the asynchronous operation is finished.</p>
+						<p>This is what enables us to get a resolve or reject callback, letting us handle asynchronous operations much more easily.</p>
 					</aside>
 
 				</section>
@@ -409,6 +437,25 @@ Promise.race(arr).then(function(value) {
 							<li>As the name suggests, teh race() method is used to race between Promises to see which one finishes first.</li>
 						</ul>
 					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<img src="images/money.gif" alt="Show Me The Money">
+
+					<p>I know what you're thinking, let's see this in action...</p>
+					<p><a href="http://codepen.io/bradmurphy/pen/2ed5db265c575e028b922f81518b0e34" target="_blank">ES6</a> / <a href="http://codepen.io/bradmurphy/pen/d94e686a1d8f0fff1ef914c8dacc7f7d" target="_blank">Bluebird</a></p>
+
+					<aside class="notes">
+						<p>As you can see in both of these examples - Promises make everything a lot simpler.  All files are passed into one request and from that single request, we can handle everything we need to.</p>
+					</aside>
+
+				</section>
+
+				<section data-transition="concave">
+
+					<img src="images/end.gif" alt="That's All Folks!">
 
 				</section>
 
