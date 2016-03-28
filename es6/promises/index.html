@@ -60,7 +60,7 @@
 					<h4>Finally... they're here!</h4>
 
 					<p>
-						<small>Created by <a href="http://bradmurphydev.com" target="_blank">Brad Murphy</a> / <a href="http://byhook.com" target="_blank">Hook Studios</a></small>
+						<small>Created by <a href="http://bradmurphydev.com" target="_blank">Brad Murphy</a> / <a href="http://byhook.com" target="_blank">Hook</a></small>
 					</p>
 
 				</section>
@@ -73,6 +73,7 @@
 
 					<aside class="notes">
 						<ul>
+							<li>Before we dive into promises, we should cover the execution model.</li>
 							<li>
 								JavaScript code is executed in a single thread, that is, two pieces of script cannot run at same time. Each website opened in browser gets a single thread for downloading, parsing, and executing the website which we call the main thread.
 							</li>
@@ -126,6 +127,7 @@
 
 					<aside class="notes">
 						<ul>
+							<li>This is obviously not the first time we have heard of promises.</li>
 							<li>Promises were founded in 1976 by Daniel Friedman and David Wise.</li>
 							<li>They're used in several other languages.</li>
 							<li>Promises were first implemented in MultiLisp and Act 1.</li>
@@ -170,7 +172,7 @@ task3.catch(function(){
 });
 
 // promise approach with chaining
-async1(function(){..})
+async1()
     .then(async2)
     .then(async3)
     .catch(function() {
@@ -180,8 +182,9 @@ async1(function(){..})
 
 					<aside class="notes">
 						<ul>
-							<li>It removes the common code issues we run into that the event and callback patterns have.</li>
-							<li>It makes the code easier to read, understand and debug.  Also known as avoiding callback hell.</li>
+							<li>So why promises?  For one - it's not callback hell.</li>
+							<li>The promise method removes the common code issues we run into that the event and callback patterns have.</li>
+							<li>It also makes the code easier to read, understand and debug.</li>
 						</ul>
 					</aside>
 
@@ -194,7 +197,8 @@ async1(function(){..})
 					<img src="images/callbacks.png" alt="Callback Hell">
 
 					<aside class="notes">
-						<p>The executor (the callback that holds the reject and resolved callbacks) is executed synchronously, but the executor is executing an asynchronous operation.  Therefore, the executor can return before the asynchronous operation is finished.</p>
+						<p>So how does a promise work?</p>
+						<p>The executor or the Promise callback is executed synchronously, but the executor is executing an asynchronous operation.  Therefore, the executor can return before the asynchronous operation is finished.</p>
 						<p>This is what enables us to get a resolve or reject callback, letting us handle asynchronous operations much more easily.</p>
 					</aside>
 
@@ -221,6 +225,7 @@ let promise = new Promise( function(resolve, reject) {});
 							<li>A promise is pending if the resolve or reject callback have yet to be invoked.</li>
 							<li>Finally, a promise is settled if it's either fulfilled or rejected, but not pending.</li>
 							<li>The only exception to these rules is if a Promise object is invoked with the resolve callback, then the promise object is either fulfilled or rejected depending on whether the passed promise object is fulfilled or rejected.</li>
+							<li>Now that we've established a promise, let's see what we can do with it...</li>
 						</ul>
 					</aside>
 
@@ -278,7 +283,7 @@ promise.catch(function(reason) {});
 						<ul>
 							<li>The catch() method works very much in the same way as the then() method, with just one major exception:</li>
 							<li>It only takes one argument, the onRejected callback.</li>
-							<li>The catch()) method also always returns a new Promise object that is created internally.</li>
+							<li>The catch() method also always returns a new Promise object that is created internally.</li>
 							<li>As you can see in the code written above, the catch method is a much cleanier/easier way of catching errors rather than using the then() method.</li>
 						</ul>
 					</aside>
@@ -343,12 +348,19 @@ Promise.reject({name: 'Zed'}).catch(function(value) {
   console.log(value.name); // Output: Zed
 
 });
+
+function makeDatabaseRequest(key) {
+
+  if (typeof key !== 'string') return Promise.reject('invalid key');
+  return database.get(key); // database.get returns a promise
+
+}
 					</code></pre>
 
 					<aside class="notes">
 						<ul>
 							<li>The reject() method takes a value and returns a rejected promise object with the passed value as the reason.</li>
-							<li>Unlike the resolve() method, the reject() method is used for debugging purposes - not for converting values into Promises.</li>
+							<li>Unlike the resolve() method, the reject() method is not for converting values into Promises.  Instead, it can be used for debugging purposes or in the event that a rejected promise is needed like in the example above.</li>
 						</ul>
 					</aside>
 
@@ -387,9 +399,9 @@ Promise.all(arr).then(function(value) {
 
 					<aside class="notes">
 						<ul>
-							<li>The all() method takes an iterable object as an argument and returns a Promise that fulfills when all of the Promises in teh iterable object have been fulfilled.</li>
+							<li>The all() method takes an iterable object as an argument and returns a Promise that fulfills when all of the Promises in the iterable object have been fulfilled.</li>
 							<li>This is extremely useful when we want to execute a task after some asynchronous operations have finished.</li>
-							<li>If any of the passsed Promises get rejected, then the method immediately returns a new rejected promise.</li>
+							<li>If any of the passed Promises get rejected, then the method immediately returns a new rejected promise.</li>
 						</ul>
 					</aside>
 
@@ -433,8 +445,8 @@ Promise.race(arr).then(function(value) {
 					<aside class="notes">
 						<ul>
 							<li>The race method is similar to the all() method in that it takes an iterable object as the argument.</li>
-							<li>This method returns a Promise that fulfills or rjects as soon as one of the iterable objects is fulfilled.</li>
-							<li>As the name suggests, teh race() method is used to race between Promises to see which one finishes first.</li>
+							<li>This method returns a Promise that fulfills or rejects as soon as one of the iterable objects is fulfilled.</li>
+							<li>As the name suggests, the race() method is used to race between Promises to see which one finishes first.</li>
 						</ul>
 					</aside>
 
@@ -462,9 +474,10 @@ Promise.race(arr).then(function(value) {
 						<li><a href="https://github.com/bradmurphy/es6katas" target="_blank">ES6 Katas Solutions</a></li>
 						<li><a href="http://taoofcode.net/promise-anti-patterns/">Promise Anti-patterns</a></li>
 						<li><a href="https://www.packtpub.com/web-development/learning-ecmascript-6" target="_blank">Learning ECMAScript 6</a></li>
-						<li><a href="http://es6features.com/" target="_blank">ES6 Features</a></li>
-						<li><a href="http://colintoh.com/blog/staying-sane-with-asynchronous-programming-promises-and-generators" target="_blank">Staying Sane With Asynchronous Programming: <br/>Promises and Generators</a></li>
+						<li><a href="http://es6features.com/" target="_blank">ES6features.com</a></li>
+						<li><a href="http://colintoh.com/blog/staying-sane-with-asynchronous-programming-promises-and-generators" target="_blank">Staying Sane With Asynchronous Programming:<br/>Promises and Generators</a></li>
 						<li><a href="http://www.mattgreer.org/articles/promises-in-wicked-detail/" target="_blank">JavaScript Promises... In Wicked Detail</a></li>
+						<li><a href="https://www.youtube.com/watch?v=QtgR94Q2pt4">Fluent Conf 2016:<br/>Jeremy Fairbank - The Rise of Async Javascript</a></li>
 					</ul>
 
 				</section>
