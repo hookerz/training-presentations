@@ -59,6 +59,17 @@
 					<p>
 						<small>Created by <a href="http://byhook.com/" target="_blank">Hook Studios</a></small>
 					</p>
+
+					<!-- notes -->
+					<aside class="notes">
+						<small>
+							<ul>
+								<li>Functional programming is a paradigm where you believe that functions are the most important part of your program.  Data is immutable in functional programming, that is to say that it should never change.  Functional programming operates in a stateless manner, meaning that functions should perform every task as if it was called for the first time, with no knowledge of the future or the past.  In functional code, the output value of a function depends only on the arguments that are input to the function, so calling a function f twice with the same value for an argument x will produce the same result f(x) each time.</li>
+								<li><strong>Sidenote:</strong></li>
+								<li>This does not mean you don't have objects though! It just means that instead of telling an object to do something, you pass the object to a function, which does something. The important thing to note is that this function does not modify the original object. It might return a modified copy of the object, but the original object is not changed.  Such functions are called pure functions.</li>
+							</ul>
+						</small>
+					</aside>
 				</section>
 
 				<!-- WHY FP SLIDES/SECTION -->
@@ -171,6 +182,11 @@
 						</ul>
 					</section>
 
+					<section>
+						<h2>Functional Programming</h2>
+						<img src="images/mkay.jpg" alt="I'm gonna need to see those TPS reports mkay">
+					</section>
+
 				</section>
 
 				<!-- CORE CONCEPTS SLIDES/SECTION -->
@@ -196,7 +212,7 @@
 						<img src="images/PureMichigan.jpg" alt="Pure Michigan Image" class="fragment" style="width: 100%; max-width: 200px;">
 					</section>
 
-					<section>
+					<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>Pure Functions</p>
 						
@@ -211,7 +227,7 @@ let array = [1, 2, 3, 4, 5];
 							</code>
 						</pre>
 
-						<pre class="custom-pre">
+						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 // pure
 array.slice(0, 2);
@@ -225,7 +241,7 @@ document.write(`[${array}]`); // [1,2,3,4,5]
 							</code>
 						</pre>
 
-						<pre class="custom-pre">
+						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 // impure
 array.splice(0, 2);
@@ -262,32 +278,43 @@ document.write(`[${array}]`); // []
 						</aside>
 					</section>
 
-					<section>
+					<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>First-Class Functions</p>
-						<pre>
+						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 // Function declaration. Okay but can't be nested within non-function blocks
 // The whole thing gets hoisted at compile time. (beware)
 function double(x) {
 	return x * x;
 }
+							</code>
+						</pre>
 
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
 // Function expression, first class! 'var double = undefined' gets hoisted
 // but the definition itself does not. (so chill)
 var double = function(x) {
 	return x * x;
 }
+							</code>
+						</pre>
+
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
 
 // function can be stored in an array, first class!
 var myArray = [5, 'socks', {a: 3}, double, false, Nan, []];
+							</code>
+						</pre>
 
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
 var nums = [1, 1, 2, 3, 5, 8];
 
 // functon can be passed as an argument, first class!
 var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
-
-
 							</code>
 						</pre>
 
@@ -319,7 +346,7 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
 						
 					</section>
 
-					<section>
+					<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>High-Order Functions</p>
 						<pre class="custom-pre">
@@ -333,7 +360,7 @@ function or(p1, p2) {
 							</code>
 						</pre>
 
-						<pre class="custom-pre">
+						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 function negative(x) {
 	return x < 0;
@@ -377,7 +404,7 @@ alert(nonzero(5));
 						
 					</section>
 
-					<section>
+					<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>Immutable State</p>
 
@@ -387,7 +414,7 @@ let array = [1, 2, 3, 4, 5];
 							</code>
 						</pre>
 
-						<pre class="custom-pre">
+						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 // splice() mutates the original data (bad!) 
 array.splice(0, 2);
@@ -398,7 +425,11 @@ document.write(`[${array}]`); // [5]
 
 array.splice(0, 2);
 document.write(`[${array}]`); // []
+							</code>
+						</pre>
 
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
 // slice() given the same input will always return the same output (yay!)
 array.slice(0, 2);
 document.write(`[${array}]`); // [1,2,3,4,5] 
@@ -432,7 +463,7 @@ document.write(`[${array}]`); // [1,2,3,4,5]
 						
 					</section>
 
-					<section>
+					<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>Closure</p>
 
@@ -443,8 +474,12 @@ let add = function(a){
     return a + b;
   }
 };
+							</code>
+						</pre>
 
-// As you can see - the variable a is enclosed and
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
+// the variable 'a' is enclosed and
 // is only accessible to the returning function.
 
 let add10 = add(10);
@@ -477,15 +512,25 @@ document.write(result);
 						</aside>
 					</section>
 
-					<section>
+					<section class="fragments">
+						<h2>Functional Programming</h2>
+						<p>Have you heard of Ramda or currying?</p>
+
+						<img src="images/goku.gif" alt="Goku eating some curry" class="fragment">
+
+						<p class="fragment">Not quite....</p>
+						
+					</section>
+
+					<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>Currying</p>
 
 						<ul>
-							<li>You can call a function with fewer arguments than it expects. It returns a function that takes the remaining arguments.</li>
+							<li class="fragment">You can call a function with fewer arguments than it expects. It returns a function that takes the remaining arguments.</li>
 						</ul>
 
-						<pre>
+						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 // normal - regular addition
 let add = (a, b) => a + b;
@@ -498,9 +543,29 @@ document.write(`Normal JS Invocation: ${add(1, 2)}`); // 3
 document.write(`Normal JS Invocation: ${add(1, 2, 'IGNORE ME')}`); // 3
 document.write(`Normal JS Invocation: ${add(1)}`); // NaN
 
-// curried - curried addition
-// a curried function is one where multiple arguemnts are described by a series of one-argument functions.
+							</code>
+						</pre>
 
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>Currying has it’s advantages, let’s say we wanted to map over an array of objects to get an id.  Easy enough, but if we apply curry and make a get function, we can get a bit cleaner.  Even further, we can actually rewrite the map function to accept another function and map that value.  Leaving us with some super clean code no doubt.</li>
+									<li><strong>GO TO NEXT SLIDE</strong></li>
+								</ul>
+							</small>
+						</aside>
+					</section>
+
+					<section class="fragments">
+						<h2>Functional Programming</h2>
+						<p>Currying</p>
+
+						<pre class="custom-pre">
+							<code class="hljs" data-trim contenteditable>
+// curried - curried addition
+// a curried function is one where multiple arguemnts are described by a
+// series of one-argument functions.
 let addCurried = a => b => a + b;
 
 // let addCurried = function(a) {
@@ -524,22 +589,16 @@ document.write(`Curried: ${rAdd(2, 'IGNORE ME')}`); // 3
 							</code>
 						</pre>
 
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<ul>
-									<li>Currying has it’s advantages, let’s say we wanted to map over an array of objects to get an id.  Easy enough, but if we apply curry and make a get function, we can get a bit cleaner.  Even further, we can actually rewrite the map function to accept another function and map that value.  Leaving us with some super clean code no doubt.</li>
-									<li><strong>GO TO NEXT SLIDE</strong></li>
-								</ul>
-							</small>
-						</aside>
+						<ul>
+							<li class="fragment">Ramda is your friend</li>
+						</ul>
 					</section>
 
-					<section>
+					<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>Currying</p>
 
-						<pre>
+						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 let objects = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
@@ -550,9 +609,12 @@ let get = R.curry((property, object) => {
 });
 
 document.write(`w/ Curry: [${objects.map(get('id'))}]`); // [1, 2, 3]
+							</code>
+						</pre>
 
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
 // Take it even further!
-
 let map = R.curry((fn, value) => value.map(fn));
 
 let getIDS = map(get('id'));
@@ -572,16 +634,16 @@ document.write(`Super Ultra Functional: [${getIDS(objects)}]`); // [1, 2, 3]
 						</aside>
 					</section>
 
-					<section>
+					<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>Compose</p>
 						<ul>
-							<li>Composing functions allows us to build complex functions from many simple, generic functions.</li>
-							<li>By treating functions as building blocks for other functions, we can build truly modular applications with excellent readability and maintainability.</li>
+							<li class="fragment">Composing functions allows us to build complex functions from many simple, generic functions.</li>
+							<li class="fragment">By treating functions as building blocks for other functions, we can build truly modular applications with excellent readability and maintainability.</li>
 						</ul>
 					</section>
 
-					<section>
+					<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>Compose</p>
 
@@ -602,6 +664,11 @@ const upperCase = (str) => str.toUpperCase();
 const trim = (str) => str.replace(/^\s+I\s+$/g, '');
 const replaceIWithBang = (str) => str.replace(/[i]/g, '!');
 
+							</code>
+						</pre>
+
+						<pre class="custom-pre fragment" style="position: relative; top: -20px;">
+							<code class="hljs" data-trim contenteditable>
 const labelMaker = compose(upperCase, trim);
 // Ramda's built-in compose method takes any number of functions and
 // will return them right-to-left
@@ -704,6 +771,11 @@ var map = function(f, a) {
 
 					<section>
 						<h2>Functional Programming</h2>
+						<img src="images/thou.jpg" alt="Colonial guy">
+					</section>
+
+					<section class="fragments">
+						<h2>Functional Programming</h2>
 						<p>map()</p>
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
@@ -712,7 +784,7 @@ arr.map(callback [, argument]);
 							</code>
 						</pre>
 
-												<pre class="custom-pre">
+						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 var integers = [1,-0,9,-8,3];
 var numbers = [1,2,3,4];
@@ -736,9 +808,18 @@ str.split(' ').map(function(s, i) {
 
 							</code>
 						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>notes on map()</li>
+								</ul>
+							</small>
+						</aside>
 					</section>
 
-					<section>
+					<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>filter()</p>
 						<pre class="custom-pre">
@@ -748,7 +829,7 @@ arr.filter(callback [, argument]);
 							</code>
 						</pre>
 
-												<pre class="custom-pre">
+						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 var myarray = [1,2,3,4];
 var words = 'hello 123 world how 345 ya doing'.split(' ');
@@ -769,9 +850,18 @@ myarray.filter(function(){
 
 							</code>
 						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>notes on filter()</li>
+								</ul>
+							</small>
+						</aside>
 					</section>
 
-					<section>
+					<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>reduce()</p>
 						<pre class="custom-pre">
@@ -781,7 +871,7 @@ arr.reduce(callback [, initialValue]);
 							</code>
 						</pre>
 
-												<pre class="custom-pre">
+						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 var numbers = [1,2,3,4];
 
@@ -798,24 +888,249 @@ numbers.reduce(function(a,b){
 
 							</code>
 						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>notes on reduce()</li>
+								</ul>
+							</small>
+						</aside>
 					</section>
 
 				</section>
 
+				<!-- LILLY INCEPTION REFACTOR SLIDES/SECTION -->
 				<section>
-					<h2>Functional Programming</h2>
-					<h3>Lilly Inception Refactor</h3>
+					<section>
+						<h2>Functional Programming</h2>
+						<h3>Lilly Inception Refactor</h3>
+						<img src="images/blah.jpg" alt="bla bla bla">
+					</section>
+
+					<section>
+						<h2>Functional Programming</h2>
+						<p>Canvas.js</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+'use strict';
+
+var createjs = require('createjs');
+
+var canvas;
+var stage;
+var exportRoot;
+
+// set canvas id
+var Canvas = function() {
+
+  canvas = document.getElementById('you-line');
+
+};
+
+// initialize canvas animation
+Canvas.prototype.init = function() {
+
+  exportRoot = new lib02.Youtube_Beacon05_Lily_970x250();
+
+  stage = new createjs.Stage(canvas);
+  stage.addChild(exportRoot);
+  stage.update();
+  stage.enableDOMEvents(false);
+
+};
+
+// start canvas animation
+Canvas.prototype.start = function() {
+
+  canvas.style.opacity = 1;
+
+  createjs.Ticker.setFPS(lib02.properties.fps);
+  createjs.Ticker.addEventListener('tick', stage);
+
+};
+
+module.exports = Canvas;								
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>Functional Programming</h2>
+						<p>Canvas.js - refactored</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+'use strict';
+
+import createjs from 'createjs';
+
+export default function() {
+
+  const youLine = document.getElementById('you-line');
+  const exportRoot = new lib02.Youtube_Beacon05_Lily_970x250();
+  const stage = new createjs.Stage(youLine);
+
+  const canvas = Object.create({});
+
+  canvas.init = () => {
+
+    stage.addChild(exportRoot);
+    stage.update();
+    stage.enableDOMEvents(false);
+
+  };
+
+  canvas.start = () => {
+
+    youLine.style.opacity = 1;
+
+    createjs.Ticker.setFPS(lib02.properties.fps);
+    createjs.Ticker.addEventListener('tick', stage);
+
+  };
+
+  return canvas;
+
+};
+								
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>Functional Programming</h2>
+						<p>Loader.js</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+'use strict';
+
+function Loader( manifest ) {
+
+  this.manifest = manifest;
+  this.loadItems = 0;
+  this.loadItemsTotal = 0;
+  this.loadComplete = false;
+  this.consoleObject = {
+    loaded: 0.0
+  };
+
+  manifest.forEach(function(item) {
+    //console.log(item.src)
+    this._loadImage(item.src);
+  }.bind(this));
+
+  this._loadScript('js/vendor.js');
+
+}
+
+Loader.prototype._loadImage = function( path ) {
+  this.consoleObject[path] = false;
+  var img = new Image();
+  img.addEventListener( 'load', this._onLoad.bind( this, path ) );
+  img.src = path;
+  this.loadItemsTotal++;
+};
+
+Loader.prototype._loadScript = function( path ) {
+  this.consoleObject[path] = false;
+  global.Enabler.loadScript( global.Enabler.getUrl( path ), this._onLoad.bind( this, path ) );
+  this.loadItemsTotal++;
+};
+
+Loader.prototype._onLoad = function ( id ) {
+  this.loadItems++;
+  this.consoleObject[id] = true;
+  this.consoleObject.loaded = Math.round( ( this.loadItems / this.loadItemsTotal ) * 100 ) + '%';
+  if ( this.loadItemsTotal === this.loadItems ) {
+    this._onLoadComplete();
+  }
+
+};
+
+Loader.prototype._onLoadComplete = function () {
+  // this.callback();
+  if (this.loadComplete === true) {
+    return;
+  }
+
+  this.loadComplete = true;
+  this._loadScript('js/main.build.js');
+};
+
+module.exports = Loader;								
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>Functional Programming</h2>
+						<p>Loader.js - refactored</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+'use strict';
+
+export default function(manifest) {
+
+  //Loads all the images in the manifest
+  const loadImage = function(path) {
+
+    return new Promise((resolve, reject) => {
+
+      let img = new Image();
+      img.addEventListener('load', resolve);
+      img.addEventListener('error', reject);
+      img.src = path.src;
+
+    });
+
+  };
+
+  //loads vendor and main.build scripts, individually
+  const loadScript = function(path) {
+
+    return new Promise((resolve, reject) => {
+      global.Enabler.loadScript(global.Enabler.getUrl(path), resolve);
+
+    });
+
+  };
+
+  const loadImagePromise = manifest.map(loadImage);
+  const loadVendor =  loadScript('js/vendor.js');
+  const loadMain = () => loadScript('js/main.build.js');
+
+  //After all the images have loaded, then load in vendor, lastly load
+  //mainbuild.js
+  Promise.all(loadImagePromise.concat(loadVendor)).then(loadMain);
+
+};
+
+								
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>Functional Programming</h2>
+						<img src="images/refactor.jpg" alt="refactor image">
+					</section>
+
 				</section>
 	
 				<!-- FRAMEWORK SLIDES/SECTION -->
 				<section>
+					
 					<section>
 						<h2>Functional Programming</h2>
-						<p>Let's Talk Frameworks</p>
+						<p>Let's talk Frameworks</p>
+						<img src="images/frameworks.png" alt="different js framework logos">
 					</section>
-
+					
 					<section class="fragments">
+
 						<h2>Functional Progamming</h2>
+						<p>Let's talk Frameworks</p>
 						<ul>
 							<li class="fragment">React</li>
 							<li class="fragment">Deku</li>
@@ -835,7 +1150,9 @@ numbers.reduce(function(a,b){
 								</ul>
 							</small>
 						</aside>
-					</section>
+
+					</section>	
+
 				</section>
 
 				<!-- LIBRARIES SLIDE/SECTION -->
@@ -878,14 +1195,55 @@ numbers.reduce(function(a,b){
 				</section>
 
 				<!-- LAST SLIDE -->
-				<section class="text-align-left">
-					<h2>The End</h2>
-					<p>Functional programming is a style that emphasizes and enables the writing of smarter code, which minimizes complexity and increases modularity. It's a way of writing cleaner code through clever ways of mutating, combining, and using functions. JavaScript provides an excellent medium for this approach. JavaScript is actually a functional language at heart. By learning how to expose its true identity as a functional language, we can implement web applications that are powerful, easier to maintain, and more reliable. By doing this, JavaScript's odd quirks and pitfalls will suddenly become clear and the language as a whole will make infinitely more sense. Learning how to use functional programming will make you a better programmer for life.</p>
+				<section>
+
+					<section class="">
+						<h2 class="text-align-left">The End</h2>
+						<p class="text-align-left">Functional programming is a style that emphasizes and enables the writing of smarter code, which minimizes complexity and increases modularity.</p>
+						<img src="images/fp-dino.jpg" alt="fp dino">
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>It's a way of writing cleaner code through clever ways of mutating, combining, and using functions.</li>
+								</ul>
+							</small>
+						</aside>
+					</section>
+
+					<section class="fragments">
+						<h2 class="text-align-left">The End</h2>
+						<p class="text-align-left">JavaScript provides an excellent medium for this approach.</p>
+						<img src="images/end-fp.jpg" alt="TMIMITW" style="width: 100%; max-width: 350px;">
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>It's a way of writing cleaner code through clever ways of mutating, combining, and using functions.</li>
+									<li>JavaScript is actually a functional language at heart</li>
+									<li>By learning how to expose its true identity as a functional language, we can implement web applications that are powerful, easier to maintain, and more reliable</li>
+									<li>By doing this, JavaScript's odd quirks and pitfalls will suddenly become clear and the language as a whole will make infinitely more sense.</li>
+								</ul>
+							</small>
+						</aside>
+					</section>
+
+					<section>
+						<h2 class="text-align-left">The End</h2>
+						<img src="images/fist-pump.jpg" alt="fist pump baby">
+					</section>
+
 				</section>
 
 			</div> <!-- slides -->
 			
 		</div> <!-- reveal -->
+
+		<div id="loadingOverlay">
+			<img src="images/logo.png" alt="hook logo">
+		</div>
 		
 
 		<script src="js/head.min.js"></script>
