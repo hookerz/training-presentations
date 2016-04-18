@@ -503,10 +503,7 @@ document.write(result);
 						<aside class="notes">
 							<small>
 								<ul>
-									<li>
-										Functional programming is a paradigm where you believe that functions are the most important part of your program.  Data is immutable in functional programming, that is to say that it should never change.  Functional programming operates in a stateless manner, meaning that functions should perform every task as if it was called for the first time, with no knowledge of the future or the past.  In functional code, the output value of a function depends only on the arguments that are input to the function, so calling a function f twice with the same value for an argument x will produce the same result f(x) each time. 
-									</li>
-									<li>So we’ve defined the what, now for the why...</li>
+									<li>So we’ve talked about and defined the what, now for the why...</li>
 								</ul>
 							</small>
 						</aside>
@@ -756,7 +753,7 @@ nums.map(Math.sqrt); // [1, 2, 3]
 							</code>
 						</pre>
 
-						<small><p class="fragment">However, we'll need to write it as a global function and not as a method of the arry.  This allows us to write cleaner, safter code later on.</p></small>
+						<small><p class="fragment">However, we'll need to write it as a global function and not as a method of the array.  This allows us to write cleaner, safter code later on.</p></small>
 
 						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
@@ -954,6 +951,14 @@ Canvas.prototype.start = function() {
 module.exports = Canvas;								
 							</code>
 						</pre>
+						
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li>OOP Constructor Function</li>
+							</ul>
+						</aside>
+
 					</section>
 
 					<section>
@@ -996,6 +1001,15 @@ export default function() {
 								
 							</code>
 						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li>canvas = Object.create({});</li>
+								<li>start() and init() are now arrow functions</li>
+							</ul>
+						</aside>
+
 					</section>
 
 					<section>
@@ -1061,6 +1075,13 @@ Loader.prototype._onLoadComplete = function () {
 module.exports = Loader;								
 							</code>
 						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li>OOP Constructor Function</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
@@ -1109,6 +1130,249 @@ export default function(manifest) {
 								
 							</code>
 						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li>using Promises</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Functional Programming</h2>
+						<p>Animation.js</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+'use strict';
+
+var TweenMax = require('TweenMax');
+
+var AnimationController = function () {
+
+  // selectors
+  this.player = document.querySelector('#player');
+  this.animationWrap = document.querySelector('#animation');
+  this.loader = document.querySelector('#loading');
+  this.whiteBox = document.querySelector('#white-box');
+  this.lillyText = document.querySelector('#lilly-text');
+  this.fansText = document.querySelector('#fans-text');
+  this.slash = document.querySelector('#slash');
+  this.underlay = document.querySelector('#underlay');
+  this.lozenge = document.querySelector('#lozenge');
+
+  // booleans
+  this.endOnce = true;
+
+  this.init();
+
+};
+
+// initialize controller, build all timelines.
+AnimationController.prototype.init = function() {
+
+  this.globalTimeline = new TimelineMax({paused: true});
+
+  this.globalTimeline.add(this.tl1(), 0.0);
+  this.globalTimeline.add(this.tl2(), 21.25);
+
+  return this.globalTimeline;
+
+};
+
+// timeline 0 - loading  wipe animation
+AnimationController.prototype.tl1 = function () {
+
+  this.tl1 = new TimelineMax();
+
+  this.tl1.to([this.underlay, this.loader], 0.4, {autoAlpha: 0, ease: Power1.easeOut});
+
+  return this.tl1;
+
+};
+
+// timeline 4 - last zoom in of branding
+AnimationController.prototype.tl2 = function () {
+
+  this.tl2 = new TimelineMax();
+
+  this.tl2.fromTo(this.animationWrap, 3.225, {x: '-200%',
+    autoAlpha: 1,
+    scaleX: 10,
+    scaleY: 10},
+    {x: '0%',
+    scaleX: 1,
+    scaleY: 1,
+    ease: Power3.easeOut});
+
+  return this.tl2;
+
+};
+
+// make player visible, set animation wrap and fire tl0
+AnimationController.prototype.start = function () {
+
+  this.player.style.opacity = 1;
+  this.globalTimeline.play();
+
+};
+
+// play animation
+AnimationController.prototype.play = function () {
+
+  this.globalTimeline.play();
+
+};
+
+// seek animation
+AnimationController.prototype.seek = function(time) {
+
+  this.globalTimeline.seek(time);
+
+};
+
+// pause animation
+AnimationController.prototype.pause = function () {
+
+  this.globalTimeline.pause();
+
+};
+
+// kill all animations, end banner
+AnimationController.prototype.endState = function () {
+
+  if (this.endOnce) {
+
+    TweenMax.killAll(true, true, true, true);
+    TweenMax.set(this.animationWrap, {autoAlpha: 1});
+    this.endOnce = false;
+
+  }
+
+};
+
+module.exports = AnimationController;								
+							</code>
+						</pre>
+						
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li>OOP Constructor Function</li>
+							</ul>
+						</aside>
+
+					</section>
+
+					<section>
+						<h2>Functional Programming</h2>
+						<p>Animation.js - refactored</p>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+'use strict';
+
+import TweenMax from 'TweenMax';
+
+export default function() {
+
+    // selectors
+    const player = document.querySelector('#player');
+    const animationWrap = document.querySelector('#animation');
+    const loader = document.querySelector('#loading');
+    const whiteBox = document.querySelector('#white-box');
+    const lillyText = document.querySelector('#lilly-text');
+    const fansText = document.querySelector('#fans-text');
+    const slash = document.querySelector('#slash');
+    const underlay = document.querySelector('#underlay');
+    const lozenge = document.querySelector('#lozenge');
+
+    // timeline
+    let timeline = null;
+
+    // booleans
+    let endOnce = true;
+
+    const animation = Object.create({});
+
+    animation.init = () => {
+
+      timeline = new TimelineMax({paused: true});
+
+      timeline.add(fadeOutLoader(), 0.0);
+      timeline.add(animateBranding(), 21.25);
+
+      return timeline;
+
+    };
+
+    function fadeOutLoader() {
+
+      const tl = new TimelineMax();
+
+      tl.to([underlay, loader], 0.4, {autoAlpha: 0, ease: Power1.easeOut});
+
+      return tl;
+
+    };
+
+    function animateBranding() {
+
+      const tl = new TimelineMax();
+
+      tl.fromTo(animationWrap, 3.225, {x: '-200%',
+        autoAlpha: 1,
+        scaleX: 10,
+        scaleY: 10},
+        {x: '0%',
+        scaleX: 1,
+        scaleY: 1,
+        ease: Power3.easeOut});
+
+      return tl;
+
+    };
+
+    animation.start = () => {
+
+      player.style.opacity = 1;
+      timeline.play();
+
+    };
+
+    animation.play = () => timeline.play();
+
+    animation.seek = (time) => timeline.seek(time);
+
+    animation.pause = () => timeline.pause();
+
+    animation.endState = () => {
+
+      if (endOnce) {
+
+        TweenMax.killAll(true, true, true, true);
+        TweenMax.set(animationWrap, {autoAlpha: 1});
+        endOnce = false;
+
+      }
+
+    };
+
+    return animation;
+
+};
+								
+							</code>
+						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li>Use of ES6 import and export</li>
+								<li>animation = Object.create({});</li>
+								<li>play(), seek(), and init() are now arrow functions</li>
+							</ul>
+						</aside>
+
 					</section>
 
 					<section>
@@ -1130,11 +1394,13 @@ export default function(manifest) {
 					<section class="fragments">
 
 						<h2>Functional Progamming</h2>
-						<p>Let's talk Frameworks</p>
+						<p>React</p>
+						<img src="images/react.png" alt="React.js logo" class="text-align-center">
+						<br>
 						<ul>
-							<li class="fragment">React</li>
-							<li class="fragment">Deku</li>
-							<li class="fragment">Vue</li>
+							<li class="fragment">Components provide abstractions</li>
+							<li class="fragment">Composable Functions</li>
+							<li class="fragment">Virtual DOM</li>
 						</ul>
 
 						<!-- notes -->
@@ -1144,14 +1410,66 @@ export default function(manifest) {
 									<li><strong>React</strong>'s authors define it as a JavaScript library for creating UIs and addressing problem of building large applications with data that changes over time.  React brings the very basic essence of functional programming to the table. It provides abstractions such as components which are basically (pure) functions and get you away from imperatively touching the DOM.</li>
 									<li>In terms of functional programming, you write composable functions. Data is coming to your functions as input which emit tree like representations as return values. When data changes, functions are re-run again with new data as input. React diffs the result of previous function call with new one and it effectively calculates the difference between the tree structures. From higher level perspective, React is a function which takes two DOMs and generates a list of DOM operations to be applied to the DOM.</li>
 									<li>React’s rendering leverages the Virtual DOM - an in-memory representation of what the actual DOM should look like. When the state changes, React does a full re-render of the Virtual DOM, diffs it, and then patches the real DOM.</li>
-									<li><strong>Deku:</strong> Deku is a library for rendering interfaces using pure functions and virtual DOM.  It's the self proclaimed "functional alternative to React".  With Deku, you define your UI as a tree of components and whenever a state change occurs, it re-renders the entire tree to patch the DOM using a highly optimized diffing algorithm. Instead of using classes and local state, Deku just uses functions and pushes the responsibility of all state management and side-effects onto tools like Redux. It also aims to support only modern browsers to keep things simple.</li>
-									<li><strong>Vue: </strong>Vue.js, like React, provides reactive and composable View components.</li>
-									<li>Instead of a Virtual DOM, Vue.js uses the actual DOM as the template and keeps references to actual nodes for data bindings. This limits Vue.js to environments where DOM is present. However, contrary to the common misconception that Virtual-DOM makes React faster than anything else, Vue.js actually out-performs React when it comes to hot updates, and requires almost no hand-tuned optimization.</li>
 								</ul>
 							</small>
 						</aside>
 
-					</section>	
+					</section>
+
+					<section class="fragments">
+
+						<h2>Functional Progamming</h2>
+						<p>Deku</p>
+						<img src="images/deku.png" alt="Deku.js logo" style="width: 100%; max-width: 250px;">
+						<br>
+						<ul>
+							<li class="fragment">"Functional alternative to React"</li>
+							<li class="fragment">Define your UI as a tree of components</li>
+							<li class="fragment">Virtual DOM</li>
+						</ul>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li><strong>Deku:</strong> Deku is a library for rendering interfaces using pure functions and virtual DOM.  It's the self proclaimed "functional alternative to React"
+									<li>With Deku, you define your UI as a tree of components and whenever a state change occurs, it re-renders the entire tree to patch the DOM using a highly optimized diffing algorithm.
+									</li>Instead of using classes and local state, Deku just uses functions and pushes the responsibility of all state management and side-effects onto tools like Redux. It also aims to support only modern browsers to keep things simple.</li>
+								</ul>
+							</small>
+						</aside>
+
+					</section>
+
+					<section class="fragments">
+
+						<h2>Functional Progamming</h2>
+						<p>Vue</p>
+						<img src="images/vue.jpg" alt="Vue.js logo" style="width: 100%; max-width: 300px;">
+						<br>
+						<ul>
+							<li class="fragment">Provides reactive and composable View components</li>
+							<li class="fragment">Uses the actual DOM as the template</li>
+							<li class="fragment">Limited to environments where DOM is present</li>
+						</ul>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li><strong>Vue: </strong>Vue.js, like React, provides reactive and composable View components.</li>
+									<li>Instead of a Virtual DOM, Vue.js uses the actual DOM as the template and keeps references to actual nodes for data bindings. This limits Vue.js to environments where DOM is present. However, contrary to the common misconception that Virtual-DOM makes React faster than anything else, Vue.js actually out-performs React when it comes to hot updates, and requires almost no hand-tuned optimization.</li>
+									<!-- <li><strong>React</strong>'s authors define it as a JavaScript library for creating UIs and addressing problem of building large applications with data that changes over time.  React brings the very basic essence of functional programming to the table. It provides abstractions such as components which are basically (pure) functions and get you away from imperatively touching the DOM.</li>
+									<li>In terms of functional programming, you write composable functions. Data is coming to your functions as input which emit tree like representations as return values. When data changes, functions are re-run again with new data as input. React diffs the result of previous function call with new one and it effectively calculates the difference between the tree structures. From higher level perspective, React is a function which takes two DOMs and generates a list of DOM operations to be applied to the DOM.</li>
+									<li>React’s rendering leverages the Virtual DOM - an in-memory representation of what the actual DOM should look like. When the state changes, React does a full re-render of the Virtual DOM, diffs it, and then patches the real DOM.</li>
+									<li><strong>Deku:</strong> Deku is a library for rendering interfaces using pure functions and virtual DOM.  It's the self proclaimed "functional alternative to React".  With Deku, you define your UI as a tree of components and whenever a state change occurs, it re-renders the entire tree to patch the DOM using a highly optimized diffing algorithm. Instead of using classes and local state, Deku just uses functions and pushes the responsibility of all state management and side-effects onto tools like Redux. It also aims to support only modern browsers to keep things simple.</li>
+									<li><strong>Vue: </strong>Vue.js, like React, provides reactive and composable View components.</li>
+									<li>Instead of a Virtual DOM, Vue.js uses the actual DOM as the template and keeps references to actual nodes for data bindings. This limits Vue.js to environments where DOM is present. However, contrary to the common misconception that Virtual-DOM makes React faster than anything else, Vue.js actually out-performs React when it comes to hot updates, and requires almost no hand-tuned optimization.</li> -->
+								</ul>
+							</small>
+						</aside>
+
+					</section>
 
 				</section>
 
@@ -1167,28 +1485,86 @@ export default function(manifest) {
 						<h2>Functional Programming</h2>
 						<p>Let's talk Libraries</p>
 						<p class="text-align-left">As the years go, Internet Explorer 9 has faded into the past and native ES5 methods are expected for most applications. So the role of functional programming libraries has shifted from a compatibility layer to adding new, foundational methods for functional programming.</p>
-						<ul>
-							<li class="fragment">Underscore</li>
-							<li class="fragment">LoDash</li>
-							<li class="fragment">Ramda</li>
-						</ul>
 
 						<!-- notes -->
 						<aside class="notes">
 							<small>
 								<ul>
-									<li><strong>Underscore: </strong>In the era when Internet Explorer 8 was still a consideration in JavaScript programming, underscore had a clear purpose: to make JavaScript’s functional methods cross-browser compatible. (eg: map(), reduce(), etc…)</li>
+									<!-- <li><strong>Underscore: </strong>In the era when Internet Explorer 8 was still a consideration in JavaScript programming, underscore had a clear purpose: to make JavaScript’s functional methods cross-browser compatible. (eg: map(), reduce(), etc…)</li>
 									<li><strong>Underscore</strong> is a JavaScript utility library that provides helper functions for common idioms with a focus on functional programming.</li>
-									<li><strong>LoDash: </strong>The lodash/fp module is an instance of lodash with its methods wrapped to produce immutable auto-curried iteratee-first data-last methods.</li>
-									<li>loadash/fp is more of a generic utility belt than Ramda is.</li>
-									<li><strong>Ramda: </strong>Considered a 2nd generation functional programming language</li>
+									<li><strong>LoDash: </strong>The lodash/fp module is an instance of lodash with its methods wrapped to produce immutable auto-curried iteratee-first data-last methods.</li> -->
+									<!-- <li>loadash/fp is more of a generic utility belt than Ramda is.</li> -->
+									<!-- <li><strong>Ramda: </strong>Considered a 2nd generation functional programming language</li>
 									<li>Using Ramda should feel much like just using Javascript.  Ramda's basic data structures are plain Javascript objects, and their usual collections are Javascript arrays. Ramda also keep other native features of Javascript, such as functions as objects with properties.</li>
 									<li>Ramda emphasizes a purer functional style. Immutability and side-effect free functions are at the heart of its design philosophy. This can help you get the job done with simple, elegant code.</li>
 									<li>Ramda functions are automatically curried. This allows you to easily build up new functions from old ones simply by not supplying the final parameters.</li>
 									<li>The parameters to Ramda functions are arranged to make it convenient for currying. The data to be operated on is generally supplied last.</li>
-									<li>Ramda, however,  is still going through significant changes. Lots of breaking changes, because it hasn't reached 1.0</li>
+									<li>Ramda, however,  is still going through significant changes. Lots of breaking changes, because it hasn't reached 1.0</li> -->
 								</ul>
 							</small>
+						</aside>
+					</section>
+
+					<section class="fragments">
+						<h2>Functional Programming</h2>
+						<p>Underscore</p>
+						<img src="images/underscore.png" alt="underscore logo" style="width: 100%; max-width: 300px;">
+						<br>
+						<ul>
+							<li class="fragment">1st Generation Library</li>
+							<li class="fragment">Cross-browser compatibility</li>
+							<li class="fragment">JavaScript utility library</li>
+						</ul>
+
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li><strong>Underscore: </strong>In the era when Internet Explorer 8 was still a consideration in JavaScript programming, underscore had a clear purpose: to make JavaScript’s functional methods cross-browser compatible. (eg: map(), reduce(), etc…)</li>
+								<li><strong>Underscore</strong> is a JavaScript utility library that provides helper functions for common idioms with a focus on functional programming.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section class="fragments">
+						<h2>Functional Programming</h2>
+						<p>LoDash</p>
+						<img src="images/lodash.png" alt="lodash logo" style="width: 100%; max-width: 150px;">
+						<br>
+						<ul>
+							<li class="fragment">Preferred alternative to Underscore</li>
+							<li class="fragment">loadash/fp module</li>
+							<li class="fragment">Generic utility belt</li>
+						</ul>
+
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li><strong>LoDash: </strong>The lodash/fp module is an instance of lodash with its methods wrapped to produce immutable auto-curried iteratee-first data-last methods.</li>
+								<li>loadash/fp is more of a generic utility belt than Ramda is.</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section class="fragments">
+						<h2>Functional Programming</h2>
+						<p>Ramda</p>
+						<img src="images/ramda.jpg" alt="Ramda logo">
+						<ul>
+							<li class="fragment">2nd generation functional programming library</li>
+							<li class="fragment">Javascript feel</li>
+							<li class="fragment">Lots of breaking changes, because it hasn't reached 1.0</li>
+						</ul>
+
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li><strong>Ramda: </strong>Considered a 2nd generation functional programming language</li>
+								<li>Using Ramda should feel much like just using Javascript.  Ramda's basic data structures are plain Javascript objects, and their usual collections are Javascript arrays. Ramda also keep other native features of Javascript, such as functions as objects with properties.</li>
+								<li>Ramda emphasizes a purer functional style. Immutability and side-effect free functions are at the heart of its design philosophy. This can help you get the job done with simple, elegant code.</li>
+								<li>Ramda functions are automatically curried. This allows you to easily build up new functions from old ones simply by not supplying the final parameters.</li>
+								<li>The parameters to Ramda functions are arranged to make it convenient for currying. The data to be operated on is generally supplied last.</li>
+								<li>Ramda, however,  is still going through significant changes. Lots of breaking changes, because it hasn't reached 1.0</li>
+							</ul>
 						</aside>
 					</section>
 
@@ -1232,7 +1608,7 @@ export default function(manifest) {
 
 					<section>
 						<h2 class="text-align-left">The End</h2>
-						<img src="images/fist-pump.jpg" alt="fist pump baby">
+						<img src="images/gage-x.jpg" alt="Happy Gage - The Buddliest Bud" style="width: 100%; max-width: 350px; position: relative; top: -40px;">
 					</section>
 
 				</section>
