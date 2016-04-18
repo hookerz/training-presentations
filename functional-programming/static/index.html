@@ -231,13 +231,13 @@ let array = [1, 2, 3, 4, 5];
 							<code class="hljs" data-trim contenteditable>
 // pure
 array.slice(0, 2);
-document.write(`[${array}]`); // [1,2,3,4,5] 
+console.log(`[${array}]`); // [1,2,3,4,5] 
 
 array.slice(0, 2);
-document.write(`[${array}]`); // [1,2,3,4,5] 
+console.log(`[${array}]`); // [1,2,3,4,5] 
 
 array.slice(0, 2);
-document.write(`[${array}]`); // [1,2,3,4,5] 
+console.log(`[${array}]`); // [1,2,3,4,5] 
 							</code>
 						</pre>
 
@@ -245,13 +245,13 @@ document.write(`[${array}]`); // [1,2,3,4,5]
 							<code class="hljs" data-trim contenteditable>
 // impure
 array.splice(0, 2);
-document.write(`[${array}]`); // [3,4,5] 
+console.log(`[${array}]`); // [3,4,5] 
 
 array.splice(0, 2);
-document.write(`[${array}]`); // [5]
+console.log(`[${array}]`); // [5]
 
 array.splice(0, 2);
-document.write(`[${array}]`); // []
+console.log(`[${array}]`); // []
 
 							</code>
 						</pre>
@@ -418,13 +418,13 @@ let array = [1, 2, 3, 4, 5];
 							<code class="hljs" data-trim contenteditable>
 // splice() mutates the original data (bad!) 
 array.splice(0, 2);
-document.write(`[${array}]`); // [3,4,5] 
+console.log(`[${array}]`); // [3,4,5] 
 
 array.splice(0, 2);
-document.write(`[${array}]`); // [5]
+console.log(`[${array}]`); // [5]
 
 array.splice(0, 2);
-document.write(`[${array}]`); // []
+console.log(`[${array}]`); // []
 							</code>
 						</pre>
 
@@ -432,13 +432,13 @@ document.write(`[${array}]`); // []
 							<code class="hljs" data-trim contenteditable>
 // slice() given the same input will always return the same output (yay!)
 array.slice(0, 2);
-document.write(`[${array}]`); // [1,2,3,4,5] 
+console.log(`[${array}]`); // [1,2,3,4,5] 
 
 array.slice(0, 2);
-document.write(`[${array}]`); // [1,2,3,4,5] 
+console.log(`[${array}]`); // [1,2,3,4,5] 
 
 array.slice(0, 2);
-document.write(`[${array}]`); // [1,2,3,4,5]
+console.log(`[${array}]`); // [1,2,3,4,5]
 
 							</code>
 						</pre>
@@ -485,7 +485,7 @@ let add = function(a){
 let add10 = add(10);
 let result = add10(20);
 
-document.write(result);
+console.log(result);
 							</code>
 						</pre>
 					</section>
@@ -536,9 +536,9 @@ let add = (a, b) => a + b;
 //   return a + b;
 // };
 
-document.write(`Normal JS Invocation: ${add(1, 2)}`); // 3
-document.write(`Normal JS Invocation: ${add(1, 2, 'IGNORE ME')}`); // 3
-document.write(`Normal JS Invocation: ${add(1)}`); // NaN
+console.log(`Normal JS Invocation: ${add(1, 2)}`); // 3
+console.log(`Normal JS Invocation: ${add(1, 2, 'IGNORE ME')}`); // 3
+console.log(`Normal JS Invocation: ${add(1)}`); // NaN
 
 							</code>
 						</pre>
@@ -573,16 +573,16 @@ let addCurried = a => b => a + b;
 
 let cAdd = addCurried(1);
     
-document.write(`Curried: ${cAdd(2)}`); // 3
-document.write(`Curried: ${cAdd(2, 'IGNORE ME')}`); // 3
+console.log(`Curried: ${cAdd(2)}`); // 3
+console.log(`Curried: ${cAdd(2, 'IGNORE ME')}`); // 3
 
 // ramda - makes stuff easier
 let ramdaCurried = R.curry(add);
 
 let rAdd = ramdaCurried(1);
 
-document.write(`Curried: ${rAdd(2)}`); // 3
-document.write(`Curried: ${rAdd(2, 'IGNORE ME')}`); // 3
+console.log(`Curried: ${rAdd(2)}`); // 3
+console.log(`Curried: ${rAdd(2, 'IGNORE ME')}`); // 3
 							</code>
 						</pre>
 
@@ -599,13 +599,13 @@ document.write(`Curried: ${rAdd(2, 'IGNORE ME')}`); // 3
 							<code class="hljs" data-trim contenteditable>
 let objects = [{ id: 1 }, { id: 2 }, { id: 3 }];
 
-document.write(`w/o Curry: [${objects.map(o => o.id)}]`); // [1, 2, 3]
+console.log(`w/o Curry: [${objects.map(o => o.id)}]`); // [1, 2, 3]
 
 let get = R.curry((property, object) => {
   return object[property];
 });
 
-document.write(`w/ Curry: [${objects.map(get('id'))}]`); // [1, 2, 3]
+console.log(`w/ Curry: [${objects.map(get('id'))}]`); // [1, 2, 3]
 							</code>
 						</pre>
 
@@ -616,7 +616,7 @@ let map = R.curry((fn, value) => value.map(fn));
 
 let getIDS = map(get('id'));
 
-document.write(`Super Ultra Functional: [${getIDS(objects)}]`); // [1, 2, 3]
+console.log(`Super Ultra Functional: [${getIDS(objects)}]`); // [1, 2, 3]
 							</code>
 						</pre>
 
