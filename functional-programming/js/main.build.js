@@ -27,6 +27,12 @@ LoadImages([
 	'images/functions-in-out.png',
 	'images/funk.jpg',
 	'images/pulp.png',
+	'images/deku.png',
+	'images/lodash.png',
+	'images/ramda.jpg',
+	'images/react.png',
+	'images/underscore.png',
+	'images/vue.jpg',
 	'images/robit.png',
 	'images/blah.jpg',
 	'images/refactor.jpg',
@@ -39,7 +45,7 @@ LoadImages([
 	'images/fighting.gif',
 	'images/goku.gif',
 	'images/library.gif',
-	'images/gage.jpg'
+	'images/gage-x.jpg'
 ], imagesAreLoaded);
 
 function imagesAreLoaded() {
