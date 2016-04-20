@@ -1609,7 +1609,41 @@ export default function() {
               
               </section> 
               <section>
-<img src='images/memoize.png' width=700px alt='An ounce of prevention is worth a pound of cure'>
+              <pre><code>
+var memoize = function(f) {
+
+  //create a cache
+  var cache = {};
+
+  return function() {
+    var arg_str = JSON.stringify(arguments);
+
+    //If we already have the answer in our cache, do nothing
+    //Otherwise, store the result of this function call in our cache
+    cache[arg_str] = cache[arg_str] || f.apply(f, arguments);
+
+    return cache[arg_str];
+  };
+};
+
+function fibonacci(n) {
+  return (n === 0 || n === 1) ? n : fibonacci(n - 1) + fibonacci(n - 2);
+};
+
+function betterFibonacci = memoize(function(n) {
+  return (n === 0 || n === 1) ? n : betterFibonacci(n - 1) + betterFibonacci(n - 2);
+});
+
+var ITERATIONS = 42;
+
+console.time('non-memoized');
+console.log(fibonacci(ITERATIONS));
+console.timeEnd('non-memoized'); // 3788ms
+
+console.time('memoized');
+console.log(betterFibonacci(ITERATIONS));
+console.timeEnd('memoized'); // 1ms !!! 
+</pre></code>
 </section>
 
               <section>
