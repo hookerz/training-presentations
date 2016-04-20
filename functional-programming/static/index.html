@@ -1501,11 +1501,10 @@ export default function() {
 				<section>
 					<section>
 						<h2>Functional Programming</h2>
-						<h3>The Great Debate</h3>
 						<p>
-							Functional Programming vs. Object Oriented Programming
+              Why bother?
 						</p>
-						<img src="images/fighting.gif" alt="Everybody was kung-fu fighting">
+						<img src="images/whybotherguy.jpg" width=400px alt="why bother?">
 
 						<!-- notes -->
 						<aside class="notes">
@@ -1520,36 +1519,113 @@ export default function() {
 						</aside>
 					</section>
 
-					<section>
-						<h2>Functional Programming</h2>
-						<h3>Why FP over OO?</h3>
-						<blockquote> “The problem with object-oriented languages is they’ve got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.”</blockquote>
-						<cite class="text-align-right">-Joe Armstrong</cite>
-
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<ul>
-									<li>For better applications, we need a simple and reliable manner to do it.  In Functional Programming, we’re given those features.  Pure Functions and Immutable State alone give us the ability to run a function a thousand times and still get the same result.</li>
-									<li>Because Object Oriented Programming relies directly on mutable state, the objects methods you call are supposed to mutate the current this.  There’s a lot of complex processes that need to be written just to manage all of the threads in your program to keep them correctly updated and synchronized.  With a functional approach, we don’t need to worry about this.</li>
-									<li>With Functional Programming, functions are broken down to very small methods that are then utilized in first-class and high-order functions that are more complex.  This makes our code not only easier to read as we have pointed out before, it also makes it easier to understand.  Because function names become expressive and meaningful, code becomes more readable and declarative.</li>
-								</ul>
-							</small>
-						</aside>
-					</section>
-
-					<section class="fragments">
+        	<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>Functional Programming encourages functions that:</p>
 						<ul>
 							<li class="fragment">accept at least one argument</li>
-							<li class="fragment">and return at least one value</li>
-							<li class="fragment">without mutating any data ouside of its own scope</li>
+							<li class="fragment">return at least one value</li>
+              <li class="fragment"><u>avoid mutating data ouside of its
+                  own scope</u></li>
 						</ul>
 					</section>
 
-				</section>
+          <section class="fragments">
+            <h2>When you don't mutate global state...</h2>
+            <p>You drastically reduce the liklihood of bugs</p>
+              <ul>
+                <li class="fragment">Functions are no longer affected by
+                "hidden state"</li>
+                <li class="fragment">You circumvent race conditions which occur
+                when output is dependent on a sequence of uncontrollable events
+                such as the network, device latency, user input or anything
+                that occurs randomly. E.g. Google Instant</li>
+                <li class="fragment">"Reliance upon state is one of the largest
+                contributors to system complexity"</li>
+                <li class="fragment"><img src='images/prevention.png'
+                width=400px alt='An ounce of prevention is worth a pound of
+                cure'></li>
+              </ul>
+              </section> 
 
+          <section class="fragments">
+            <h2>When you don't mutate global state...</h2>
+            <p>Debugging becomes easier</p>
+              <ul>
+                <li class="fragment">There's no guesswork about how a function
+                will perform at different points in the program.</li>
+                <li class="fragment">The function can be easily isolated to
+                check values</li>
+              </ul>
+              </section> 
+
+          <section class="fragments">
+            <h2>When you don't mutate global state...</h2>
+            <p>Changing the code is less painful</p>
+              <ul>
+                <li class="fragment">Without relying on state, changes touch
+                far less of your code</li>
+                <li class="fragment">The code becomes easily testable</li>
+                <li class="fragment">Unit tests are a breeze to write when
+                a function only relies on arguments passed directly to it</li>
+                <li class="fragment">Tests help you maintain your code and save
+                future-you from having to remember what the code needs to do.
+                Failed tests will remind you!</li>
+                <li class="fragment"><img src='images/unittests.jpg'
+                width=400px alt='I should start writing unit tests'> </li>
+              </ul>
+
+              </section>
+              
+
+          <section class="fragments">
+            <h2>Pure functions are more reusable</h2>
+            <p></p>
+              <ul>
+                <li class="fragment">Functional programming encourages functions that are short, simple, and do one thing</li>
+                <li class="fragment">Function names become expressive and
+                meainingful (e.g. "hasID" or "addsTimeStamp")</li>
+                <li class="fragment">Short functions are easier to
+                understand</li>
+                <li class="fragment">Smaller functions can be reused as part of
+                more complex tasks</li>
+                <li class="fragment">When higher-level functions are composed
+                of smaller functions they become more robust, less
+                fragile.</li>
+                <li class="fragment"><img src='images/legodino.jpg' width=400px alt='An ounce of prevention is worth a pound of
+                cure'></li>
+              </ul>
+              </section> 
+
+          <section class="fragments">
+            <h2>Pure functions can be cached</h2>
+            <p></p>
+              <ul>
+                <li class="fragment">When you cache using 'memoization' you get
+                better performance</li>
+                <li class="fragment">Recursive functions, normally too
+                expensive, become viable</li>
+              </ul>
+              
+              </section> 
+              <section>
+<img src='images/memoize.png' width=700px alt='An ounce of prevention is worth a pound of cure'>
+</section>
+
+              <section>
+              <h2>The best part...</h2>
+              <ul>
+                <li class="fragment">You don't have to completely abandon your
+                current practices!</li>
+                <li class="fragment">Functional code can live next to Object
+                Oriented code</li>
+                <li class="fragment">An existing code base can be updated gradually</li>
+                <li class="fragment">Learning and using a few patterns of
+                functional programming is a great start towards cleaner and
+                more elegant code</li>
+              </section>
+
+              </section>
 				<!-- LAST SLIDE -->
 				<section>
 
