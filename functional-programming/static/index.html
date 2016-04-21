@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Funtional Programming Presentation</title>
+		<title>Functional Programming Presentation</title>
 
 		<meta name="description" content="A presentation on the Functional Programming paradigm">
 		<meta name="author" content="Hook">
@@ -26,7 +26,7 @@
 	<body>
 
 		<div class="reveal">
-			
+
 			<!-- hook svg -->
 			<a href="http://www.byhook.com" target="_blank" id="logoLink">
 				<svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -76,7 +76,7 @@
 				</section>
 				<!-- CORE CONCEPTS SLIDES/SECTION -->
 				<section>
-					
+
 					<section>
 						<h2>Functional Programming</h2>
 						<h3>Core Concepts</h3>
@@ -93,7 +93,7 @@
 							<li class="fragment">Being assigned to a variable</li>
 							<li class="fragment">In other words: An object that also happens to be a function.</li>
 						</ul>
-						
+
 						<!-- notes -->
 						<aside class="notes">
 							<small>
@@ -143,7 +143,7 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
 
 </section>
             <section>
-								<h2>First class functions are suported by</h3>
+								<h2>First class functions are supported by</h3>
 								<ul>
 									<li>Python</li>
 									<li>Go</li>
@@ -163,7 +163,7 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
 							<li class="fragment">Functions that operate on other functions are called higher-order functions. By operating on functions, they can talk about actions on a whole new level.</li>
 							<li class="fragment">Higher-order functions can be used to generalize many algorithms that regular functions cannot easily describe.</li>
 						</ul>
-						
+
 					</section>
 
 					<section class="fragments">
@@ -210,20 +210,33 @@ alert(nonzero(5));
 						</aside>
 					</section>
 
-					<section class="fragments">
+					<section>
             <h4>Core Concepts:</h4>
 						<h2>Pure functions</h2>
-<p>(Brad's notes on Pure Functions)</p>
-						<img src="images/PureMichigan.jpg" alt="Pure Michigan Image" class="fragment" style="width: 100%; max-width: 200px;">
-					</section>
+						<img src="images/PureMichigan.jpg" alt="Pure Michigan Image" style="width: 100%; max-width: 200px;">
 
-					<section class="fragments">
-						<h2>Pure Functions</h2>
-						
 						<!-- notes -->
 						<aside class="notes">
 							<p>A function that, given the same input, will always return the same output and does not have any observable side-effects.</p>
 						</aside>
+
+					</section>
+
+					<section class="fragments">
+
+						<h2>What's a side effect?</h2>
+
+						<ul>
+							<li class="fragment">Changing the file system</li>
+							<li class="fragment">Mutating outside variables</li>
+							<li class="fragment">Getting user input</li>
+							<li class="fragment">Accessing system state</li>
+							<li class="fragment">Adding a new variable to a data structure</li>
+						</ul>
+
+					</section>
+
+					<section>
 
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
@@ -235,13 +248,13 @@ let array = [1, 2, 3, 4, 5];
 							<code class="hljs" data-trim contenteditable>
 // pure
 array.slice(0, 2);
-console.log(`[${array}]`); // [1,2,3,4,5] 
+console.log(`[${array}]`); // [1,2,3,4,5]
 
 array.slice(0, 2);
-console.log(`[${array}]`); // [1,2,3,4,5] 
+console.log(`[${array}]`); // [1,2,3,4,5]
 
 array.slice(0, 2);
-console.log(`[${array}]`); // [1,2,3,4,5] 
+console.log(`[${array}]`); // [1,2,3,4,5]
 							</code>
 						</pre>
 
@@ -249,7 +262,7 @@ console.log(`[${array}]`); // [1,2,3,4,5]
 							<code class="hljs" data-trim contenteditable>
 // impure
 array.splice(0, 2);
-console.log(`[${array}]`); // [3,4,5] 
+console.log(`[${array}]`); // [3,4,5]
 
 array.splice(0, 2);
 console.log(`[${array}]`); // [5]
@@ -260,63 +273,15 @@ console.log(`[${array}]`); // []
 							</code>
 						</pre>
 					</section>
-					<section class="fragments">
-						<h2>Pure Functions: Immutable State</h2>
-						<p><strong>Immutable State</strong>: You can’t change any global state at all (even though you can get a new state).</p>
-						<ul>
-							<li class="fragment">Changing the file system</li>
-							<li class="fragment">Mutating outside variables</li>
-							<li class="fragment">Getting user input</li>
-							<li class="fragment">Accessing system state</li>
-							<li class="fragment">Adding a new variable to a data structure.</li>
-						</ul>
-						
-					</section>
 
-					<section class="fragments">
-						<h2>Immutable State</h2>
+					<section>
 
-						<pre class="custom-pre">
-							<code class="hljs" data-trim contenteditable>
-let array = [1, 2, 3, 4, 5];
-							</code>
-						</pre>
+						<img src="images/pulp.png" alt="Pulp Fiction reference">
 
-						<pre class="custom-pre fragment">
-							<code class="hljs" data-trim contenteditable>
-// splice() mutates the original data (bad!) 
-array.splice(0, 2);
-console.log(`[${array}]`); // [3,4,5] 
-
-array.splice(0, 2);
-console.log(`[${array}]`); // [5]
-
-array.splice(0, 2);
-console.log(`[${array}]`); // []
-							</code>
-						</pre>
-
-						<pre class="custom-pre fragment">
-							<code class="hljs" data-trim contenteditable>
-// slice() given the same input will always return the same output (yay!)
-array.slice(0, 2);
-console.log(`[${array}]`); // [1,2,3,4,5] 
-
-array.slice(0, 2);
-console.log(`[${array}]`); // [1,2,3,4,5] 
-
-array.slice(0, 2);
-console.log(`[${array}]`); // [1,2,3,4,5]
-
-							</code>
-						</pre>
-					</section>
-
-					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Immutable State</p>
-
-						<img src="images/pulp.png" alt="Pulp Fiction reference" class="fragment">
+						<!-- notes -->
+						<aside class="notes">
+							<p>Lastly, it’s important to mention immutable state.  That is to say - the state cannot change.  In multi-threaded applications, this is a great thing.  It allows the thread to act on data without worrying what other threads are up to.</p>
+						</aside>
 
 					</section>
 
@@ -325,11 +290,20 @@ console.log(`[${array}]`); // [1,2,3,4,5]
 						<h2>Closures</h2>
 						<p><strong>Closure</strong>: A loveable concept</p>
 						<ul>
-							<li class="fragment">Data saved inside a function that is only accessible to a specific returning function.</li>
-							<li class="fragment">This of course plays nicely with pure functions as we only mutate internal variables in a functional approach.</li>
-							<li class="fragment">Closures have three scope chains:  It has access to its own scope, the outer function’s variables and of course global variables - but we don’t use global variables in functional programming.</li>
+							<li class="fragment">Only accessible to a specific returning function.</li>
+							<li class="fragment">Place nicely with pure functions.</li>
 						</ul>
-						
+
+						<!-- notes -->
+						<aside class="notes">
+							<p>Closure.  We all love and know it already, but just to overview:</p>
+
+							<ul>
+								<li>Data saved inside a function that is only accessible to a specific returning function.</li>
+								<li>This of course plays nicely with pure functions as we only mutate internal variables in a functional approach.</li>
+							</ul>
+						</aside>
+
 					</section>
 
 					<section class="fragments">
@@ -356,6 +330,13 @@ let result = add10(20);
 console.log(result);
 							</code>
 						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<p>Closures have three scope chains:  It has access to its own scope, the outer function’s variables and of course global variables - but we don’t use global variables in functional programming.</li>
+							</p>
+						</aside>
+
 					</section>
 
 				</section>
@@ -385,18 +366,14 @@ console.log(result);
 						<img src="images/goku.gif" alt="Goku eating some curry" class="fragment">
 
 						<p class="fragment">Not quite....</p>
-						
+
 					</section>
 
-					<section class="fragments">
+					<section>
 						<h4>The Basics</h4>
 						<h2>Currying</h2>
 
-						<ul>
-							<li class="fragment">You can call a function with fewer arguments than it expects. It returns a function that takes the remaining arguments.</li>
-						</ul>
-
-						<pre class="custom-pre fragment">
+						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 // normal - regular addition
 let add = (a, b) => a + b;
@@ -416,14 +393,13 @@ console.log(`Normal JS Invocation: ${add(1)}`); // NaN
 						<aside class="notes">
 							<small>
 								<ul>
-									<li>Currying has it’s advantages, let’s say we wanted to map over an array of objects to get an id.  Easy enough, but if we apply curry and make a get function, we can get a bit cleaner.  Even further, we can actually rewrite the map function to accept another function and map that value.  Leaving us with some super clean code no doubt.</li>
-									<li><strong>GO TO NEXT SLIDE</strong></li>
+									<li>The concept is simple: You can call a function with fewer arguments than it expects. It returns a function that takes the remaining arguments.</li>
 								</ul>
 							</small>
 						</aside>
 					</section>
 
-					<section class="fragments">
+					<section>
 						<h2>Currying</h2>
 
 						<pre class="custom-pre">
@@ -440,7 +416,7 @@ let addCurried = a => b => a + b;
 // };
 
 let cAdd = addCurried(1);
-    
+
 console.log(`Curried: ${cAdd(2)}`); // 3
 console.log(`Curried: ${cAdd(2, 'IGNORE ME')}`); // 3
 
@@ -454,9 +430,13 @@ console.log(`Curried: ${rAdd(2, 'IGNORE ME')}`); // 3
 							</code>
 						</pre>
 
-						<ul>
-							<li class="fragment">Ramda is your friend</li>
-						</ul>
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<p>Thankfully the Ramda library makes currying things much easier.</p>
+							</small>
+						</aside>
+
 					</section>
 
 					<section class="fragments">
@@ -486,6 +466,21 @@ let getIDS = map(get('id'));
 console.log(`Super Ultra Functional: [${getIDS(objects)}]`); // [1, 2, 3]
 							</code>
 						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>Currying has it’s advantages, let’s say we wanted to map over an array of objects to get an id.  Easy enough, but if we apply curry and make a get function, we can get a bit cleaner.</li>
+									<li>Even further, we can actually rewrite the map function to accept another function and map that value.  Leaving us with some super clean code no doubt.</li>
+								</ul>
+							</small>
+						</aside>
+					</section>
+
+					<section>
+
+						<img src="images/arrow-functions.jpg" alt="Arrow Functions">
 
 						<!-- notes -->
 						<aside class="notes">
@@ -539,7 +534,7 @@ let labels = [' iconic ', 'high five    ', ' bim bap'].map(labelMaker);
 let coolLabels = [' iconic ', 'high five    ', ' bim bap'].map(coolLabelMaker);
 
 console.log(labels); // [ 'ICONIC', 'HIGH FIVE', 'BIM BAP']
-console.log(coolLabels); // ["!CON!C", "H!GH F!VE", "B!M BAP"] 
+console.log(coolLabels); // ["!CON!C", "H!GH F!VE", "B!M BAP"]
 
 							</code>
 						</pre>
@@ -677,37 +672,30 @@ var map = function(f, a) {
 						<img src="images/thou.jpg" alt="Colonial guy">
 					</section>
 
-					<section class="fragments">
+					<section>
             <h4>The Basics</h4>
 						<h2>map()</h2>
 
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
-arr.map(callback [, argument]);
+let array = [0, 1, 2, 3, 4, 5];
 
-							</code>
-						</pre>
+// a basic map function
+array.map((element, index) => {
+  console.log(`Element: ${element} <br/>`);
+  console.log(`Index: ${index} <br/>`);
+});
 
-						<pre class="custom-pre fragment">
-							<code class="hljs" data-trim contenteditable>
-var integers = [1,-0,9,-8,3];
-var numbers = [1,2,3,4];
-var str = 'hello world how ya doing?';
+// for loop comparison
+for(let i = 0; i < array.length; i++) {
+  console.log(`Element: ${array[i]} <br/>`);
+  console.log(`Index: ${i} <br/>`);
+};
 
-// map integers to their absolute values
-integers.map(Math.abs);
-
-// multiply an array of numbers by their position in the array
-numbers.map(function(x, i){return x*i});
-
-// Capitalize every other word in a string.
-str.split(' ').map(function(s, i) {
-  if (i%2 == 0) {
-    return s.toUpperCase();
-  }
-  else {
-    return s;
-  }
+// index is optional!
+// a basic map function
+array.map((element) => {
+  console.log(`Element: ${element} <br/>`);
 });
 
 							</code>
@@ -717,7 +705,29 @@ str.split(' ').map(function(s, i) {
 						<aside class="notes">
 							<small>
 								<ul>
-									<li>notes on map()</li>
+									<li>Map… I think we’re all pretty familiar with the function, specifically because we just used it in our previous example, that said - it never hurts to recap.</li>
+								</ul>
+							</small>
+						</aside>
+					</section>
+
+					<section>
+						<h4>The Basics</h4>
+						<h2>map()</h2>
+
+						<pre class="custom-pre">
+							<code class="hljs" data-trim contenteditable>
+const map = (fn, value) => value.map(fn);
+							</code>
+						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>Now let’s talk about how map applies to functional programming.</li>
+									<li>Map takes a function and a functor and applies the function to each of the functor’s values and returns a functor of the same shape.</li>
+									<li>The Verdict? Map is awesome and is a tool you’ll find yourself using very often.</li>
 								</ul>
 							</small>
 						</aside>
@@ -856,10 +866,10 @@ Canvas.prototype.start = function() {
 
 };
 
-module.exports = Canvas;								
+module.exports = Canvas;
 							</code>
 						</pre>
-						
+
 						<!-- notes -->
 						<aside class="notes">
 							<ul>
@@ -906,7 +916,7 @@ export default function() {
   return canvas;
 
 };
-								
+
 							</code>
 						</pre>
 
@@ -980,7 +990,7 @@ Loader.prototype._onLoadComplete = function () {
   this._loadScript('js/main.build.js');
 };
 
-module.exports = Loader;								
+module.exports = Loader;
 							</code>
 						</pre>
 
@@ -1035,7 +1045,7 @@ export default function(manifest) {
 
 };
 
-								
+
 							</code>
 						</pre>
 
@@ -1159,10 +1169,10 @@ AnimationController.prototype.endState = function () {
 
 };
 
-module.exports = AnimationController;								
+module.exports = AnimationController;
 							</code>
 						</pre>
-						
+
 						<!-- notes -->
 						<aside class="notes">
 							<ul>
@@ -1268,7 +1278,7 @@ export default function() {
     return animation;
 
 };
-								
+
 							</code>
 						</pre>
 
@@ -1289,16 +1299,16 @@ export default function() {
 					</section>
 
 				</section>
-	
+
 				<!-- FRAMEWORK SLIDES/SECTION -->
 				<section>
-					
+
 					<section>
 						<h2>Functional Programming</h2>
 						<p>Let's talk Frameworks</p>
 						<img src="images/frameworks.png" alt="different js framework logos">
 					</section>
-					
+
 					<section class="fragments">
 
 						<h2>Functional Progamming</h2>
@@ -1504,7 +1514,7 @@ export default function() {
                 width=400px alt='An ounce of prevention is worth a pound of
                 cure'></li>
               </ul>
-              </section> 
+              </section>
 
           <section class="fragments">
             <h2>When you don't mutate global state...</h2>
@@ -1515,7 +1525,7 @@ export default function() {
                 <li class="fragment">The function can be easily isolated to
                 check values</li>
               </ul>
-              </section> 
+              </section>
 
           <section class="fragments">
             <h2>When you don't mutate global state...</h2>
@@ -1534,7 +1544,7 @@ export default function() {
               </ul>
 
               </section>
-              
+
 
           <section class="fragments">
             <h2>Pure functions are more reusable</h2>
@@ -1553,7 +1563,7 @@ export default function() {
                 <li class="fragment"><img src='images/legodino.jpg' width=400px alt='An ounce of prevention is worth a pound of
                 cure'></li>
               </ul>
-              </section> 
+              </section>
 
           <section class="fragments">
             <h2>Pure functions can be cached</h2>
@@ -1564,8 +1574,8 @@ export default function() {
                 <li class="fragment">Recursive functions, normally too
                 expensive, become viable</li>
               </ul>
-              
-              </section> 
+
+              </section>
               <section>
               <pre><code>
 var memoize = function(f) {
@@ -1600,7 +1610,7 @@ console.timeEnd('non-memoized'); // 3788ms
 
 console.time('memoized');
 console.log(betterFibonacci(ITERATIONS));
-console.timeEnd('memoized'); // 1ms !!! 
+console.timeEnd('memoized'); // 1ms !!!
 </pre></code>
 </section>
 
@@ -1683,19 +1693,19 @@ console.timeEnd('memoized'); // 1ms !!!
 								<li><a href="https://github.com/hookerz/779-yt-beacon5/tree/lilly-inception-refactor/lilly-inception" target="_blank">Lilly Inception - Refactored</a></li>
 							</ul>
 						</small>
-						
+
 					</section>
 
 				</section>
 
 			</div> <!-- slides -->
-			
+
 		</div> <!-- reveal -->
 
 		<div id="loadingOverlay">
 			<img src="images/logo.png" alt="hook logo">
 		</div>
-		
+
 
 		<script src="js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
