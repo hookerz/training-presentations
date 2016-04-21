@@ -237,11 +237,11 @@ alert(nonzero(5));
 						<!-- notes -->
 						<aside class="notes">
 							<ul>
-								<li class="fragment">Changing the file system</li>
-								<li class="fragment">Mutating outside variables</li>
-								<li class="fragment">Getting user input</li>
-								<li class="fragment">Accessing system state</li>
-								<li class="fragment">Adding a new variable to a data structure</li>
+								<li>Changing the file system</li>
+								<li>Mutating outside variables</li>
+								<li>Getting user input</li>
+								<li>Accessing system state</li>
+								<li>Adding a new variable to a data structure</li>
 							</ul>
 						</aside>
 
@@ -838,7 +838,7 @@ numbers.reduce(function(a,b){
 					<section>
 						<h2>Functional Programming</h2>
 						<h3>Lilly Inception Refactor</h3>
-						<img src="images/blah.jpg" alt="bla bla bla">
+						<img src="images/mkay.jpg" alt="Im gonna need those TPS reports Thanks">
 					</section>
 
 					<section>
@@ -1071,6 +1071,138 @@ export default function(manifest) {
 								<li>using Promises</li>
 							</ul>
 						</aside>
+					</section>
+
+					<section>
+
+						<h3>Load.js - original</h3>
+						<pre class="bump-up">
+							<code class="hljs" data-trim contenteditable>
+
+'use strict';
+
+var config = require('../config');
+var Loader = require('./Loader');
+
+// set up youtube iframe api, add function to global scope
+var Bootstrap = function () {
+
+  this.tag = document.createElement('script');
+  this.tag.src = 'https://www.youtube.com/iframe_api';
+  this.firstScriptTag = document.getElementsByTagName('script')[0];
+  this.firstScriptTag.parentNode.insertBefore(this.tag, this.firstScriptTag);
+
+  window.onYouTubeIframeAPIReady = function() {
+    this.onYouTubeLoaded();
+  }.bind(this);
+
+};
+
+// once youtube is loaded, initialize enabler
+Bootstrap.prototype.onYouTubeLoaded = function () {
+
+  if (Enabler.isInitialized()) {
+    this.onInitialize();
+  } else {
+    Enabler.addEventListener(studio.events.StudioEvent.INIT, this.onInitialize.bind(this));
+  }
+
+};
+
+// once the page is initialized, check that the page is loaded and fire pageLoadedHandler
+Bootstrap.prototype.onInitialize = function () {
+
+  if (Enabler.isPageLoaded()) {
+    this.pageLoadedHandler();
+  } else {
+    Enabler.addEventListener(studio.events.StudioEvent.PAGE_LOADED, this.pageLoadedHandler.bind(this));
+  }
+
+};
+
+// make ad visible
+Bootstrap.prototype.pageLoadedHandler = function () {
+
+  if (Enabler.isVisible()) {
+    this.adVisibleHandler();
+  } else {
+    Enabler.addEventListener(studio.events.StudioEvent.VISIBLE, this.adVisibleHandler.bind(this));
+  }
+
+};
+
+// create ad
+Bootstrap.prototype.adVisibleHandler = function () {
+
+  var loader = new Loader(config.manifest);
+
+};
+
+module.exports = Load;
+							</code>
+						</pre>
+
+					</section>
+
+					<section>
+
+						<h3>Load.js - refactored</h3>
+						<pre class="bump-up">
+							<code class="hljs" data-trim contenteditable>
+'use strict';
+
+import { config } from './config';
+import Loader from './core/Loader';
+
+// Load the YouTube API, insert the script tag and assign the window object.
+const loadYTApi = () => {
+
+  const tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  const firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  return new Promise( (resolve, reject) => {
+    window.onYouTubeIframeAPIReady = resolve;
+  });
+
+};
+
+// Returns a promise that resolves if the method is true, otherwise assigns an event listener.
+const enablerCheck = (method, state) => {
+
+  return new Promise( (resolve, reject) => {
+    return method() ? resolve() : Enabler.addEventListener(state, resolve);
+  });
+
+};
+
+// Load the manifest once the Ad is visible.
+const adVisibleHandler = () => {
+
+  const loader = Loader(config.manifest);
+
+};
+
+// Enabler promises for initialize, load and visible states.
+const initPromise = enablerCheck(Enabler.isInitialized.bind(Enabler), studio.events.StudioEvent.INIT);
+const loadPromise = enablerCheck(Enabler.isPageLoaded.bind(Enabler), studio.events.StudioEvent.PAGE_LOADED);
+const visiblePromise = enablerCheck(Enabler.isVisible.bind(Enabler), studio.events.StudioEvent.VISIBLE);
+
+// If everything is a-ok, show the Ad.
+Promise.all([loadYTApi(), initPromise, loadPromise, visiblePromise]).then(adVisibleHandler);
+
+
+							</code>
+						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li>enablerCheck(): returns a promise</li>
+							</ul>
+						</aside>
+
 					</section>
 
 					<section>

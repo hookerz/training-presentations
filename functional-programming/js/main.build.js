@@ -34,7 +34,7 @@ LoadImages([
 	'images/underscore.png',
 	'images/vue.jpg',
 	'images/robit.png',
-	'images/blah.jpg',
+	'images/mkay.jpg',
 	'images/refactor.jpg',
 	'images/thou.jpg',
 	'images/PureMichigan.jpg',
