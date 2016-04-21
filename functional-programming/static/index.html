@@ -98,8 +98,11 @@
 						<aside class="notes">
 							<small>
 								<ul>
+                  <li>One of the simplest yet most crucial concepts to
+                  functional programming.  We don't even need to think about
+                  because it's built-in to JavaScript and most popular
+                  languages.</li>
 									<li>The concept was introduced in the 1960s, as older, imperative languages like Fortran IV and C don’t support array assignment or passage as an argument.</li>
-									<li>First Class functions are a necessity for functional programming, because without them we couldn’t use higher-order functions!</li>
 								</ul>
 							</small>
 						</aside>
@@ -141,6 +144,14 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
 							</code>
 						</pre>
 
+<!-- notes -->
+						<aside class="notes">
+                <p>Here are a few examples to illustrate the kinds of behaviors
+                that first-class functions enjoy.  If they appear mundane, it's
+                probably because they've been supported by popular languages
+                for a long time.</p>
+						</aside>
+
 </section>
             <section>
 								<h2>First class functions are supported by</h3>
@@ -153,17 +164,39 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
 									<li>All functional languages (Scheme, Haskell, Scala)</li>
 									<li>...and many more</li>
 								</ul>
+						<aside class="notes">
+                <p>First Class functions are a necessity for functional
+                programming, because without them we couldn’t use higher-order
+                functions!</p>
+						</aside>
+
+
 						</section>
 
 					<section class="fragments">
             <h4>Core Concepts:</h4>
             <h2>Higher-Order functions</h2>
 						<ul>
-							<li class="fragment">Functions that can receive other functions as parameters OR return functions OR both.</li>
-							<li class="fragment">Functions that operate on other functions are called higher-order functions. By operating on functions, they can talk about actions on a whole new level.</li>
+							<li class="fragment">Functions that can receive other functions as arguments OR return functions OR both.</li>
+							<li class="fragment">Functions that operate on other functions are called higher-order functions.</li>
 							<li class="fragment">Higher-order functions can be used to generalize many algorithms that regular functions cannot easily describe.</li>
+              <li class="fragment">"Being able to write <i>what</i> we want to
+              do instead of <i>how</i> we want to do it means we are working at
+              a higher level of abstraction.  In pratice this means shorter,
+              clearer and more pleasant code." -Marijn Haverbeke, <I>Eloquent
+              JavaScript</I></li>
 						</ul>
 
+          <aside class="notes">
+          <ul>
+            <li>(read slides up till third bullet point, then read) "Instead of a messy set of variables and loops you can decompose
+          algorithms into a combination of a few fundamental algorithms, which
+          are invoked by name and do not have to be typed out again and again.
+          Being able to write what we want to do instead of how we do it means
+          we are working at a higher level of abstraction.  In practice this
+          means shorter, clearer and more pleasant code." -Eloquent Javascript</li>
+          </ul>
+          </aside>
 					</section>
 
 					<section class="fragments">
@@ -190,9 +223,9 @@ function positive(x) {
 }
 
 var nonzero = or(negative, positive);
-alert(nonzero(-5));
-alert(nonzero(0));
-alert(nonzero(5));
+console.log(nonzero(-5)); //true
+console.log(nonzero(0)); //false
+console.log(nonzero(5)); //true
 							</code>
 						</pre>
 
@@ -200,15 +233,28 @@ alert(nonzero(5));
 						<aside class="notes">
 							<small>
 								<ul>
-									<li>A predicate is a function that takes one item as input and returns either true or false based on whether the item satisfies some condition.  Great for interrogating objects to learn more about them, or apply operations conditionally to objects.</li>
-									<li>Javascript supports passing functions around as values, so we can make predicate combinators: functions that build new predicates from simpler ones.</li>
-									<li>sometimes called the combinator pattern: emphasizes creating systems by making simple primitives first then making tools for combining them into more complex objects.</li>
+                  <li>As an example, let's look at a function that both accepts
+                  a function and returns one.  A predicate method.  </li>
+									<li>A predicate is a function that takes one item as input
+                  and returns either true or false based on whether the item
+                  satisfies some condition.  This is great for interrogating objects to learn more about them, or apply operations conditionally to objects.</li>
+									<li>Javascript supports passing functions around as values,
+                  so we can make <i>predicate combinators</i>:  a fancy term
+                  for functions that build new predicates from simpler ones.</li>
 									<li>This function consumes two predicates, p1 and p2, and returns a new predicate function.  That predicate tests a value x and returns true if either p1(x) is true or p2(x) is true.</li>
 									<li>By using OR we combine NEGATIVE and POSITIVE to get a new function called NONZERO, which returns true if its argument is either negative or positive.</li>
 								</ul>
 							</small>
 						</aside>
 					</section>
+          <section>
+          <h2>Popular higher order functions</h2>
+          <ul>
+          <li>Map</li>
+          <li>Filter</li>
+          <li>Reduce</li>
+          </ul>
+          </section>
 
 					<section>
             <h4>Core Concepts:</h4>
@@ -514,6 +560,12 @@ console.log(`Super Ultra Functional: [${getIDS(objects)}]`); // [1, 2, 3]
               <li class="fragment"> Composing functions allows us to build complex functions from many simple, generic functions.</li>
 							<li class="fragment">By treating functions as building blocks for other functions, we can build truly modular applications with excellent readability and maintainability.</li>
 						</ul>
+            <aside class="notes">
+<p> Types of things we might want to compose: multi-step processes with stages
+that also occur in other multi-step processes - stages we might want to
+recreate later."</p>
+						</aside>
+
 					</section>
 
 					<section class="fragments">
@@ -554,9 +606,6 @@ console.log(coolLabels); // ["!CON!C", "H!GH F!VE", "B!M BAP"]
 						<aside class="notes">
 							<small>
 								<ul>
-<li> Types of things we might want to compose: multi-step processes with stages
-that also occur in other multi-step processes - stages we might want to
-recreate later."</li>
 <li>Example: make a "label maker" function composed of "trim" and
 "upperCase".</li>
 									<li>Thank heavens Ramda has a method, R.compose so we don’t have to write our own (gets pretty gnarly when writing a custom compose function that takes more than two functions).</li>
@@ -744,9 +793,50 @@ const map = (fn, value) => value.map(fn);
 						</aside>
 					</section>
 
-					<section class="fragments">
+          <section>
             <h4>The Basics</h4>
 						<h2>filter()</h2>
+<p><strong>Array.filter()</strong> calls a provided callback once for each
+element in the array and constructs a new array of all the values for which the
+callback returns ‘true’ or a value that coerces to true.  Only invoked for
+indexes which have assigned values.
+</p>
+          </section>
+
+          <section> 
+          <h2>Filter()</h2>
+						<pre class="custom-pre">
+							<code class="hljs" data-trim>
+var customers = [
+  {
+    name: 'John',
+    phone: '(877)4432-12'
+  }, 
+  {
+    name: 'Anne',
+    phone: '323-847-1590'
+  },
+  {
+    name: 'Daphne',
+    phone: '+1 23 5461'
+  },
+  {
+    name: 'Howard',
+    phone: '13607034562'
+  }
+]
+          </code>
+        </pre>
+          <aside class="notes">
+          <p>Example: Suppose we have some data, like a JSON api response that
+          contains customers.  We want to filter out the customers with a valid
+          phone number so we can create a list of customers we can actually
+          reach.</p>
+          </aside>
+          </section>
+
+					<section class="fragments">
+            <h2>Filter()</h2>
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 arr.filter(callback [, argument]);
