@@ -1758,6 +1758,30 @@ export default function() {
                 width=400px alt='An ounce of prevention is worth a pound of
                 cure'></li>
               </ul>
+
+              <aside class="notes">
+              <p>Example: years ago developers were trying to copy “Google
+              Instant” -> the autocomplete feature that displays instant search
+              results as you type your query.  The problem: Users often type
+              faster than autocomplete ajax call search response could be
+              returned, which would trigger race conditions.  Newer suggestions
+              would be replaced by outdated suggestions.  Why? Each AJAX
+              success handler was given access to directly update the
+              suggestion list that was displayed to users. The slowest request
+              would always win by replacing results, even when those results
+              were newer.  Solution: a “result suggestion” manager that is
+              aware of pending ajax requests and when the user typed something
+              new.  The pending request would be cancelled before a new request
+              was issued, so only a single response handler could update the
+              UI.
+              </p>
+              <p>
+              The biggest problem in the development and maintenance of
+              large-scale software systems is complexity -- large systems are
+              hard to understand.  And the biggest contributor is the handling
+              of state.
+              </p>
+              </aside>
               </section>
 
           <section class="fragments">
