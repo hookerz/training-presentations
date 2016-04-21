@@ -74,71 +74,6 @@
 						</small>
 					</aside>
 				</section>
-
-				<!-- ADVANTAGES OF UING FP SLIDES/SECTION -->
-				<section>
-					
-					<section>
-						<h2>Functional Programming</h2>
-						<h3>Advantages of using Functional Programming</h3>
-						<img src="images/advantage.jpg" alt="Arm wresling mis-match">
-						
-					</section>
-
-					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>By avoiding mutating global state:</p>
-						<ul>
-							<li class="fragment">You drastically reduce the likelihood of bugs</li>
-							<li class="fragment">Functions are no longer affected by “hidden state”</li>
-							<li class="fragment">Reliance upon state is one of the largest contributors to system complexity.</li>
-						</ul>
-
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<p>Circumvents race conditions:</p>
-								<ul>
-									<li>Any time output is dependent on the sequence of uncontrollable events (network, device latency, user input, anything random).</li>
-									<small><li>Example: years ago developers were trying to copy “Google Instant” -> the autocomplete feature that displays instant search results as you type your query.  The problem: Users often type faster than autocomplete ajax call search response could be returned, which would trigger race conditions.  Newer suggestions would be replaced by outdated suggestions.  Why? Each AJAX success handler was given access to directly update the suggestion list that was displayed to users. The slowest request would always win by replacing results, even when those results were newer.  Solution: a “result suggestion” manager that is aware of pending ajax requests and when the user typed something new.  The pending request would be cancelled before a new request was issued, so only a single response handler could update the UI.</li></small>
-								</ul>
-							</small>
-						</aside>
-					</section>
-
-					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Debugging becomes easier</p>
-						<ul>
-							<li class="fragment">There’s no guesswork about how a function will perform at different points in the program.</li>
-							<li class="fragment">The function can be easily isolated to check values.</li>
-						</ul>
-					</section>
-
-					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>You  minimize the cost of changing your code:</p>
-						<ul>
-							<li class="fragment">Without relying on state, the changes touch far less of your code.</li>
-						</ul>
-					</section>
-
-					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>The code becomes easily testable</p>
-						<ul>
-							<li class="fragment">Unit tests are a breeze to write when a function only relies on the arguments passed to it.</li>
-							<li class="fragment">Tests help you maintain your code and save future-you from having to remember what the code needs to do.  Failed tests will remind you!</li>
-						</ul>
-					</section>
-
-					<section>
-						<h2>Functional Programming</h2>
-						<img src="images/mkay.jpg" alt="I'm gonna need to see those TPS reports mkay">
-					</section>
-
-				</section>
-
 				<!-- CORE CONCEPTS SLIDES/SECTION -->
 				<section>
 					
@@ -146,70 +81,12 @@
 						<h2>Functional Programming</h2>
 						<h3>Core Concepts</h3>
 						<img src="images/core.jpg" alt="Apple Core" style="width: 100%; max-width: 350px;">
-						
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p><strong>Pure functions</strong> are more reusable / composable</p>
-						<p class="fragment">FP encourages functions that are short, simple and do one thing.</p>
-						<ul>
-							<li class="fragment">Function names become expressive and meaningful (e.g. “hasID” or “addsTimeStamp”)</li>
-							<li class="fragment">Shorter functions are easier to understand</li>
-							<li class="fragment">Smaller functions can be reused as part of more complex tasks.</li>
-							<li class="fragment">When higher-level functions are composed of smaller functions they become more robust, less fragile.</li>
-						</ul>
-						<img src="images/PureMichigan.jpg" alt="Pure Michigan Image" class="fragment" style="width: 100%; max-width: 200px;">
-					</section>
-
-					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Pure Functions</p>
-						
-						<!-- notes -->
-						<aside class="notes">
-							<p>A function that, given the same input, will always return the same output and does not have any observable side-effects.</p>
-						</aside>
-
-						<pre class="custom-pre">
-							<code class="hljs" data-trim contenteditable>
-let array = [1, 2, 3, 4, 5];
-							</code>
-						</pre>
-
-						<pre class="custom-pre fragment">
-							<code class="hljs" data-trim contenteditable>
-// pure
-array.slice(0, 2);
-console.log(`[${array}]`); // [1,2,3,4,5] 
-
-array.slice(0, 2);
-console.log(`[${array}]`); // [1,2,3,4,5] 
-
-array.slice(0, 2);
-console.log(`[${array}]`); // [1,2,3,4,5] 
-							</code>
-						</pre>
-
-						<pre class="custom-pre fragment">
-							<code class="hljs" data-trim contenteditable>
-// impure
-array.splice(0, 2);
-console.log(`[${array}]`); // [3,4,5] 
-
-array.splice(0, 2);
-console.log(`[${array}]`); // [5]
-
-array.splice(0, 2);
-console.log(`[${array}]`); // []
-
-							</code>
-						</pre>
-					</section>
-
-					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p><strong>First-Class functions</strong>: An entity which supports all the operations generally available to other entities” such as</p>
+            <h4>Core Concepts:</h4>
+            <h2>First-Class functions</h2>
+						<p> "An entity which supports all the operations generally available to other entities” such as</p>
 						<ul>
 							<li class="fragment">Being passed as an argument</li>
 							<li class="fragment">Being returned from a function</li>
@@ -229,8 +106,7 @@ console.log(`[${array}]`); // []
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>First-Class Functions</p>
+						<h2>First-Class Functions</h2>
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 // Function declaration. Okay but can't be nested within non-function blocks
@@ -240,7 +116,6 @@ function double(x) {
 }
 							</code>
 						</pre>
-
 						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 // Function expression, first class! 'var double = undefined' gets hoisted
@@ -250,7 +125,6 @@ var double = function(x) {
 }
 							</code>
 						</pre>
-
 						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 
@@ -258,7 +132,6 @@ var double = function(x) {
 var myArray = [5, 'socks', {a: 3}, double, false, Nan, []];
 							</code>
 						</pre>
-
 						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 var nums = [1, 1, 2, 3, 5, 8];
@@ -268,10 +141,9 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
 							</code>
 						</pre>
 
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<p>First class functions are suported by</p>
+</section>
+            <section>
+								<h2>First class functions are suported by</h3>
 								<ul>
 									<li>Python</li>
 									<li>Go</li>
@@ -279,15 +151,13 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
 									<li>C#</li>
 									<li>Javascript</li>
 									<li>All functional languages (Scheme, Haskell, Scala)</li>
-									<li>...and many others :P</li>
+									<li>...and many more</li>
 								</ul>
-							</small>
-						</aside>
-					</section>
+						</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p><strong>High-Order functions</strong> are defined as:</p>
+            <h4>Core Concepts:</h4>
+            <h2>Higher-Order functions</h2>
 						<ul>
 							<li class="fragment">Functions that can receive other functions as parameters OR return functions OR both.</li>
 							<li class="fragment">Functions that operate on other functions are called higher-order functions. By operating on functions, they can talk about actions on a whole new level.</li>
@@ -297,8 +167,7 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>High-Order Functions</p>
+						<h2>Higher-Order Functions</h2>
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 function or(p1, p2) {
@@ -342,7 +211,57 @@ alert(nonzero(5));
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
+            <h4>Core Concepts:</h4>
+						<h2>Pure functions</h2>
+<p>(Brad's notes on Pure Functions)</p>
+						<img src="images/PureMichigan.jpg" alt="Pure Michigan Image" class="fragment" style="width: 100%; max-width: 200px;">
+					</section>
+
+					<section class="fragments">
+						<h2>Pure Functions</h2>
+						
+						<!-- notes -->
+						<aside class="notes">
+							<p>A function that, given the same input, will always return the same output and does not have any observable side-effects.</p>
+						</aside>
+
+						<pre class="custom-pre">
+							<code class="hljs" data-trim contenteditable>
+let array = [1, 2, 3, 4, 5];
+							</code>
+						</pre>
+
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
+// pure
+array.slice(0, 2);
+console.log(`[${array}]`); // [1,2,3,4,5] 
+
+array.slice(0, 2);
+console.log(`[${array}]`); // [1,2,3,4,5] 
+
+array.slice(0, 2);
+console.log(`[${array}]`); // [1,2,3,4,5] 
+							</code>
+						</pre>
+
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
+// impure
+array.splice(0, 2);
+console.log(`[${array}]`); // [3,4,5] 
+
+array.splice(0, 2);
+console.log(`[${array}]`); // [5]
+
+array.splice(0, 2);
+console.log(`[${array}]`); // []
+
+							</code>
+						</pre>
+					</section>
+					<section class="fragments">
+						<h2>Pure Functions: Immutable State</h2>
 						<p><strong>Immutable State</strong>: You can’t change any global state at all (even though you can get a new state).</p>
 						<ul>
 							<li class="fragment">Changing the file system</li>
@@ -355,8 +274,7 @@ alert(nonzero(5));
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Immutable State</p>
+						<h2>Immutable State</h2>
 
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
@@ -403,7 +321,8 @@ console.log(`[${array}]`); // [1,2,3,4,5]
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
+            <h4>Core Concepts:</h4>
+						<h2>Closures</h2>
 						<p><strong>Closure</strong>: A loveable concept</p>
 						<ul>
 							<li class="fragment">Data saved inside a function that is only accessible to a specific returning function.</li>
@@ -414,8 +333,7 @@ console.log(`[${array}]`); // [1,2,3,4,5]
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Closure</p>
+						<h2>Closures</h2>
 
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
@@ -442,11 +360,12 @@ console.log(result);
 
 				</section>
 
+					</section>
 				<!-- BASICS SLIDES/SECTION -->
 				<section>
 					<section>
 						<h2>Functional Programming</h2>
-						<h3>The Basics</h3>
+						<h3>Basics Practices</h3>
 						<img src="images/functions-in-out.png" alt="Functional Programming diagram" style="width: 100%; max-width: 300px; height: auto;">
 
 						<!-- notes -->
@@ -470,8 +389,8 @@ console.log(result);
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Currying</p>
+						<h4>The Basics</h4>
+						<h2>Currying</h2>
 
 						<ul>
 							<li class="fragment">You can call a function with fewer arguments than it expects. It returns a function that takes the remaining arguments.</li>
@@ -505,8 +424,7 @@ console.log(`Normal JS Invocation: ${add(1)}`); // NaN
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Currying</p>
+						<h2>Currying</h2>
 
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
@@ -542,8 +460,7 @@ console.log(`Curried: ${rAdd(2, 'IGNORE ME')}`); // 3
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Currying</p>
+						<h2>Currying</h2>
 
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
@@ -582,40 +499,37 @@ console.log(`Super Ultra Functional: [${getIDS(objects)}]`); // [1, 2, 3]
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Compose</p>
+						<h4>The Basics</h4>
+						<h2>Composition</h2>
 						<ul>
-							<li class="fragment">Composing functions allows us to build complex functions from many simple, generic functions.</li>
+              <li class="fragment"><strong>Function Composition: </strong>The
+              combination of simple functions to build more sophisticated
+              ones.</li>
+              <li class="fragment"> Composing functions allows us to build complex functions from many simple, generic functions.</li>
 							<li class="fragment">By treating functions as building blocks for other functions, we can build truly modular applications with excellent readability and maintainability.</li>
 						</ul>
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Compose</p>
+						<h2>Composition</h2>
 
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
-// function that combines two functions together - run function 'f'
-// on the rest of function 'g'
+// function that combines two functions together:
+// run function 'f' on the result of function 'g'
 var compose = function(f, g) {
-	return function(x) {
-		return f(g(x));
-	};
+  return function(x) {
+	  return f(g(x));
+  };
 };
 
-// es6 hyper-terse equivalent
+// ES6 hyper-terse equivalent
 const compose = (f, g) => (x) => f(g(x));
 
 const upperCase = (str) => str.toUpperCase();
 const trim = (str) => str.replace(/^\s+I\s+$/g, '');
 const replaceIWithBang = (str) => str.replace(/[i]/g, '!');
 
-							</code>
-						</pre>
-
-						<pre class="custom-pre fragment" style="position: relative; top: -20px;">
-							<code class="hljs" data-trim contenteditable>
 const labelMaker = compose(upperCase, trim);
 // Ramda's built-in compose method takes any number of functions and
 // will return them right-to-left
@@ -634,15 +548,58 @@ console.log(coolLabels); // ["!CON!C", "H!GH F!VE", "B!M BAP"]
 						<aside class="notes">
 							<small>
 								<ul>
+<li> Types of things we might want to compose: multi-step processes with stages
+that also occur in other multi-step processes - stages we might want to
+recreate later."</li>
+<li>Example: make a "label maker" function composed of "trim" and
+"upperCase".</li>
 									<li>Thank heavens Ramda has a method, R.compose so we don’t have to write our own (gets pretty gnarly when writing a custom compose function that takes more than two functions).</li>
 								</ul>
 							</small>
 						</aside>
-					</section>
+          </section>
+
+          <section class="fragments">
+          <h2>Composing in the wild</h2>
+          <p>Generating a valid HTTP request using an oauth signature</p>
+          <ul>
+            <li>request method (GET or POST)</li>
+            <li>base url ('https://api.twitter.com/1/statuses/update.json')</li>
+            <li>request parameters (status="Best tacos")</li>
+            <li>oauth parameters (consumer key, method, timestamp, token, oauth
+            version)
+              <ul>
+                <li>Percent encode every key and value that will be signed</li>
+                <li>Sort the list of parameters alphabetically by encoded
+                key</li>
+                <li>For each key/value pair:
+                  <ul>
+                  <li> append encoded key to the output
+                  string</li>
+                  <li>Append the '=' character to the output string.</li>
+                  <li>If there are any key/value pairs remaining, append the '&'
+                  character to the output string.</li>
+                  </ul>
+              </ul>
+            </li>
+          </ul>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+<li>Using Yelp or Twitter's API necessitates generating a valid HTTP request
+with an oauth signature.  There are many libraries out there for this.</li>
+									<li>Thank heavens Ramda has a method, R.compose so we don’t have to write our own (gets pretty gnarly when writing a custom compose function that takes more than two functions).</li>
+								</ul>
+							</small>
+						</aside>
+              </section>
+
 
 					<section>
-						<h2>Functional Programming</h2>
-						<p>Functors</p>
+    				<h4>The Basics</h4>
+						<h2>Functors</h2>
 
 						<img src="images/funk.jpg" alt="We want the funk">
 						<p>Not to be confused with funk-sters</p>
@@ -662,8 +619,7 @@ console.log(coolLabels); // ["!CON!C", "H!GH F!VE", "B!M BAP"]
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Functor</p>
+						<h2>Functors</h2>
 						<ul>
 							<li class="fragment">Functors map between categories.</li>
 							<li class="fragment">They can be thought of as functions that lift values out of a container, morph them, and then put them into a new container.</li>
@@ -690,8 +646,7 @@ console.log(coolLabels); // ["!CON!C", "H!GH F!VE", "B!M BAP"]
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Functor</p>
+						<h2>Functors</h2>
 						<p class="text-align-left">We already have one functor: map(). It grabs the values within the container, an array, and applies a function to it.</p>
 
 						<pre class="custom-pre">
@@ -717,13 +672,15 @@ var map = function(f, a) {
 					</section>
 
 					<section>
+
 						<h2>Functional Programming</h2>
 						<img src="images/thou.jpg" alt="Colonial guy">
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>map()</p>
+            <h4>The Basics</h4>
+						<h2>map()</h2>
+
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 arr.map(callback [, argument]);
@@ -767,8 +724,8 @@ str.split(' ').map(function(s, i) {
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>filter()</p>
+            <h4>The Basics</h4>
+						<h2>filter()</h2>
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 arr.filter(callback [, argument]);
@@ -809,8 +766,9 @@ myarray.filter(function(){
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>reduce()</p>
+
+            <h4>The Basics</h4>
+						<h2>reduce()</h2>
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 arr.reduce(callback [, initialValue]);
@@ -857,8 +815,8 @@ numbers.reduce(function(a,b){
 					</section>
 
 					<section>
-						<h2>Functional Programming</h2>
-						<p>Canvas.js</p>
+						<h2>Lilly Inception Refactor</h2>
+						<p>Canvas.js - original version</p>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
 'use strict';
@@ -912,7 +870,7 @@ module.exports = Canvas;
 					</section>
 
 					<section>
-						<h2>Functional Programming</h2>
+						<h2>Lilly Inception Refactor</h2>
 						<p>Canvas.js - refactored</p>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
@@ -963,8 +921,8 @@ export default function() {
 					</section>
 
 					<section>
-						<h2>Functional Programming</h2>
-						<p>Loader.js</p>
+						<h2>Lilly Inception Refactor</h2>
+						<p>Loader.js - original version</p>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
 'use strict';
@@ -1035,7 +993,7 @@ module.exports = Loader;
 					</section>
 
 					<section>
-						<h2>Functional Programming</h2>
+						<h2>Lilly Inception Refactor</h2>
 						<p>Loader.js - refactored</p>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
@@ -1090,8 +1048,8 @@ export default function(manifest) {
 					</section>
 
 					<section>
-						<h2>Functional Programming</h2>
-						<p>Animation.js</p>
+						<h2>Lilly Inception Refactor</h2>
+						<p>Animation.js - original version</p>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
 'use strict';
@@ -1215,7 +1173,7 @@ module.exports = AnimationController;
 					</section>
 
 					<section>
-						<h2>Functional Programming</h2>
+						<h2>Lilly Inception Refactor</h2>
 						<p>Animation.js - refactored</p>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
@@ -1501,11 +1459,10 @@ export default function() {
 				<section>
 					<section>
 						<h2>Functional Programming</h2>
-						<h3>The Great Debate</h3>
 						<p>
-							Functional Programming vs. Object Oriented Programming
+              Why bother?
 						</p>
-						<img src="images/fighting.gif" alt="Everybody was kung-fu fighting">
+						<img src="images/whybotherguy.jpg" width=400px alt="why bother?">
 
 						<!-- notes -->
 						<aside class="notes">
@@ -1520,36 +1477,147 @@ export default function() {
 						</aside>
 					</section>
 
-					<section>
-						<h2>Functional Programming</h2>
-						<h3>Why FP over OO?</h3>
-						<blockquote> “The problem with object-oriented languages is they’ve got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.”</blockquote>
-						<cite class="text-align-right">-Joe Armstrong</cite>
-
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<ul>
-									<li>For better applications, we need a simple and reliable manner to do it.  In Functional Programming, we’re given those features.  Pure Functions and Immutable State alone give us the ability to run a function a thousand times and still get the same result.</li>
-									<li>Because Object Oriented Programming relies directly on mutable state, the objects methods you call are supposed to mutate the current this.  There’s a lot of complex processes that need to be written just to manage all of the threads in your program to keep them correctly updated and synchronized.  With a functional approach, we don’t need to worry about this.</li>
-									<li>With Functional Programming, functions are broken down to very small methods that are then utilized in first-class and high-order functions that are more complex.  This makes our code not only easier to read as we have pointed out before, it also makes it easier to understand.  Because function names become expressive and meaningful, code becomes more readable and declarative.</li>
-								</ul>
-							</small>
-						</aside>
-					</section>
-
-					<section class="fragments">
+        	<section class="fragments">
 						<h2>Functional Programming</h2>
 						<p>Functional Programming encourages functions that:</p>
 						<ul>
 							<li class="fragment">accept at least one argument</li>
-							<li class="fragment">and return at least one value</li>
-							<li class="fragment">without mutating any data ouside of its own scope</li>
+							<li class="fragment">return at least one value</li>
+              <li class="fragment"><u>avoid mutating data ouside of its
+                  own scope</u></li>
 						</ul>
 					</section>
 
-				</section>
+          <section class="fragments">
+            <h2>When you don't mutate global state...</h2>
+            <p>You drastically reduce the liklihood of bugs</p>
+              <ul>
+                <li class="fragment">Functions are no longer affected by
+                "hidden state"</li>
+                <li class="fragment">You circumvent race conditions which occur
+                when output is dependent on a sequence of uncontrollable events
+                such as the network, device latency, user input or anything
+                that occurs randomly. E.g. Google Instant</li>
+                <li class="fragment">"Reliance upon state is one of the largest
+                contributors to system complexity"</li>
+                <li class="fragment"><img src='images/prevention.png'
+                width=400px alt='An ounce of prevention is worth a pound of
+                cure'></li>
+              </ul>
+              </section> 
 
+          <section class="fragments">
+            <h2>When you don't mutate global state...</h2>
+            <p>Debugging becomes easier</p>
+              <ul>
+                <li class="fragment">There's no guesswork about how a function
+                will perform at different points in the program.</li>
+                <li class="fragment">The function can be easily isolated to
+                check values</li>
+              </ul>
+              </section> 
+
+          <section class="fragments">
+            <h2>When you don't mutate global state...</h2>
+            <p>Changing the code is less painful</p>
+              <ul>
+                <li class="fragment">Without relying on state, changes touch
+                far less of your code</li>
+                <li class="fragment">The code becomes easily testable</li>
+                <li class="fragment">Unit tests are a breeze to write when
+                a function only relies on arguments passed directly to it</li>
+                <li class="fragment">Tests help you maintain your code and save
+                future-you from having to remember what the code needs to do.
+                Failed tests will remind you!</li>
+                <li class="fragment"><img src='images/unittests.jpg'
+                width=400px alt='I should start writing unit tests'> </li>
+              </ul>
+
+              </section>
+              
+
+          <section class="fragments">
+            <h2>Pure functions are more reusable</h2>
+            <p></p>
+              <ul>
+                <li class="fragment">Functional programming encourages functions that are short, simple, and do one thing</li>
+                <li class="fragment">Function names become expressive and
+                meainingful (e.g. "hasID" or "addsTimeStamp")</li>
+                <li class="fragment">Short functions are easier to
+                understand</li>
+                <li class="fragment">Smaller functions can be reused as part of
+                more complex tasks</li>
+                <li class="fragment">When higher-level functions are composed
+                of smaller functions they become more robust, less
+                fragile.</li>
+                <li class="fragment"><img src='images/legodino.jpg' width=400px alt='An ounce of prevention is worth a pound of
+                cure'></li>
+              </ul>
+              </section> 
+
+          <section class="fragments">
+            <h2>Pure functions can be cached</h2>
+            <p></p>
+              <ul>
+                <li class="fragment">When you cache using 'memoization' you get
+                better performance</li>
+                <li class="fragment">Recursive functions, normally too
+                expensive, become viable</li>
+              </ul>
+              
+              </section> 
+              <section>
+              <pre><code>
+var memoize = function(f) {
+
+  //create a cache
+  var cache = {};
+
+  return function() {
+    var arg_str = JSON.stringify(arguments);
+
+    //If we already have the answer in our cache, do nothing
+    //Otherwise, store the result of this function call in our cache
+    cache[arg_str] = cache[arg_str] || f.apply(f, arguments);
+
+    return cache[arg_str];
+  };
+};
+
+function fibonacci(n) {
+  return (n === 0 || n === 1) ? n : fibonacci(n - 1) + fibonacci(n - 2);
+};
+
+function betterFibonacci = memoize(function(n) {
+  return (n === 0 || n === 1) ? n : betterFibonacci(n - 1) + betterFibonacci(n - 2);
+});
+
+var ITERATIONS = 42;
+
+console.time('non-memoized');
+console.log(fibonacci(ITERATIONS));
+console.timeEnd('non-memoized'); // 3788ms
+
+console.time('memoized');
+console.log(betterFibonacci(ITERATIONS));
+console.timeEnd('memoized'); // 1ms !!! 
+</pre></code>
+</section>
+
+              <section>
+              <h2>The best part...</h2>
+              <ul>
+                <li class="fragment">You don't have to completely abandon your
+                current practices!</li>
+                <li class="fragment">Functional code can live next to Object
+                Oriented code</li>
+                <li class="fragment">An existing code base can be updated gradually</li>
+                <li class="fragment">Learning and using a few patterns of
+                functional programming is a great start towards cleaner and
+                more elegant code</li>
+              </section>
+
+              </section>
 				<!-- LAST SLIDE -->
 				<section>
 
