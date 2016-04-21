@@ -81,70 +81,12 @@
 						<h2>Functional Programming</h2>
 						<h3>Core Concepts</h3>
 						<img src="images/core.jpg" alt="Apple Core" style="width: 100%; max-width: 350px;">
-						
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p><strong>Pure functions</strong> are more reusable / composable</p>
-						<p class="fragment">FP encourages functions that are short, simple and do one thing.</p>
-						<ul>
-							<li class="fragment">Function names become expressive and meaningful (e.g. “hasID” or “addsTimeStamp”)</li>
-							<li class="fragment">Shorter functions are easier to understand</li>
-							<li class="fragment">Smaller functions can be reused as part of more complex tasks.</li>
-							<li class="fragment">When higher-level functions are composed of smaller functions they become more robust, less fragile.</li>
-						</ul>
-						<img src="images/PureMichigan.jpg" alt="Pure Michigan Image" class="fragment" style="width: 100%; max-width: 200px;">
-					</section>
-
-					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Pure Functions</p>
-						
-						<!-- notes -->
-						<aside class="notes">
-							<p>A function that, given the same input, will always return the same output and does not have any observable side-effects.</p>
-						</aside>
-
-						<pre class="custom-pre">
-							<code class="hljs" data-trim contenteditable>
-let array = [1, 2, 3, 4, 5];
-							</code>
-						</pre>
-
-						<pre class="custom-pre fragment">
-							<code class="hljs" data-trim contenteditable>
-// pure
-array.slice(0, 2);
-console.log(`[${array}]`); // [1,2,3,4,5] 
-
-array.slice(0, 2);
-console.log(`[${array}]`); // [1,2,3,4,5] 
-
-array.slice(0, 2);
-console.log(`[${array}]`); // [1,2,3,4,5] 
-							</code>
-						</pre>
-
-						<pre class="custom-pre fragment">
-							<code class="hljs" data-trim contenteditable>
-// impure
-array.splice(0, 2);
-console.log(`[${array}]`); // [3,4,5] 
-
-array.splice(0, 2);
-console.log(`[${array}]`); // [5]
-
-array.splice(0, 2);
-console.log(`[${array}]`); // []
-
-							</code>
-						</pre>
-					</section>
-
-					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p><strong>First-Class functions</strong>: An entity which supports all the operations generally available to other entities” such as</p>
+            <h4>Core Concepts:</h4>
+            <h2>First-Class functions</h2>
+						<p> "An entity which supports all the operations generally available to other entities” such as</p>
 						<ul>
 							<li class="fragment">Being passed as an argument</li>
 							<li class="fragment">Being returned from a function</li>
@@ -164,8 +106,7 @@ console.log(`[${array}]`); // []
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>First-Class Functions</p>
+						<h2>First-Class Functions</h2>
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 // Function declaration. Okay but can't be nested within non-function blocks
@@ -175,7 +116,6 @@ function double(x) {
 }
 							</code>
 						</pre>
-
 						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 // Function expression, first class! 'var double = undefined' gets hoisted
@@ -185,7 +125,6 @@ var double = function(x) {
 }
 							</code>
 						</pre>
-
 						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 
@@ -193,7 +132,6 @@ var double = function(x) {
 var myArray = [5, 'socks', {a: 3}, double, false, Nan, []];
 							</code>
 						</pre>
-
 						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 var nums = [1, 1, 2, 3, 5, 8];
@@ -203,10 +141,9 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
 							</code>
 						</pre>
 
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<p>First class functions are suported by</p>
+</section>
+            <section>
+								<h2>First class functions are suported by</h3>
 								<ul>
 									<li>Python</li>
 									<li>Go</li>
@@ -214,15 +151,13 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
 									<li>C#</li>
 									<li>Javascript</li>
 									<li>All functional languages (Scheme, Haskell, Scala)</li>
-									<li>...and many others :P</li>
+									<li>...and many more</li>
 								</ul>
-							</small>
-						</aside>
-					</section>
+						</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p><strong>High-Order functions</strong> are defined as:</p>
+            <h4>Core Concepts:</h4>
+            <h2>Higher-Order functions</h2>
 						<ul>
 							<li class="fragment">Functions that can receive other functions as parameters OR return functions OR both.</li>
 							<li class="fragment">Functions that operate on other functions are called higher-order functions. By operating on functions, they can talk about actions on a whole new level.</li>
@@ -232,8 +167,7 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>High-Order Functions</p>
+						<h2>Higher-Order Functions</h2>
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 function or(p1, p2) {
@@ -277,7 +211,57 @@ alert(nonzero(5));
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
+            <h4>Core Concepts:</h4>
+						<h2>Pure functions</h2>
+<p>(Brad's notes on Pure Functions)</p>
+						<img src="images/PureMichigan.jpg" alt="Pure Michigan Image" class="fragment" style="width: 100%; max-width: 200px;">
+					</section>
+
+					<section class="fragments">
+						<h2>Pure Functions</h2>
+						
+						<!-- notes -->
+						<aside class="notes">
+							<p>A function that, given the same input, will always return the same output and does not have any observable side-effects.</p>
+						</aside>
+
+						<pre class="custom-pre">
+							<code class="hljs" data-trim contenteditable>
+let array = [1, 2, 3, 4, 5];
+							</code>
+						</pre>
+
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
+// pure
+array.slice(0, 2);
+console.log(`[${array}]`); // [1,2,3,4,5] 
+
+array.slice(0, 2);
+console.log(`[${array}]`); // [1,2,3,4,5] 
+
+array.slice(0, 2);
+console.log(`[${array}]`); // [1,2,3,4,5] 
+							</code>
+						</pre>
+
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
+// impure
+array.splice(0, 2);
+console.log(`[${array}]`); // [3,4,5] 
+
+array.splice(0, 2);
+console.log(`[${array}]`); // [5]
+
+array.splice(0, 2);
+console.log(`[${array}]`); // []
+
+							</code>
+						</pre>
+					</section>
+					<section class="fragments">
+						<h2>Pure Functions: Immutable State</h2>
 						<p><strong>Immutable State</strong>: You can’t change any global state at all (even though you can get a new state).</p>
 						<ul>
 							<li class="fragment">Changing the file system</li>
@@ -290,8 +274,7 @@ alert(nonzero(5));
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Immutable State</p>
+						<h2>Immutable State</h2>
 
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
@@ -338,7 +321,8 @@ console.log(`[${array}]`); // [1,2,3,4,5]
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
+            <h4>Core Concepts:</h4>
+						<h2>Closures</h2>
 						<p><strong>Closure</strong>: A loveable concept</p>
 						<ul>
 							<li class="fragment">Data saved inside a function that is only accessible to a specific returning function.</li>
@@ -349,8 +333,7 @@ console.log(`[${array}]`); // [1,2,3,4,5]
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Closure</p>
+						<h2>Closures</h2>
 
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
@@ -377,11 +360,12 @@ console.log(result);
 
 				</section>
 
+					</section>
 				<!-- BASICS SLIDES/SECTION -->
 				<section>
 					<section>
 						<h2>Functional Programming</h2>
-						<h3>The Basics</h3>
+						<h3>Basics Practices</h3>
 						<img src="images/functions-in-out.png" alt="Functional Programming diagram" style="width: 100%; max-width: 300px; height: auto;">
 
 						<!-- notes -->
@@ -405,8 +389,8 @@ console.log(result);
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Currying</p>
+						<h4>The Basics</h4>
+						<h2>Currying</h2>
 
 						<ul>
 							<li class="fragment">You can call a function with fewer arguments than it expects. It returns a function that takes the remaining arguments.</li>
@@ -440,8 +424,7 @@ console.log(`Normal JS Invocation: ${add(1)}`); // NaN
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Currying</p>
+						<h2>Currying</h2>
 
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
@@ -477,8 +460,7 @@ console.log(`Curried: ${rAdd(2, 'IGNORE ME')}`); // 3
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Currying</p>
+						<h2>Currying</h2>
 
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
@@ -517,40 +499,37 @@ console.log(`Super Ultra Functional: [${getIDS(objects)}]`); // [1, 2, 3]
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Compose</p>
+						<h4>The Basics</h4>
+						<h2>Composition</h2>
 						<ul>
-							<li class="fragment">Composing functions allows us to build complex functions from many simple, generic functions.</li>
+              <li class="fragment"><strong>Function Composition: </strong>The
+              combination of simple functions to build more sophisticated
+              ones.</li>
+              <li class="fragment"> Composing functions allows us to build complex functions from many simple, generic functions.</li>
 							<li class="fragment">By treating functions as building blocks for other functions, we can build truly modular applications with excellent readability and maintainability.</li>
 						</ul>
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Compose</p>
+						<h2>Composition</h2>
 
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
-// function that combines two functions together - run function 'f'
-// on the rest of function 'g'
+// function that combines two functions together:
+// run function 'f' on the result of function 'g'
 var compose = function(f, g) {
-	return function(x) {
-		return f(g(x));
-	};
+  return function(x) {
+	  return f(g(x));
+  };
 };
 
-// es6 hyper-terse equivalent
+// ES6 hyper-terse equivalent
 const compose = (f, g) => (x) => f(g(x));
 
 const upperCase = (str) => str.toUpperCase();
 const trim = (str) => str.replace(/^\s+I\s+$/g, '');
 const replaceIWithBang = (str) => str.replace(/[i]/g, '!');
 
-							</code>
-						</pre>
-
-						<pre class="custom-pre fragment" style="position: relative; top: -20px;">
-							<code class="hljs" data-trim contenteditable>
 const labelMaker = compose(upperCase, trim);
 // Ramda's built-in compose method takes any number of functions and
 // will return them right-to-left
@@ -569,15 +548,58 @@ console.log(coolLabels); // ["!CON!C", "H!GH F!VE", "B!M BAP"]
 						<aside class="notes">
 							<small>
 								<ul>
+<li> Types of things we might want to compose: multi-step processes with stages
+that also occur in other multi-step processes - stages we might want to
+recreate later."</li>
+<li>Example: make a "label maker" function composed of "trim" and
+"upperCase".</li>
 									<li>Thank heavens Ramda has a method, R.compose so we don’t have to write our own (gets pretty gnarly when writing a custom compose function that takes more than two functions).</li>
 								</ul>
 							</small>
 						</aside>
-					</section>
+          </section>
+
+          <section class="fragments">
+          <h2>Composing in the wild</h2>
+          <p>Generating a valid HTTP request using an oauth signature</p>
+          <ul>
+            <li>request method (GET or POST)</li>
+            <li>base url ('https://api.twitter.com/1/statuses/update.json')</li>
+            <li>request parameters (status="Best tacos")</li>
+            <li>oauth parameters (consumer key, method, timestamp, token, oauth
+            version)
+              <ul>
+                <li>Percent encode every key and value that will be signed</li>
+                <li>Sort the list of parameters alphabetically by encoded
+                key</li>
+                <li>For each key/value pair:
+                  <ul>
+                  <li> append encoded key to the output
+                  string</li>
+                  <li>Append the '=' character to the output string.</li>
+                  <li>If there are any key/value pairs remaining, append the '&'
+                  character to the output string.</li>
+                  </ul>
+              </ul>
+            </li>
+          </ul>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+<li>Using Yelp or Twitter's API necessitates generating a valid HTTP request
+with an oauth signature.  There are many libraries out there for this.</li>
+									<li>Thank heavens Ramda has a method, R.compose so we don’t have to write our own (gets pretty gnarly when writing a custom compose function that takes more than two functions).</li>
+								</ul>
+							</small>
+						</aside>
+              </section>
+
 
 					<section>
-						<h2>Functional Programming</h2>
-						<p>Functors</p>
+    				<h4>The Basics</h4>
+						<h2>Functors</h2>
 
 						<img src="images/funk.jpg" alt="We want the funk">
 						<p>Not to be confused with funk-sters</p>
@@ -597,8 +619,7 @@ console.log(coolLabels); // ["!CON!C", "H!GH F!VE", "B!M BAP"]
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Functor</p>
+						<h2>Functors</h2>
 						<ul>
 							<li class="fragment">Functors map between categories.</li>
 							<li class="fragment">They can be thought of as functions that lift values out of a container, morph them, and then put them into a new container.</li>
@@ -625,8 +646,7 @@ console.log(coolLabels); // ["!CON!C", "H!GH F!VE", "B!M BAP"]
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Functor</p>
+						<h2>Functors</h2>
 						<p class="text-align-left">We already have one functor: map(). It grabs the values within the container, an array, and applies a function to it.</p>
 
 						<pre class="custom-pre">
@@ -652,13 +672,15 @@ var map = function(f, a) {
 					</section>
 
 					<section>
+
 						<h2>Functional Programming</h2>
 						<img src="images/thou.jpg" alt="Colonial guy">
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>map()</p>
+            <h4>The Basics</h4>
+						<h2>map()</h2>
+
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 arr.map(callback [, argument]);
@@ -702,8 +724,8 @@ str.split(' ').map(function(s, i) {
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>filter()</p>
+            <h4>The Basics</h4>
+						<h2>filter()</h2>
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 arr.filter(callback [, argument]);
@@ -744,8 +766,9 @@ myarray.filter(function(){
 					</section>
 
 					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>reduce()</p>
+
+            <h4>The Basics</h4>
+						<h2>reduce()</h2>
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
 arr.reduce(callback [, initialValue]);
@@ -792,8 +815,8 @@ numbers.reduce(function(a,b){
 					</section>
 
 					<section>
-						<h2>Functional Programming</h2>
-						<p>Canvas.js</p>
+						<h2>Lilly Inception Refactor</h2>
+						<p>Canvas.js - original version</p>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
 'use strict';
@@ -847,7 +870,7 @@ module.exports = Canvas;
 					</section>
 
 					<section>
-						<h2>Functional Programming</h2>
+						<h2>Lilly Inception Refactor</h2>
 						<p>Canvas.js - refactored</p>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
@@ -898,8 +921,8 @@ export default function() {
 					</section>
 
 					<section>
-						<h2>Functional Programming</h2>
-						<p>Loader.js</p>
+						<h2>Lilly Inception Refactor</h2>
+						<p>Loader.js - original version</p>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
 'use strict';
@@ -970,7 +993,7 @@ module.exports = Loader;
 					</section>
 
 					<section>
-						<h2>Functional Programming</h2>
+						<h2>Lilly Inception Refactor</h2>
 						<p>Loader.js - refactored</p>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
@@ -1025,8 +1048,8 @@ export default function(manifest) {
 					</section>
 
 					<section>
-						<h2>Functional Programming</h2>
-						<p>Animation.js</p>
+						<h2>Lilly Inception Refactor</h2>
+						<p>Animation.js - original version</p>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
 'use strict';
@@ -1150,7 +1173,7 @@ module.exports = AnimationController;
 					</section>
 
 					<section>
-						<h2>Functional Programming</h2>
+						<h2>Lilly Inception Refactor</h2>
 						<p>Animation.js - refactored</p>
 						<pre>
 							<code class="hljs" data-trim contenteditable>
