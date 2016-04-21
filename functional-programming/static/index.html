@@ -199,7 +199,7 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
           </aside>
 					</section>
 
-					<section class="fragments">
+					<section>
 						<h2>Higher-Order Functions</h2>
 						<pre class="custom-pre">
 							<code class="hljs" data-trim contenteditable>
@@ -209,11 +209,6 @@ function or(p1, p2) {
 	}
 }
 
-							</code>
-						</pre>
-
-						<pre class="custom-pre fragment">
-							<code class="hljs" data-trim contenteditable>
 function negative(x) {
 	return x < 0;
 }
@@ -836,43 +831,54 @@ var customers = [
           </section>
 
 					<section class="fragments">
-            <h2>Filter()</h2>
-						<pre class="custom-pre">
+            <h5>Filter()</h5>
+						<pre class="custom-pre ">
 							<code class="hljs" data-trim contenteditable>
-arr.filter(callback [, argument]);
+var reachable = function() {
+  var valid = [];
+    vor(var i = 0; i < customers.length; i++) {
+      var sanitizedPhone = customers[i].phone.replace(/\D/g, '');
+      if(sanitizedPhone.length === 10 || sanitizedPhone.length === 11) {
+        valid.push(customers[i]);
+        }
+      }
+      return valid;
+};
+							</code>
+						</pre>
+            <pre class="custom-pre ">
+							<code class="hljs" data-trim contenteditable>
+var reachable = customers.filter(function(person) {
+  var sanitizedPhone = person.phone.slice().replace(/\D/g, '');
+  return sanitizedPhone.length === 10 || sanitizedPhone.length === 11;
+});
+							</code>
+						</pre>
+            <pre class="custom-pre ">
+							<code class="hljs" data-trim contenteditable>
+var hasValidPhoneNumber = function(person) {
+  var sanitizedPhone = person.phone.slice().replace(/\D/g, '');
+  return sanitizedPhone.length === 10 || sanitizedPhone.length === 11;
+}
 
+var reachable = customers.filter(hasValidPhoneNumber);
 							</code>
 						</pre>
 
-						<pre class="custom-pre fragment">
-							<code class="hljs" data-trim contenteditable>
-var myarray = [1,2,3,4];
-var words = 'hello 123 world how 345 ya doing'.split(' ');
-var re = '[a-zA-Z]';
 
-// remove all negative numbers
-[-2,-1,0,1,2].filter(function(x){return x>0});
 
-// remove null values after a map operation
-words.filter(function(s){
-  return s.match(re);
-});
-
-// remove random objects from an array
-myarray.filter(function(){
-  return Math.floor(Math.random()*2)
-});
-
-							</code>
-						</pre>
 
 						<!-- notes -->
 						<aside class="notes">
 							<small>
 								<ul>
-									<li>function is used to take elements out of an array</li>
-									<li>callback must return <strong>True</strong> to include the item in the new array</li>
-									<li><strong>False </strong>to drop it</li>
+<li>Verbose, one-time-use-only, impure, imperative (aka bad!) way:</li>
+<li>Better, uses filter with an anonymous callback function</li>
+<li>Best! Uses filter with a first-class callback function.  The callback
+'hasValidPhoneNumber' slots directly into filter, which is what makes
+higher-order functions composable.</li>
+<li>If we wanted to abstract 'reachable' into a function that accepts any
+object of data and filters for valid phone numbers, reuse is even easier!</li>
 								</ul>
 							</small>
 						</aside>
