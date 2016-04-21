@@ -234,6 +234,17 @@ alert(nonzero(5));
 							<li class="fragment">Adding a new variable to a data structure</li>
 						</ul>
 
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li class="fragment">Changing the file system</li>
+								<li class="fragment">Mutating outside variables</li>
+								<li class="fragment">Getting user input</li>
+								<li class="fragment">Accessing system state</li>
+								<li class="fragment">Adding a new variable to a data structure</li>
+							</ul>
+						</aside>
+
 					</section>
 
 					<section>
@@ -1063,7 +1074,7 @@ export default function(manifest) {
 					</section>
 
 					<section>
-						
+
 						<h3>Animation.js - original version</h3>
 						<pre class="bump-up">
 							<code class="hljs" data-trim contenteditable>
@@ -1634,48 +1645,45 @@ console.timeEnd('memoized'); // 1ms !!!
 
               </section>
 
-              <!-- WHY FP SLIDES/SECTION -->
-              <section>
-              	<section>
-              		<h2>Functional Programming</h2>
-              		<h3>The Great Debate</h3>
-              		<p>
-              			Functional Programming vs. Object Oriented Programming
-              		</p>
-              		<img src="images/fighting.gif" alt="Everybody was kung-fu fighting">
-
-              		<!-- notes -->
-              		<aside class="notes">
-              			<small>
-              				<ul>
-              					<li>Both OOP and FP have the shared goal of creating understandable, flexible programs that are free of bugs.</li>
-              					<li>Two primary components: the data (the stuff a program knows) and the behaviors (the stuff a program can do to/with that data).</li>
-              					<li>OOP says that bringing together data and its associated behavior in a single location (an Object) makes it easier to understand how a program works.</li>
-              					<li>FP says that data and behavior are distinctively different things and should be kept separate for clarity.</li>
-              				</ul>
-              			</small>
-              		</aside>
-              	</section>
-
-              	<section>
-              		<h2>Functional Programming</h2>
-              		<h3>Why FP over OO?</h3>
-              		<blockquote> “The problem with object-oriented languages is they’ve got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.”</blockquote>
-              		<cite class="text-align-right">-Joe Armstrong</cite>
-
-              		<!-- notes -->
-              		<aside class="notes">
-              			<small>
-              				<ul>
-              					<li>For better applications, we need a simple and reliable manner to do it.  In Functional Programming, we’re given those features.  Pure Functions and Immutable State alone give us the ability to run a function a thousand times and still get the same result.</li>
-              					<li>Because Object Oriented Programming relies directly on mutable state, the objects methods you call are supposed to mutate the current this.  There’s a lot of complex processes that need to be written just to manage all of the threads in your program to keep them correctly updated and synchronized.  With a functional approach, we don’t need to worry about this.</li>
-              					<li>With Functional Programming, functions are broken down to very small methods that are then utilized in first-class and high-order functions that are more complex.  This makes our code not only easier to read as we have pointed out before, it also makes it easier to understand.  Because function names become expressive and meaningful, code becomes more readable and declarative.</li>
-              				</ul>
-              			</small>
-              		</aside>
-              	</section>
-
               </section>
+
+							<!-- WHY FP SLIDES/SECTION -->
+							<section>
+								<section>
+									<h2>Functional Programming</h2>
+									<h3>The Great Debate</h3>
+									<p>
+										Functional Programming vs. Object Oriented Programming
+									</p>
+									<img src="images/fighting.gif" alt="Everybody was kung-fu fighting">
+
+									<!-- notes -->
+									<aside class="notes">
+										<small>
+											<ul>
+												<li>For better applications, we need a simple and reliable manner to do it.  In Functional Programming, we’re given those features.  Pure Functions and Immutable State alone give us the ability to run a function a thousand times and still get the same result.</li>
+											</ul>
+										</small>
+									</aside>
+								</section>
+
+								<section>
+									<h2>Functional Programming</h2>
+									<h3>Why FP over OO?</h3>
+									<blockquote> “The problem with object-oriented languages is they’ve got all this implicit environment that they carry around with them. You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.”</blockquote>
+									<cite class="text-align-right">-Joe Armstrong</cite>
+
+									<!-- notes -->
+									<aside class="notes">
+										<small>
+											<ul>
+												<li>Because Object Oriented Programming relies directly on mutable state, the objects methods you call are supposed to mutate the current this.  There’s a lot of complex processes that need to be written just to manage all of the threads in your program to keep them correctly updated and synchronized.  With a functional approach, we don’t need to worry about this.</li>
+												<li>Instead functions are broken down to very small methods that are then utilized in first-class and high-order functions that are more complex.  This makes our code not only easier to read as we have pointed out before, it also makes it easier to understand.  Because function names become expressive and meaningful, code becomes more readable and declarative.</li>
+											</ul>
+										</small>
+									</aside>
+								</section>
+							</section>
 				<!-- LAST SLIDE -->
 				<section>
 
