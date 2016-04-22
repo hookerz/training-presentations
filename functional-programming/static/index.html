@@ -970,34 +970,26 @@ var exportRoot;
 
 // set canvas id
 var Canvas = function() {
-
   canvas = document.getElementById('you-line');
-
 };
 
 // initialize canvas animation
 Canvas.prototype.init = function() {
-
   exportRoot = new lib02.Youtube_Beacon05_Lily_970x250();
-
   stage = new createjs.Stage(canvas);
   stage.addChild(exportRoot);
   stage.update();
   stage.enableDOMEvents(false);
-
 };
 
 // start canvas animation
 Canvas.prototype.start = function() {
-
   canvas.style.opacity = 1;
-
   createjs.Ticker.setFPS(lib02.properties.fps);
   createjs.Ticker.addEventListener('tick', stage);
-
 };
 
-module.exports = Canvas;
+module.exports = Canvas; //29 lines
 							</code>
 						</pre>
 
@@ -1020,33 +1012,25 @@ module.exports = Canvas;
 import createjs from 'createjs';
 
 export default function() {
-
   const youLine = document.getElementById('you-line');
   const exportRoot = new lib02.Youtube_Beacon05_Lily_970x250();
   const stage = new createjs.Stage(youLine);
-
   const canvas = Object.create({});
 
   canvas.init = () => {
-
     stage.addChild(exportRoot);
     stage.update();
     stage.enableDOMEvents(false);
-
   };
 
   canvas.start = () => {
-
     youLine.style.opacity = 1;
-
     createjs.Ticker.setFPS(lib02.properties.fps);
     createjs.Ticker.addEventListener('tick', stage);
-
   };
 
   return canvas;
-
-};
+}; //23 lines - 20% reduction
 
 							</code>
 						</pre>
@@ -1056,6 +1040,7 @@ export default function() {
 							<ul>
 								<li>canvas = Object.create({});</li>
 								<li>start() and init() are now arrow functions</li>
+                <li>20% reduction of code</li>
 							</ul>
 						</aside>
 
@@ -1069,7 +1054,6 @@ export default function() {
 'use strict';
 
 function Loader( manifest ) {
-
   this.manifest = manifest;
   this.loadItems = 0;
   this.loadItemsTotal = 0;
@@ -1079,12 +1063,10 @@ function Loader( manifest ) {
   };
 
   manifest.forEach(function(item) {
-    //console.log(item.src)
     this._loadImage(item.src);
   }.bind(this));
 
   this._loadScript('js/vendor.js');
-
 }
 
 Loader.prototype._loadImage = function( path ) {
@@ -1108,11 +1090,9 @@ Loader.prototype._onLoad = function ( id ) {
   if ( this.loadItemsTotal === this.loadItems ) {
     this._onLoadComplete();
   }
-
 };
 
 Loader.prototype._onLoadComplete = function () {
-  // this.callback();
   if (this.loadComplete === true) {
     return;
   }
@@ -1121,7 +1101,7 @@ Loader.prototype._onLoadComplete = function () {
   this._loadScript('js/main.build.js');
 };
 
-module.exports = Loader;
+module.exports = Loader; //50 lines of code
 							</code>
 						</pre>
 
@@ -1144,37 +1124,28 @@ export default function(manifest) {
 
   //Loads all the images in the manifest
   const loadImage = function(path) {
-
     return new Promise((resolve, reject) => {
-
       let img = new Image();
       img.addEventListener('load', resolve);
       img.addEventListener('error', reject);
       img.src = path.src;
-
     });
-
   };
 
   //loads vendor and main.build scripts, individually
   const loadScript = function(path) {
-
     return new Promise((resolve, reject) => {
       global.Enabler.loadScript(global.Enabler.getUrl(path), resolve);
-
     });
-
   };
 
   const loadImagePromise = manifest.map(loadImage);
   const loadVendor =  loadScript('js/vendor.js');
   const loadMain = () => loadScript('js/main.build.js');
 
-  //After all the images have loaded, then load in vendor, lastly load
-  //mainbuild.js
+  //After all the images have loaded, then load in vendor, lastly load mainbuild.js
   Promise.all(loadImagePromise.concat(loadVendor)).then(loadMain);
-
-};
+}; //24 lines of code - 52% reduction.
 
 
 							</code>
@@ -1184,6 +1155,7 @@ export default function(manifest) {
 						<aside class="notes">
 							<ul>
 								<li>using Promises</li>
+                <li>52% reduction of code</li>
 							</ul>
 						</aside>
 					</section>
@@ -1253,7 +1225,7 @@ Bootstrap.prototype.adVisibleHandler = function () {
 
 };
 
-module.exports = Load;
+module.exports = Load; //59 lines of code
 							</code>
 						</pre>
 
@@ -1294,9 +1266,7 @@ const enablerCheck = (method, state) => {
 
 // Load the manifest once the Ad is visible.
 const adVisibleHandler = () => {
-
   const loader = Loader(config.manifest);
-
 };
 
 // Enabler promises for initialize, load and visible states.
@@ -1306,7 +1276,7 @@ const visiblePromise = enablerCheck(Enabler.isVisible.bind(Enabler), studio.even
 
 // If everything is a-ok, show the Ad.
 Promise.all([loadYTApi(), initPromise, loadPromise, visiblePromise]).then(adVisibleHandler);
-
+//39 lines of code - 34% reduction of code
 
 							</code>
 						</pre>
@@ -1315,6 +1285,7 @@ Promise.all([loadYTApi(), initPromise, loadPromise, visiblePromise]).then(adVisi
 						<aside class="notes">
 							<ul>
 								<li>enablerCheck(): returns a promise</li>
+                <li>34% reduction of code</li>
 							</ul>
 						</aside>
 
@@ -1351,32 +1322,22 @@ var AnimationController = function () {
 
 // initialize controller, build all timelines.
 AnimationController.prototype.init = function() {
-
   this.globalTimeline = new TimelineMax({paused: true});
-
   this.globalTimeline.add(this.tl1(), 0.0);
   this.globalTimeline.add(this.tl2(), 21.25);
-
   return this.globalTimeline;
-
 };
 
 // timeline 0 - loading  wipe animation
 AnimationController.prototype.tl1 = function () {
-
   this.tl1 = new TimelineMax();
-
   this.tl1.to([this.underlay, this.loader], 0.4, {autoAlpha: 0, ease: Power1.easeOut});
-
   return this.tl1;
-
 };
 
 // timeline 4 - last zoom in of branding
 AnimationController.prototype.tl2 = function () {
-
   this.tl2 = new TimelineMax();
-
   this.tl2.fromTo(this.animationWrap, 3.225, {x: '-200%',
     autoAlpha: 1,
     scaleX: 10,
@@ -1387,52 +1348,39 @@ AnimationController.prototype.tl2 = function () {
     ease: Power3.easeOut});
 
   return this.tl2;
-
 };
 
 // make player visible, set animation wrap and fire tl0
 AnimationController.prototype.start = function () {
-
   this.player.style.opacity = 1;
   this.globalTimeline.play();
-
 };
 
 // play animation
 AnimationController.prototype.play = function () {
-
   this.globalTimeline.play();
-
 };
 
 // seek animation
 AnimationController.prototype.seek = function(time) {
-
   this.globalTimeline.seek(time);
-
 };
 
 // pause animation
 AnimationController.prototype.pause = function () {
-
   this.globalTimeline.pause();
-
 };
 
 // kill all animations, end banner
 AnimationController.prototype.endState = function () {
-
   if (this.endOnce) {
-
     TweenMax.killAll(true, true, true, true);
     TweenMax.set(this.animationWrap, {autoAlpha: 1});
     this.endOnce = false;
-
   }
-
 };
 
-module.exports = AnimationController;
+module.exports = AnimationController; //84 lines of code
 							</code>
 						</pre>
 
@@ -1455,7 +1403,6 @@ module.exports = AnimationController;
 import TweenMax from 'TweenMax';
 
 export default function() {
-
     // selectors
     const player = document.querySelector('#player');
     const animationWrap = document.querySelector('#animation');
@@ -1476,30 +1423,20 @@ export default function() {
     const animation = Object.create({});
 
     animation.init = () => {
-
       timeline = new TimelineMax({paused: true});
-
       timeline.add(fadeOutLoader(), 0.0);
       timeline.add(animateBranding(), 21.25);
-
       return timeline;
-
     };
 
     function fadeOutLoader() {
-
       const tl = new TimelineMax();
-
       tl.to([underlay, loader], 0.4, {autoAlpha: 0, ease: Power1.easeOut});
-
       return tl;
-
     };
 
     function animateBranding() {
-
       const tl = new TimelineMax();
-
       tl.fromTo(animationWrap, 3.225, {x: '-200%',
         autoAlpha: 1,
         scaleX: 10,
@@ -1508,16 +1445,12 @@ export default function() {
         scaleX: 1,
         scaleY: 1,
         ease: Power3.easeOut});
-
       return tl;
-
     };
 
     animation.start = () => {
-
       player.style.opacity = 1;
       timeline.play();
-
     };
 
     animation.play = () => timeline.play();
@@ -1527,20 +1460,16 @@ export default function() {
     animation.pause = () => timeline.pause();
 
     animation.endState = () => {
-
       if (endOnce) {
-
         TweenMax.killAll(true, true, true, true);
         TweenMax.set(animationWrap, {autoAlpha: 1});
         endOnce = false;
-
       }
-
     };
 
     return animation;
+}; //70 lines of code - 16% reduction
 
-};
 
 							</code>
 						</pre>
@@ -1551,6 +1480,7 @@ export default function() {
 								<li>Use of ES6 import and export</li>
 								<li>animation = Object.create({});</li>
 								<li>play(), seek(), and init() are now arrow functions</li>
+                <li>16% reduction in size from original</li>
 							</ul>
 						</aside>
 
