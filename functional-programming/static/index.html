@@ -95,6 +95,9 @@
 
 				<section>
 					<h2>What is Functional Programming?</h2>
+
+					<img src="images/refactor.jpg" alt="refactor image">
+
 					<!-- notes -->
 					<aside class="notes">
 						<small>
@@ -214,7 +217,7 @@ var sum = nums.map(double); // [1, 1, 4, 9, 25, 64]
 							<li class="fragment">Higher-order functions can be used to generalize many algorithms that regular functions cannot easily describe.</li>
               <li class="fragment">"Being able to write <i>what</i> we want to
               do instead of <i>how</i> we want to do it means we are working at
-              a higher level of abstraction.  In pratice this means shorter,
+              a higher level of abstraction.  In practice this means shorter,
               clearer and more pleasant code." -Marijn Haverbeke, <I>Eloquent
               JavaScript</I></li>
 						</ul>
@@ -608,15 +611,15 @@ arr.reduce(callback [, initialValue]);
 var numbers = [1,2,3,4];
 
 // sum up all the values of an array
-[1,2,3,4,5].reduce(function(x,y){return x+y}, 0);
+numbers.reduce(function(x,y) {
+  return x+y
+}, 0); // 10
 
-// sum up all the values of an array
-[1,2,3,4,5].reduce(function(x,y){return x+y}, 0);
+// es6
+numbers.reduce ((x, y) => x + y); // 10
 
 // find the largest number
-numbers.reduce(function(a,b){
-  return Math.max(a,b)}) // max takes two arguments
-);
+numbers.reduce((x, y) => Math.max(x, y), 0); // 4
 
 							</code>
 						</pre>
@@ -634,6 +637,40 @@ numbers.reduce(function(a,b){
 							</small>
 						</aside>
 					</section>
+
+					<!-- <section>
+
+            			<h4>The Basics</h4>
+						<h2>reduce()</h2>
+						<pre class="custom-pre">
+							<code class="hljs" data-trim contenteditable>
+var numbers = [1,2,3,4];
+
+numbers.reduce( (newArray, number) => {
+   newArray.push(number);
+  
+  if(number % 2 === 0) {
+    // if even number, add it a second time
+    newArray.push(number);
+  }
+  
+  return newArray
+  
+}, []); // [1, 2, 2, 3, 4, 4]
+
+							</code>
+						</pre>
+
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>Note how we start out with [] as initial value, and just add the value to it one or more times.</li>
+									<li>technically, violates the "no mutation" rule, it's okay in this particular situation</li>
+									<li>the array object is created explicitly for this reduce call, so it can't cause side-effects anywhere else in the code</li>
+								</ul>
+							</small>
+						</aside>
+					</section> -->
 
 
 					<section>
@@ -1486,11 +1523,6 @@ export default function() {
 
 					</section>
 
-					<section>
-						<h2>Functional Programming</h2>
-						<img src="images/refactor.jpg" alt="refactor image">
-					</section>
-
 				</section>
 
 				<!-- FRAMEWORK SLIDES/SECTION -->
@@ -1527,6 +1559,56 @@ export default function() {
 
 					</section>
 
+					<section>
+						<h3>React</h3>
+
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+var Timer = React.createClass({
+
+  getDefaultProps: function() {
+    return {label: "Timer"}
+  },
+
+  getInitialState: function() {
+    return {secondsElapsed: 0};
+  },
+
+  tick: function() {
+    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+  },
+
+  componentDidMount: function() {
+    this.interval = setInterval(this.tick, 1000);
+  },
+
+  componentWillUnmount: function() {
+    clearInterval(this.interval);
+  },
+
+  render: function() {
+    return (
+      {this.props.label}
+      Seconds Elapsed: {this.state.secondsElapsed}
+    );
+  }
+});
+					
+							</code>
+						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li>This is example of stateful component</li>
+								<li>To allow reuse of components each of the components has its own unique state accessed via this.state</li>
+								<li>When using stateful components, initial state is defined through getInitialState method</li>
+								<li>In order to keep up with FP principles and get advantage out of them, this function should be pure in general i.e. should not depend on anything other than component state &amp; properties and generate any side effects.</li>
+							</ul>
+						</aside>
+
+					</section>
+
 					<section class="fragments">
 
 						<h2>Functional Progamming</h2>
@@ -1553,6 +1635,62 @@ export default function() {
 					</section>
 
 					<section class="fragments">
+						<h3>Deku</h3>
+
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+import {element} from 'deku'
+
+function render (component) {
+  let {props,state} = component
+  return <button type={props.type}>{props.children}</button>
+}
+
+function afterMount(component, el, setState) {
+  setState({ mounted: true })
+}
+
+export default { render, afterMount }
+					
+							</code>
+						</pre>
+
+						<pre class="fragment">
+							<code class="hljs" data-trim contenteditable>
+import {tree,render,element} from 'deku'
+import Button from './button'
+
+var app = tree(<Button>Hello World</Button>)
+render(app, document.body)
+					
+							</code>
+						</pre>
+
+						<pre class="fragment">
+							<code class="hljs" data-trim contenteditable>
+export let Button = {
+  render({props, state}) {
+    return <button>{props.text}</button>
+  }
+}
+					
+							</code>
+						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li>Here's what a component looks like in Deku</li>
+								<li>imort components and render your app</li>
+								<li>You’ll notice there is no concept of classes or use of this</li>
+								<li>We’re using plain objects and functions</li>
+								<li>The beauty of using plain functions is that the user can use the ES6 module system to define them however they want</li>
+							</ul>
+						</aside>
+
+					</section>
+
+					<section class="fragments">
 
 						<h2>Functional Progamming</h2>
 						<p>Vue</p>
@@ -1569,9 +1707,64 @@ export default function() {
 							<small>
 								<ul>
 									<li><strong>Vue: </strong>Vue.js, like React, provides reactive and composable View components.</li>
+									<li>Vue.js itself is not a full-blown framework - it is focused on the view layer only.</li>
 									<li>Instead of a Virtual DOM, Vue.js uses the actual DOM as the template and keeps references to actual nodes for data bindings. This limits Vue.js to environments where DOM is present. However, contrary to the common misconception that Virtual-DOM makes React faster than anything else, Vue.js actually out-performs React when it comes to hot updates, and requires almost no hand-tuned optimization.</li>
 								</ul>
 							</small>
+						</aside>
+
+					</section>
+
+					<section>
+						<h3>Vue</h3>
+
+						<pre style="top: -10px;">
+							<code class="hljs" data-trim contenteditable>
+<div id="app">
+  <input v-model="newTodo" v-on:keyup.enter="addTodo">
+  <ul>
+    <li v-for="todo in todos">
+      <span>{{ todo.text }}</span>
+      <button v-on:click="removeTodo($index)">X</button>
+    </li>
+  </ul>
+</div>				
+							</code>
+						</pre>
+
+						<pre style="top: -65px;">
+							<code class="hljs" data-trim contenteditable>
+new Vue({
+  el: '#app',
+  data: {
+    newTodo: '',
+    todos: [
+      { text: 'Add some todos' }
+    ]
+  },
+  methods: {
+    addTodo: function () {
+      var text = this.newTodo.trim()
+      if (text) {
+        this.todos.push({ text: text })
+        this.newTodo = ''
+      }
+    },
+    removeTodo: function (index) {
+      this.todos.splice(index, 1)
+    }
+  }
+})
+					
+							</code>
+						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<ul>
+								<li>still working with objects</li>
+								<li>functional methods</li>
+							</ul>
 						</aside>
 
 					</section>
@@ -1906,7 +2099,7 @@ console.timeEnd('memoized'); // 1ms !!!
 					<section class="fragments">
 						<h2>The End</h2>
 						<p>JavaScript provides an excellent medium for this approach.</p>
-						<img src="images/end-fp.jpg" alt="TMIMITW" style="width: 100%; max-width: 350px;">
+						<img src="images/gage-x.jpg" alt="Happy Gage - The Buddliest Bud" style="width: 100%; max-width: 300px; position: relative; top: -20px;">
 
 						<!-- notes -->
 						<aside class="notes">
@@ -1919,11 +2112,6 @@ console.timeEnd('memoized'); // 1ms !!!
 								</ul>
 							</small>
 						</aside>
-					</section>
-
-					<section>
-						<h2>The End</h2>
-						<img src="images/gage-x.jpg" alt="Happy Gage - The Buddliest Bud" style="width: 100%; max-width: 350px; position: relative; top: -30px;">
 					</section>
 
 					<section>
