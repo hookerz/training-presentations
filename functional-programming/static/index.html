@@ -1565,11 +1565,6 @@ export default function() {
 						<pre>
 							<code class="hljs" data-trim contenteditable>
 var Timer = React.createClass({
-
-  getDefaultProps: function() {
-    return {label: "Timer"}
-  },
-
   getInitialState: function() {
     return {secondsElapsed: 0};
   },
@@ -1585,14 +1580,14 @@ var Timer = React.createClass({
   componentWillUnmount: function() {
     clearInterval(this.interval);
   },
-
+  
   render: function() {
     return (
-      {this.props.label}
-      Seconds Elapsed: {this.state.secondsElapsed}
+      <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
     );
   }
 });
+
 					
 							</code>
 						</pre>
