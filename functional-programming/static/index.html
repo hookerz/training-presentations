@@ -54,12 +54,44 @@
 				<!-- INTRO SLIDE -->
 				<section>
 					<h2>Functional Programming</h2>
-					<h3>A true renewal of thoughts</h3>
 					<img src="images/robit.png" alt="Robot picture" class="text-align-center">
 					<p>
 						<small>Created by <a href="http://byhook.com/" target="_blank">Hook Studios</a></small>
 					</p>
 				</section>
+
+        <section>
+        <h2>Functional Programming</h2>
+        <ul>
+        <small>
+          <li>What is Functional Programming?</li>
+          <li>Core Concepts
+            <ul>
+              <li>First class functions</li>
+              <li>Higher-order Functions</li>
+              <li>Pure Functions</li>
+              <li>Closures</li>
+            </ul>
+          </li>
+          <li>Basic Practies
+            <ul>
+              <li>Map</li>
+              <li>Filter</li>
+              <li>Reduce</li>
+              <li>Currying</li>
+              <li>Functors</li>
+              <li>Composition</li>
+            </ul>
+          </li>
+          <li>Lilly Inception Refactor</li>
+          <li>Frameworks</li>
+          <li>Libraries</li>
+          <li>Why bother with Functional Programming?</li>
+          <li>Functional Programming vs Object-Oriented</li>
+          <li>Conclusion / recap</li>
+</small>
+        </ul>
+        </section>
 
 				<section>
 					<h2>What is Functional Programming?</h2>
@@ -401,332 +433,7 @@ console.log(result);
 						<h3>Basics Practices</h3>
 						<img src="images/functions-in-out.png" alt="Functional Programming diagram" style="width: 100%; max-width: 300px; height: auto;">
 
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<ul>
-									<li>So we’ve talked about and defined the what, now for the why...</li>
-								</ul>
-							</small>
-						</aside>
-					</section>
-
-					<section class="fragments">
-						<h2>Functional Programming</h2>
-						<p>Have you heard of Ramda or currying?</p>
-
-						<img src="images/goku.gif" alt="Goku eating some curry" class="fragment">
-
-						<p class="fragment">Not quite....</p>
-
-					</section>
-
-					<section>
-						<h4>The Basics</h4>
-						<h2>Currying</h2>
-
-						<pre class="custom-pre">
-							<code class="hljs" data-trim contenteditable>
-// normal - regular addition
-let add = (a, b) => a + b;
-
-// let add = function(a, b) {
-//   return a + b;
-// };
-
-console.log(`Normal JS Invocation: ${add(1, 2)}`); // 3
-console.log(`Normal JS Invocation: ${add(1, 2, 'IGNORE ME')}`); // 3
-console.log(`Normal JS Invocation: ${add(1)}`); // NaN
-
-							</code>
-						</pre>
-
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<ul>
-									<li>The concept is simple: You can call a function with fewer arguments than it expects. It returns a function that takes the remaining arguments.</li>
-								</ul>
-							</small>
-						</aside>
-					</section>
-
-					<section>
-						<h2>Currying</h2>
-
-						<pre class="custom-pre">
-							<code class="hljs" data-trim contenteditable>
-// curried - curried addition
-// a curried function is one where multiple arguemnts are described by a
-// series of one-argument functions.
-let addCurried = a => b => a + b;
-
-// let addCurried = function(a) {
-//   return function(b) {
-//     return a + b;
-//   };
-// };
-
-let cAdd = addCurried(1);
-
-console.log(`Curried: ${cAdd(2)}`); // 3
-console.log(`Curried: ${cAdd(2, 'IGNORE ME')}`); // 3
-
-// ramda - makes stuff easier
-let ramdaCurried = R.curry(add);
-
-let rAdd = ramdaCurried(1);
-
-console.log(`Curried: ${rAdd(2)}`); // 3
-console.log(`Curried: ${rAdd(2, 'IGNORE ME')}`); // 3
-							</code>
-						</pre>
-
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<p>Thankfully the Ramda library makes currying things much easier.</p>
-							</small>
-						</aside>
-
-					</section>
-
-					<section class="fragments">
-						<h2>Currying</h2>
-
-						<pre class="custom-pre">
-							<code class="hljs" data-trim contenteditable>
-let objects = [{ id: 1 }, { id: 2 }, { id: 3 }];
-
-console.log(`w/o Curry: [${objects.map(o => o.id)}]`); // [1, 2, 3]
-
-let get = R.curry((property, object) => {
-  return object[property];
-});
-
-console.log(`w/ Curry: [${objects.map(get('id'))}]`); // [1, 2, 3]
-							</code>
-						</pre>
-
-						<pre class="custom-pre fragment">
-							<code class="hljs" data-trim contenteditable>
-// Take it even further!
-let map = R.curry((fn, value) => value.map(fn));
-
-let getIDS = map(get('id'));
-
-console.log(`Super Ultra Functional: [${getIDS(objects)}]`); // [1, 2, 3]
-							</code>
-						</pre>
-
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<ul>
-									<li>Currying has it’s advantages, let’s say we wanted to map over an array of objects to get an id.  Easy enough, but if we apply curry and make a get function, we can get a bit cleaner.</li>
-									<li>Even further, we can actually rewrite the map function to accept another function and map that value.  Leaving us with some super clean code no doubt.</li>
-								</ul>
-							</small>
-						</aside>
-					</section>
-
-					<section>
-
-						<img src="images/arrow-functions.jpg" alt="Arrow Functions">
-
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<ul>
-									<li>Is it really necessary though?  Even in the examples provided, I’m using ES6 and we all know arrow functions greatly reduce visual noise and make code look pretty already.  Supplying a curried function with too few arguments is an easy mistake to make and it can often only cause an error at a much later stage in code.  Embedded in a complex codebase of many of the applications and websites we build - it can be easy to waste a handful of hours searching for the origins of a mysterious function.</li>
-									<li>Is it actually necessary to curry everything?  The answer is no - probably not.  Can it impede a programmer's ability in real world practice?  That’s up for debate, regardless - I think most are in agreement that arrow functions work great and solve most of the problems that currying solves.</li>
-								</ul>
-							</small>
-						</aside>
-					</section>
-
-					<section class="fragments">
-						<h4>The Basics</h4>
-						<h2>Composition</h2>
-						<ul>
-              <li class="fragment"><strong>Function Composition: </strong>The
-              combination of simple functions to build more sophisticated
-              ones.</li>
-              <li class="fragment"> Composing functions allows us to build complex functions from many simple, generic functions.</li>
-							<li class="fragment">By treating functions as building blocks for other functions, we can build truly modular applications with excellent readability and maintainability.</li>
-						</ul>
-            <aside class="notes">
-<p> Types of things we might want to compose: multi-step processes with stages
-that also occur in other multi-step processes - stages we might want to
-recreate later."</p>
-						</aside>
-
-					</section>
-
-					<section class="fragments">
-						<h2>Composition</h2>
-
-						<pre class="custom-pre">
-							<code class="hljs" data-trim contenteditable>
-// function that combines two functions together:
-// run function 'f' on the result of function 'g'
-var compose = function(f, g) {
-  return function(x) {
-	  return f(g(x));
-  };
-};
-
-// ES6 hyper-terse equivalent
-const compose = (f, g) => (x) => f(g(x));
-
-const upperCase = (str) => str.toUpperCase();
-const trim = (str) => str.replace(/^\s+I\s+$/g, '');
-const replaceIWithBang = (str) => str.replace(/[i]/g, '!');
-
-const labelMaker = compose(upperCase, trim);
-// Ramda's built-in compose method takes any number of functions and
-// will return them right-to-left
-const coolLabelMaker = R.compose(upperCase, replaceIWithBang, trim);
-
-let labels = [' iconic ', 'high five    ', ' bim bap'].map(labelMaker);
-let coolLabels = [' iconic ', 'high five    ', ' bim bap'].map(coolLabelMaker);
-
-console.log(labels); // [ 'ICONIC', 'HIGH FIVE', 'BIM BAP']
-console.log(coolLabels); // ["!CON!C", "H!GH F!VE", "B!M BAP"]
-
-							</code>
-						</pre>
-
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<ul>
-<li>Example: make a "label maker" function composed of "trim" and
-"upperCase".</li>
-									<li>Thank heavens Ramda has a method, R.compose so we don’t have to write our own (gets pretty gnarly when writing a custom compose function that takes more than two functions).</li>
-								</ul>
-							</small>
-						</aside>
-          </section>
-
-          <section class="fragments">
-          <h2>Composing in the wild</h2>
-          <p>Generating a valid HTTP request using an oauth signature</p>
-          <ul>
-            <li>request method (GET or POST)</li>
-            <li>base url ('https://api.twitter.com/1/statuses/update.json')</li>
-            <li>request parameters (status="Best tacos")</li>
-            <li>oauth parameters (consumer key, method, timestamp, token, oauth
-            version)
-              <ul>
-                <li>Percent encode every key and value that will be signed</li>
-                <li>Sort the list of parameters alphabetically by encoded
-                key</li>
-                <li>For each key/value pair:
-                  <ul>
-                  <li> append encoded key to the output
-                  string</li>
-                  <li>Append the '=' character to the output string.</li>
-                  <li>If there are any key/value pairs remaining, append the '&'
-                  character to the output string.</li>
-                  </ul>
-              </ul>
-            </li>
-          </ul>
-
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<ul>
-<li>Using Yelp or Twitter's API necessitates generating a valid HTTP request
-with an oauth signature.  There are many libraries out there for this.</li>
-									<li>Thank heavens Ramda has a method, R.compose so we don’t have to write our own (gets pretty gnarly when writing a custom compose function that takes more than two functions).</li>
-								</ul>
-							</small>
-						</aside>
-              </section>
-
-
-					<section>
-    				<h4>The Basics</h4>
-						<h2>Functors</h2>
-
-						<img src="images/funk.jpg" alt="We want the funk">
-						<p>Not to be confused with funk-sters</p>
-
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<ul>
-									<li>Term "Functor" comes from Category Theory, a mathmatical concept</li>
-									<li>I won't begin to try and explain it's place in math, but as far as computer programming goes, let’s just say that category theory is simply "connecting the dots".</li>
-									<li>Some quick terminolgy</li>
-									<li><strong>Catgories</strong> are just sets with the same type. In JavaScript, they're arrays or objects that contain variables that are explicitly declared as numbers, strings, Booleans, dates, nodes, and so on.</li>
-									<li><strong>Morphisms </strong>are pure functions that, when given a specific set of inputs, always return the same output.</li>
-								</ul>
-							</small>
-						</aside>
-					</section>
-
-					<section class="fragments">
-						<h2>Functors</h2>
-						<ul>
-							<li class="fragment">Functors map between categories.</li>
-							<li class="fragment">They can be thought of as functions that lift values out of a container, morph them, and then put them into a new container.</li>
-							<li class="fragment">The first input is a morphism for the type and the second input is the container.</li>
-						</ul>
-
-						<pre class="custom-pre fragment">
-							<code class="hljs" data-trim contenteditable>
-// Note that the type signature for functors looks like so
-
-// my functor :: (a -> b) -> f a -> f b
-
-							</code>
-						</pre>
-
-						<!-- notes -->
-						<aside class="notes">
-							<small>
-								<ul>
-									<li>This says, "give me a function that takes a and returns b and a box that contains a(s), and I'll return a box that contains b(s).</li>
-								</ul>
-							</small>
-						</aside>
-					</section>
-
-					<section class="fragments">
-						<h2>Functors</h2>
-						<p class="text-align-left">We already have one functor: map(). It grabs the values within the container, an array, and applies a function to it.</p>
-
-						<pre class="custom-pre">
-							<code class="hljs" data-trim contenteditable>
-var nums = [1, 4, 9];
-
-nums.map(Math.sqrt); // [1, 2, 3]
-
-							</code>
-						</pre>
-
-						<small><p class="fragment">However, we'll need to write it as a global function and not as a method of the array.  This allows us to write cleaner, safter code later on.</p></small>
-
-						<pre class="custom-pre fragment">
-							<code class="hljs" data-trim contenteditable>
-// map :: (a -> b) -> [a] -> [b]
-var map = function(f, a) {
-	return arr(a).map(func(f));
-}
-
-							</code>
-						</pre>
-					</section>
-
-					<section>
-
-						<h2>Functional Programming</h2>
-						<img src="images/thou.jpg" alt="Colonial guy">
-					</section>
-
+						</section>
 					<section>
             <h4>The Basics</h4>
 						<h2>map()</h2>
@@ -872,6 +579,7 @@ var reachable = customers.filter(hasValidPhoneNumber);
 						<aside class="notes">
 							<small>
 								<ul>
+<li>(note to self: talk through the functions line by line)</li>
 <li>Verbose, one-time-use-only, impure, imperative (aka bad!) way:</li>
 <li>Better, uses filter with an anonymous callback function</li>
 <li>Best! Uses filter with a first-class callback function.  The callback
@@ -927,6 +635,317 @@ numbers.reduce(function(a,b){
 						</aside>
 					</section>
 
+
+					<section>
+						<p>Have you heard of Ramda or currying?</p>
+
+            <img src="images/goku.gif" alt="Goku eating some curry">
+
+						<p>Not quite....</p>
+
+					</section>
+
+					<section>
+						<h4>The Basics</h4>
+						<h2>Currying</h2>
+
+						<pre class="custom-pre">
+							<code class="hljs" data-trim contenteditable>
+// normal - regular addition
+let add = (a, b) => a + b;
+
+// let add = function(a, b) {
+//   return a + b;
+// };
+
+console.log(`Normal JS Invocation: ${add(1, 2)}`); // 3
+console.log(`Normal JS Invocation: ${add(1, 2, 'IGNORE ME')}`); // 3
+console.log(`Normal JS Invocation: ${add(1)}`); // NaN
+
+							</code>
+						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>The concept is simple: You can call a function with fewer arguments than it expects. It returns a function that takes the remaining arguments.</li>
+								</ul>
+							</small>
+						</aside>
+					</section>
+
+					<section>
+						<h2>Currying</h2>
+
+						<pre class="custom-pre">
+							<code class="hljs" data-trim contenteditable>
+// curried - curried addition
+// a curried function is one where multiple arguemnts are described by a
+// series of one-argument functions.
+let addCurried = a => b => a + b;
+
+// let addCurried = function(a) {
+//   return function(b) {
+//     return a + b;
+//   };
+// };
+
+let cAdd = addCurried(1);
+
+console.log(`Curried: ${cAdd(2)}`); // 3
+console.log(`Curried: ${cAdd(2, 'IGNORE ME')}`); // 3
+
+// ramda - makes stuff easier
+let ramdaCurried = R.curry(add);
+
+let rAdd = ramdaCurried(1);
+
+console.log(`Curried: ${rAdd(2)}`); // 3
+console.log(`Curried: ${rAdd(2, 'IGNORE ME')}`); // 3
+							</code>
+						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<p>Thankfully the Ramda library makes currying things much easier.</p>
+							</small>
+						</aside>
+
+					</section>
+
+					<section class="fragments">
+						<h2>Currying</h2>
+
+						<pre class="custom-pre">
+							<code class="hljs" data-trim contenteditable>
+let objects = [{ id: 1 }, { id: 2 }, { id: 3 }];
+
+console.log(`w/o Curry: [${objects.map(o => o.id)}]`); // [1, 2, 3]
+
+let get = R.curry((property, object) => {
+  return object[property];
+});
+
+console.log(`w/ Curry: [${objects.map(get('id'))}]`); // [1, 2, 3]
+							</code>
+						</pre>
+
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
+// Take it even further!
+let map = R.curry((fn, value) => value.map(fn));
+
+let getIDS = map(get('id'));
+
+console.log(`Super Ultra Functional: [${getIDS(objects)}]`); // [1, 2, 3]
+							</code>
+						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>Currying has it’s advantages, let’s say we wanted to map over an array of objects to get an id.  Easy enough, but if we apply curry and make a get function, we can get a bit cleaner.</li>
+									<li>Even further, we can actually rewrite the map function to accept another function and map that value.  Leaving us with some super clean code no doubt.</li>
+								</ul>
+							</small>
+						</aside>
+					</section>
+
+					<section>
+
+						<img src="images/arrow-functions.jpg" alt="Arrow Functions">
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>Is it really necessary though?  Even in the examples provided, I’m using ES6 and we all know arrow functions greatly reduce visual noise and make code look pretty already.  Supplying a curried function with too few arguments is an easy mistake to make and it can often only cause an error at a much later stage in code.  Embedded in a complex codebase of many of the applications and websites we build - it can be easy to waste a handful of hours searching for the origins of a mysterious function.</li>
+									<li>Is it actually necessary to curry everything?  The answer is no - probably not.  Can it impede a programmer's ability in real world practice?  That’s up for debate, regardless - I think most are in agreement that arrow functions work great and solve most of the problems that currying solves.</li>
+								</ul>
+							</small>
+						</aside>
+					</section>
+
+					<section>
+    				<h4>The Basics</h4>
+						<h2>Functors</h2>
+
+						<img src="images/funk.jpg" alt="We want the funk">
+						<p>Not to be confused with funk-sters</p>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>Term "Functor" comes from Category Theory, a mathmatical concept</li>
+									<li>I won't begin to try and explain it's place in math, but as far as computer programming goes, let’s just say that category theory is simply "connecting the dots".</li>
+									<li>Some quick terminolgy</li>
+									<li><strong>Catgories</strong> are just sets with the same type. In JavaScript, they're arrays or objects that contain variables that are explicitly declared as numbers, strings, Booleans, dates, nodes, and so on.</li>
+									<li><strong>Morphisms </strong>are pure functions that, when given a specific set of inputs, always return the same output.</li>
+								</ul>
+							</small>
+						</aside>
+					</section>
+
+					<section class="fragments">
+						<h2>Functors</h2>
+						<ul>
+							<li class="fragment">Functors map between categories.</li>
+							<li class="fragment">They can be thought of as functions that lift values out of a container, morph them, and then put them into a new container.</li>
+							<li class="fragment">The first input is a morphism for the type and the second input is the container.</li>
+						</ul>
+
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
+// Note that the type signature for functors looks like so
+
+// my functor :: (a -> b) -> f a -> f b
+
+							</code>
+						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+									<li>This says, "give me a function that takes a and returns b and a box that contains a(s), and I'll return a box that contains b(s).</li>
+								</ul>
+							</small>
+						</aside>
+					</section>
+
+					<section class="fragments">
+						<h2>Functors</h2>
+						<p class="text-align-left">We already have one functor: map(). It grabs the values within the container, an array, and applies a function to it.</p>
+
+						<pre class="custom-pre">
+							<code class="hljs" data-trim contenteditable>
+var nums = [1, 4, 9];
+
+nums.map(Math.sqrt); // [1, 2, 3]
+
+							</code>
+						</pre>
+
+						<small><p class="fragment">However, we'll need to write it as a global function and not as a method of the array.  This allows us to write cleaner, safter code later on.</p></small>
+
+						<pre class="custom-pre fragment">
+							<code class="hljs" data-trim contenteditable>
+// map :: (a -> b) -> [a] -> [b]
+var map = function(f, a) {
+	return arr(a).map(func(f));
+}
+
+							</code>
+						</pre>
+					</section>
+
+
+
+					<section class="fragments">
+						<h4>The Basics</h4>
+						<h2>Composition</h2>
+						<ul>
+              <li class="fragment"><strong>Function Composition: </strong>The
+              combination of simple functions to build more sophisticated
+              ones.</li>
+              <li class="fragment"> Composing functions allows us to build complex functions from many simple, generic functions.</li>
+							<li class="fragment">By treating functions as building blocks for other functions, we can build truly modular applications with excellent readability and maintainability.</li>
+						</ul>
+            <aside class="notes">
+<p> Types of things we might want to compose: multi-step processes with stages
+that also occur in other multi-step processes - stages we might want to
+recreate later."</p>
+						</aside>
+
+					</section>
+
+					<section class="fragments">
+						<h2>Composition</h2>
+
+						<pre class="custom-pre">
+							<code class="hljs" data-trim contenteditable>
+// function that combines two functions together:
+// run function 'f' on the result of function 'g'
+var compose = function(f, g) {
+  return function(x) {
+	  return f(g(x));
+  };
+};
+
+// ES6 hyper-terse equivalent
+const compose = (f, g) => (x) => f(g(x));
+
+const upperCase = (str) => str.toUpperCase();
+const trim = (str) => str.replace(/^\s+I\s+$/g, '');
+const replaceIWithBang = (str) => str.replace(/[i]/g, '!');
+
+const labelMaker = compose(upperCase, trim);
+// Ramda's built-in compose method takes any number of functions and
+// will return them right-to-left
+const coolLabelMaker = R.compose(upperCase, replaceIWithBang, trim);
+
+let labels = [' iconic ', 'high five    ', ' bim bap'].map(labelMaker);
+let coolLabels = [' iconic ', 'high five    ', ' bim bap'].map(coolLabelMaker);
+
+console.log(labels); // [ 'ICONIC', 'HIGH FIVE', 'BIM BAP']
+console.log(coolLabels); // ["!CON!C", "H!GH F!VE", "B!M BAP"]
+
+							</code>
+						</pre>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+<li>Example: make a "label maker" function composed of "trim" and
+"upperCase".</li>
+									<li>Thank heavens Ramda has a method, R.compose so we don’t have to write our own (gets pretty gnarly when writing a custom compose function that takes more than two functions).</li>
+								</ul>
+							</small>
+						</aside>
+          </section>
+
+          <section class="fragments">
+          <h2>Composing in the wild</h2>
+          <p>Generating a valid HTTP request using an oauth signature</p>
+          <ul>
+            <li>request method (GET or POST)</li>
+            <li>base url ('https://api.twitter.com/1/statuses/update.json')</li>
+            <li>request parameters (status="Best tacos")</li>
+            <li>oauth parameters (consumer key, method, timestamp, token, oauth
+            version)
+              <ul>
+                <li>Percent encode every key and value that will be signed</li>
+                <li>Sort the list of parameters alphabetically by encoded
+                key</li>
+                <li>For each key/value pair:
+                  <ul>
+                  <li> append encoded key to the output
+                  string</li>
+                  <li>Append the '=' character to the output string.</li>
+                  <li>If there are any key/value pairs remaining, append the '&'
+                  character to the output string.</li>
+                  </ul>
+              </ul>
+            </li>
+          </ul>
+
+						<!-- notes -->
+						<aside class="notes">
+							<small>
+								<ul>
+<li>Using Yelp or Twitter's API necessitates generating a valid HTTP request
+with an oauth signature.  There are many libraries out there for this.</li>
+									<li>Thank heavens Ramda has a method, R.compose so we don’t have to write our own (gets pretty gnarly when writing a custom compose function that takes more than two functions).</li>
+								</ul>
+							</small>
+						</aside>
+              </section>
+
 				</section>
 
 				<!-- LILLY INCEPTION REFACTOR SLIDES/SECTION -->
@@ -951,34 +970,26 @@ var exportRoot;
 
 // set canvas id
 var Canvas = function() {
-
   canvas = document.getElementById('you-line');
-
 };
 
 // initialize canvas animation
 Canvas.prototype.init = function() {
-
   exportRoot = new lib02.Youtube_Beacon05_Lily_970x250();
-
   stage = new createjs.Stage(canvas);
   stage.addChild(exportRoot);
   stage.update();
   stage.enableDOMEvents(false);
-
 };
 
 // start canvas animation
 Canvas.prototype.start = function() {
-
   canvas.style.opacity = 1;
-
   createjs.Ticker.setFPS(lib02.properties.fps);
   createjs.Ticker.addEventListener('tick', stage);
-
 };
 
-module.exports = Canvas;
+module.exports = Canvas; //29 lines
 							</code>
 						</pre>
 
@@ -1001,33 +1012,25 @@ module.exports = Canvas;
 import createjs from 'createjs';
 
 export default function() {
-
   const youLine = document.getElementById('you-line');
   const exportRoot = new lib02.Youtube_Beacon05_Lily_970x250();
   const stage = new createjs.Stage(youLine);
-
   const canvas = Object.create({});
 
   canvas.init = () => {
-
     stage.addChild(exportRoot);
     stage.update();
     stage.enableDOMEvents(false);
-
   };
 
   canvas.start = () => {
-
     youLine.style.opacity = 1;
-
     createjs.Ticker.setFPS(lib02.properties.fps);
     createjs.Ticker.addEventListener('tick', stage);
-
   };
 
   return canvas;
-
-};
+}; //23 lines - 20% reduction
 
 							</code>
 						</pre>
@@ -1037,6 +1040,7 @@ export default function() {
 							<ul>
 								<li>canvas = Object.create({});</li>
 								<li>start() and init() are now arrow functions</li>
+                <li>20% reduction of code</li>
 							</ul>
 						</aside>
 
@@ -1050,7 +1054,6 @@ export default function() {
 'use strict';
 
 function Loader( manifest ) {
-
   this.manifest = manifest;
   this.loadItems = 0;
   this.loadItemsTotal = 0;
@@ -1060,12 +1063,10 @@ function Loader( manifest ) {
   };
 
   manifest.forEach(function(item) {
-    //console.log(item.src)
     this._loadImage(item.src);
   }.bind(this));
 
   this._loadScript('js/vendor.js');
-
 }
 
 Loader.prototype._loadImage = function( path ) {
@@ -1089,11 +1090,9 @@ Loader.prototype._onLoad = function ( id ) {
   if ( this.loadItemsTotal === this.loadItems ) {
     this._onLoadComplete();
   }
-
 };
 
 Loader.prototype._onLoadComplete = function () {
-  // this.callback();
   if (this.loadComplete === true) {
     return;
   }
@@ -1102,7 +1101,7 @@ Loader.prototype._onLoadComplete = function () {
   this._loadScript('js/main.build.js');
 };
 
-module.exports = Loader;
+module.exports = Loader; //50 lines of code
 							</code>
 						</pre>
 
@@ -1125,37 +1124,28 @@ export default function(manifest) {
 
   //Loads all the images in the manifest
   const loadImage = function(path) {
-
     return new Promise((resolve, reject) => {
-
       let img = new Image();
       img.addEventListener('load', resolve);
       img.addEventListener('error', reject);
       img.src = path.src;
-
     });
-
   };
 
   //loads vendor and main.build scripts, individually
   const loadScript = function(path) {
-
     return new Promise((resolve, reject) => {
       global.Enabler.loadScript(global.Enabler.getUrl(path), resolve);
-
     });
-
   };
 
   const loadImagePromise = manifest.map(loadImage);
   const loadVendor =  loadScript('js/vendor.js');
   const loadMain = () => loadScript('js/main.build.js');
 
-  //After all the images have loaded, then load in vendor, lastly load
-  //mainbuild.js
+  //After all the images have loaded, then load in vendor, lastly load mainbuild.js
   Promise.all(loadImagePromise.concat(loadVendor)).then(loadMain);
-
-};
+}; //24 lines of code - 52% reduction.
 
 
 							</code>
@@ -1165,6 +1155,7 @@ export default function(manifest) {
 						<aside class="notes">
 							<ul>
 								<li>using Promises</li>
+                <li>52% reduction of code</li>
 							</ul>
 						</aside>
 					</section>
@@ -1234,7 +1225,7 @@ Bootstrap.prototype.adVisibleHandler = function () {
 
 };
 
-module.exports = Load;
+module.exports = Load; //59 lines of code
 							</code>
 						</pre>
 
@@ -1275,9 +1266,7 @@ const enablerCheck = (method, state) => {
 
 // Load the manifest once the Ad is visible.
 const adVisibleHandler = () => {
-
   const loader = Loader(config.manifest);
-
 };
 
 // Enabler promises for initialize, load and visible states.
@@ -1287,7 +1276,7 @@ const visiblePromise = enablerCheck(Enabler.isVisible.bind(Enabler), studio.even
 
 // If everything is a-ok, show the Ad.
 Promise.all([loadYTApi(), initPromise, loadPromise, visiblePromise]).then(adVisibleHandler);
-
+//39 lines of code - 34% reduction of code
 
 							</code>
 						</pre>
@@ -1296,6 +1285,7 @@ Promise.all([loadYTApi(), initPromise, loadPromise, visiblePromise]).then(adVisi
 						<aside class="notes">
 							<ul>
 								<li>enablerCheck(): returns a promise</li>
+                <li>34% reduction of code</li>
 							</ul>
 						</aside>
 
@@ -1332,32 +1322,22 @@ var AnimationController = function () {
 
 // initialize controller, build all timelines.
 AnimationController.prototype.init = function() {
-
   this.globalTimeline = new TimelineMax({paused: true});
-
   this.globalTimeline.add(this.tl1(), 0.0);
   this.globalTimeline.add(this.tl2(), 21.25);
-
   return this.globalTimeline;
-
 };
 
 // timeline 0 - loading  wipe animation
 AnimationController.prototype.tl1 = function () {
-
   this.tl1 = new TimelineMax();
-
   this.tl1.to([this.underlay, this.loader], 0.4, {autoAlpha: 0, ease: Power1.easeOut});
-
   return this.tl1;
-
 };
 
 // timeline 4 - last zoom in of branding
 AnimationController.prototype.tl2 = function () {
-
   this.tl2 = new TimelineMax();
-
   this.tl2.fromTo(this.animationWrap, 3.225, {x: '-200%',
     autoAlpha: 1,
     scaleX: 10,
@@ -1368,52 +1348,39 @@ AnimationController.prototype.tl2 = function () {
     ease: Power3.easeOut});
 
   return this.tl2;
-
 };
 
 // make player visible, set animation wrap and fire tl0
 AnimationController.prototype.start = function () {
-
   this.player.style.opacity = 1;
   this.globalTimeline.play();
-
 };
 
 // play animation
 AnimationController.prototype.play = function () {
-
   this.globalTimeline.play();
-
 };
 
 // seek animation
 AnimationController.prototype.seek = function(time) {
-
   this.globalTimeline.seek(time);
-
 };
 
 // pause animation
 AnimationController.prototype.pause = function () {
-
   this.globalTimeline.pause();
-
 };
 
 // kill all animations, end banner
 AnimationController.prototype.endState = function () {
-
   if (this.endOnce) {
-
     TweenMax.killAll(true, true, true, true);
     TweenMax.set(this.animationWrap, {autoAlpha: 1});
     this.endOnce = false;
-
   }
-
 };
 
-module.exports = AnimationController;
+module.exports = AnimationController; //84 lines of code
 							</code>
 						</pre>
 
@@ -1436,7 +1403,6 @@ module.exports = AnimationController;
 import TweenMax from 'TweenMax';
 
 export default function() {
-
     // selectors
     const player = document.querySelector('#player');
     const animationWrap = document.querySelector('#animation');
@@ -1457,30 +1423,20 @@ export default function() {
     const animation = Object.create({});
 
     animation.init = () => {
-
       timeline = new TimelineMax({paused: true});
-
       timeline.add(fadeOutLoader(), 0.0);
       timeline.add(animateBranding(), 21.25);
-
       return timeline;
-
     };
 
     function fadeOutLoader() {
-
       const tl = new TimelineMax();
-
       tl.to([underlay, loader], 0.4, {autoAlpha: 0, ease: Power1.easeOut});
-
       return tl;
-
     };
 
     function animateBranding() {
-
       const tl = new TimelineMax();
-
       tl.fromTo(animationWrap, 3.225, {x: '-200%',
         autoAlpha: 1,
         scaleX: 10,
@@ -1489,16 +1445,12 @@ export default function() {
         scaleX: 1,
         scaleY: 1,
         ease: Power3.easeOut});
-
       return tl;
-
     };
 
     animation.start = () => {
-
       player.style.opacity = 1;
       timeline.play();
-
     };
 
     animation.play = () => timeline.play();
@@ -1508,20 +1460,16 @@ export default function() {
     animation.pause = () => timeline.pause();
 
     animation.endState = () => {
-
       if (endOnce) {
-
         TweenMax.killAll(true, true, true, true);
         TweenMax.set(animationWrap, {autoAlpha: 1});
         endOnce = false;
-
       }
-
     };
 
     return animation;
+}; //70 lines of code - 16% reduction
 
-};
 
 							</code>
 						</pre>
@@ -1532,6 +1480,7 @@ export default function() {
 								<li>Use of ES6 import and export</li>
 								<li>animation = Object.create({});</li>
 								<li>play(), seek(), and init() are now arrow functions</li>
+                <li>16% reduction in size from original</li>
 							</ul>
 						</aside>
 
@@ -1744,7 +1693,7 @@ export default function() {
 
           <section class="fragments">
             <h2>When you don't mutate global state...</h2>
-            <p>You drastically reduce the liklihood of bugs</p>
+            <p>You drastically reduce the likelihood of bugs</p>
               <ul>
                 <li class="fragment">Functions are no longer affected by
                 "hidden state"</li>
