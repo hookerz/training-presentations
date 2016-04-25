@@ -546,7 +546,7 @@ var customers = [
 							<code class="hljs" data-trim contenteditable>
 var reachable = function() {
   var valid = [];
-    vor(var i = 0; i < customers.length; i++) {
+    for (var i = 0; i < customers.length; i++) {
       var sanitizedPhone = customers[i].phone.replace(/\D/g, '');
       if(sanitizedPhone.length === 10 || sanitizedPhone.length === 11) {
         valid.push(customers[i]);
