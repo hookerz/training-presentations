@@ -832,18 +832,15 @@ nums.map(Math.sqrt); // [1, 2, 3]
 							</code>
 						</pre>
 
-						<p class="fragment">However, to take advantage of this approach, lets improve it's versatility by splitting out a named function, allowing us to write cleaner, safer code in the process</p>
+						<p class="fragment">However, we'll need to write it as a global function and not as a method of the array object. This will allow us to write cleaner, safer code later on.</p>
 
 						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
 
-var animals = ["cat","dog","fish"];
-
-function getLength(word) {
-  return word.length;
+// map :: (a -> b) -> [a] -> [b]
+var map = function(f, a) {
+  return arr(a).map(func(f));
 }
-
-animals.map(getLength); //[3, 3, 4]
 
 							</code>
 						</pre>
