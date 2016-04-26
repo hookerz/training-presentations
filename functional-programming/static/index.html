@@ -632,46 +632,11 @@ numbers.reduce((x, y) => Math.max(x, y), 0); // 4
 									<li>the ruduce() function is used to accumulate all the values of the array into one.</li>
 									<li>The callback needs to return the logic to be performed to combine the objects.</li>
 									<li>In the case of <strong>Numbers: </strong>they're usually added together to get a sum or multiplied together to get a product.</li>
-									<li>With <strong>Strings: </strong>, strings often appended together</li>
+									<li>With <strong>Strings: </strong>, strings are often appended together</li>
 								</ul>
 							</small>
 						</aside>
 					</section>
-
-					<!-- <section>
-
-            			<h4>The Basics</h4>
-						<h2>reduce()</h2>
-						<pre class="custom-pre">
-							<code class="hljs" data-trim contenteditable>
-var numbers = [1,2,3,4];
-
-numbers.reduce( (newArray, number) => {
-   newArray.push(number);
-  
-  if(number % 2 === 0) {
-    // if even number, add it a second time
-    newArray.push(number);
-  }
-  
-  return newArray
-  
-}, []); // [1, 2, 2, 3, 4, 4]
-
-							</code>
-						</pre>
-
-						<aside class="notes">
-							<small>
-								<ul>
-									<li>Note how we start out with [] as initial value, and just add the value to it one or more times.</li>
-									<li>technically, violates the "no mutation" rule, it's okay in this particular situation</li>
-									<li>the array object is created explicitly for this reduce call, so it can't cause side-effects anywhere else in the code</li>
-								</ul>
-							</small>
-						</aside>
-					</section> -->
-
 
 					<section>
 						<p>Have you heard of Ramda or currying?</p>
@@ -867,14 +832,18 @@ nums.map(Math.sqrt); // [1, 2, 3]
 							</code>
 						</pre>
 
-						<small><p class="fragment">However, we'll need to write it as a global function and not as a method of the array.  This allows us to write cleaner, safter code later on.</p></small>
+						<p class="fragment">However, to take advantage of this approach, lets improve it's versatility by splitting out a named function, allowing us to write cleaner, safer code in the process</p>
 
 						<pre class="custom-pre fragment">
 							<code class="hljs" data-trim contenteditable>
-// map :: (a -> b) -> [a] -> [b]
-var map = function(f, a) {
-	return arr(a).map(func(f));
+
+var animals = ["cat","dog","fish"];
+
+function getLength(word) {
+  return word.length;
 }
+
+animals.map(getLength); //[3, 3, 4]
 
 							</code>
 						</pre>
@@ -1595,7 +1564,7 @@ ReactDOM.render(&lt;Timer /&gt;, mountNode);
 						<!-- notes -->
 						<aside class="notes">
 							<ul>
-								<li>This is example of stateful component</li>
+								<li>This is an example of a stateful component</li>
 								<li>To allow reuse of components each of the components has its own unique state accessed via this.state</li>
 								<li>When using stateful components, initial state is defined through getInitialState method</li>
 								<li>In order to keep up with FP principles and get advantage out of them, this function should be pure in general i.e. should not depend on anything other than component state &amp; properties and generate any side effects.</li>
