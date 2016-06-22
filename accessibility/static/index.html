@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/zenburn.css">
+		<link rel="stylesheet" href="css/hook.css">
+		<link rel="stylesheet" href="css/index.css">
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			
+			<!-- hook svg -->
+			<a href="http://www.byhook.com" target="_blank" id="logoLink">
+				<svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				   viewBox="0 0 88 131" style="enable-background:new 0 0 88 131;" xml:space="preserve">
+				  <g>
+				    <g>
+				      <path class="logo-fill" d="M63.7,0.1L63.7,0.1C44.3,0.1,44.3,14.9,44.3,24v14.7c0,9.1,0,23.9,19.3,23.9h0C83,62.7,83,47.9,83,38.7V24
+				        C83,14.9,83,0.1,63.7,0.1z M68.2,42.2c0,2.2,0,5.7-4.6,5.7s-4.6-3.5-4.6-5.7V20.6c0-2.2,0-5.7,4.6-5.7s4.6,3.5,4.6,5.7V42.2z"/>
+				      <path class="logo-fill" d="M24,1.2v21.6c0,0.7-0.5,1.2-1.2,1.2h-6.9c-0.7,0-1.2-0.5-1.2-1.2V1.2c0-0.7-0.5-1.2-1.2-1.2H1.2
+				        C0.5,0,0,0.5,0,1.2V24v14.8v22.7c0,0.7,0.5,1.2,1.2,1.2h12.3c0.7,0,1.2-0.5,1.2-1.2V39.9c0-0.7,0.5-1.2,1.2-1.2h6.9
+				        c0.7,0,1.2,0.5,1.2,1.2v21.6c0,0.7,0.5,1.2,1.2,1.2h12.3c0.7,0,1.2-0.5,1.2-1.2V38.8V24V1.2c0-0.7-0.5-1.2-1.2-1.2H25.2
+				        C24.5,0,24,0.5,24,1.2z"/>
+				    </g>
+				    <path class="logo-fill" d="M19.3,68.5L19.3,68.5C0,68.5,0,83.2,0,92.4v14.7c0,9.1,0,23.9,19.3,23.9h0c19.3,0,19.3-14.7,19.3-23.9V92.4
+				      C38.7,83.2,38.7,68.5,19.3,68.5z M23.9,110.5c0,2.2,0,5.7-4.6,5.7h0c-4.6,0-4.6-3.5-4.6-5.7V88.9c0-2.2,0-5.7,4.6-5.7h0
+				      c4.6,0,4.6,3.5,4.6,5.7V110.5z"/>
+				    <path class="logo-fill" d="M72.5,131H87c0.8,0,1.3-0.8,0.9-1.5l-15.8-29.3c-0.1-0.3-0.2-0.6,0-0.9l12.5-29.6c0.3-0.7-0.2-1.4-0.9-1.4
+				      H69.8c-0.4,0-0.8,0.2-0.9,0.6l-9.2,21.8C59.5,91.1,59,91,59,90.6V69.4c0-0.6-0.5-1-1-1H45.3c-0.6,0-1,0.5-1,1V130c0,0.6,0.5,1,1,1
+				      H58c0.6,0,1-0.5,1-1v-21.6c0-0.4,0.5-0.5,0.6-0.2l12,22.3C71.8,130.8,72.1,131,72.5,131z"/>
+				  </g>
+				</svg>
+			</a>
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Accessibility</h1>
+					<p>
+						<small>Created by <a href="#" target="_blank">Jessica Agyemang</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>What is Web Accessibility?</h2>
+					<ul>
+						<li>Web accessibility means that people with disabilities can use the Web.</li>
+						<li>Web accessibility can also benefit people without disabilities in that accessible sites are more flexible</li>
+					</ul>
+
+					<aside class="notes">
+						<p>Web accessibility means that people with disabilities can use the Web. More specifically, they can perceive, understand, navigate, and interact with the Web. Web accessibility encompasses all disabilities that affect access to the Web, including visual, auditory, physical, speech, cognitive, and neurological disabilities. Web accessibility also benefits people without disabilities in that accessible sites are flexible even for people with slow Internet connections, people with "temporary disabilities", such as a broken arm, and people with changing abilities due to aging, people with low literacy or not fluent in the language.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Why Web Accessibility is Important</h2>
+					<ul>
+						<li>The Web is an increasingly important resource in many aspects of life: education, employment, government, commerce, healthcare, recreation, and more.</li>
+						<li>The Web also offers the possibility of unprecedented access to information and interaction for many people with disabilities.</li>
+						<li>It is essential that the Web be accessible in order to provide equal access and equal opportunity to people with disabilities</li>
+					</ul>
+
+					<aside class="notes">
+						<p>The Web is an increasingly important resource in many aspects of life. Technology is being adopted rapidly in education, employment, government, commerce, healthcare, and recreation, which is great! But what this means is that it is essential for the Web to be equally accessible to everyone, including people with disabilities. This importance is especially underscored by the fact that accessibility barriers to print, audio, and visual media can be much more easily overcome through web technologies.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Web Content Accessibility Guidelines</h2>
+					<p>The Web Content Accessibility Guidelines (WCAG) are a technical standard developed by the W3C, in cooperation with individuals and organizations around the world, with a goal of providing a single shared standard for web content accessibility that meets the needs of individuals, organizations, and governments internationally.</p>
+					<ul>
+						<li>WCAG 2.0 is the current stable, referenceable version</li>
+						<li>It has 12 guidelines that are organized under 4 principles:</li>
+						<ul>
+							<li>Perceivable</li>
+							<li>Operable</li>
+							<li>Understandable</li>
+							<li>Robust</li>
+						</ul>
+						<li>For each guideline, there are testable success criteria, which fall under three levels: A, AA, AAA</li>
+					</ul>
+					<aside class="notes">
+						<p>The Web Content Accessibility Guidelines are a technical standard developed by the W3C with input from individuals and organizations around the world, with a goal of providing a common, widely-used standard for web content accessibility. WCAG is currently on version 2.0. WCAG is organized into 12 guidelines that are categorized under 4 principles.</p>
+						<p>For each guideline, there are testable success criteria, which fall under three levels: A, AA, AAA, with A meeting basic accessibility guidelines and AAA meeting the most advanced guidelines.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>WCAG 2.0 at a Glance</h2>
+					<small>
+						<ul>
+							<li>Perceivable</li>
+							<ul>
+								<li>Provide text alternatives for non-text content</li>
+								<li>Provide captions and other alternatives for multimedia</li>
+								<li>Create content that can be presented in different ways, including by assistive technologies, without losing meaning</li>
+								<li>Make it easier for users to see and hear content</li>
+							</ul>
+							<li>Operable</li>
+							<ul>
+								<li>Make all functionality available from a keyboard</li>
+								<li>Give users enough time to read and use content</li>
+								<li>Do not use content that causes seizures</li>
+								<li>Help users navigate and find content</li>
+							</ul>
+							<li>Understandable</li>
+							<ul>
+								<li>Make text readable and understandable</li>
+								<li>Make content appear and operate in predictable ways</li>
+								<li>Help users avoid and correct mistakes</li>
+							</ul>
+							<li>Robust</li>
+							<ul>
+								<li>Maximize compatibility with current and future user tools</li>
+							</ul>
+						</ul>
+					</small>
+					<aside class="notes">
+						<p>Criteria for safe flashing content is a flash frequency of 3 times per second or fewer.</p></aside>
+				</section>
+
+				<section>
+					<h2>WAI-ARIA</h2>
+					<ul>
+						<li>The Web Accessibility Initiative (WAI) develops strategies, guidelines, and resources to help make the Web accessible</li>
+						<li>WAI-ARIA, the Accessible Rich Internet Applications (ARIA) suite, defines a way to make web content and web applications more accessible</li>
+						<li>It especially helps with dynamic content and advanced user interface controls developed with AJAX, HTML, JavaScript, and related technologies</li>
+					</ul>
+					<aside class="notes">
+						<p>The Web Accessibility Initiative (WAI) develops guidelines widely regarded as the international standard for web accessibility. These guidelines are known as WAI-ARIA, with ARIA meaning Accessible Rich Internet Applications. Currently certain functionality used in websites is not available to some users with disabilities, especially people who rely on screen readers and people who cannot use a mouse. WAI creates support materials to help understand and make implementing web accessibility easier for web authors, This includes defining new ways for functionality to be provided to assistive technology. It especially helps with dynamic content and advanced user interface controls developed with AJAX, HTML, JavaScript, and related technologies.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Mobile Accessibility</h2>
+					<ul>
+						<li>People with disabilities using computers have similar interaction limitations as people without disabilities who are using mobile devices</li>
+						<li>As result, there is also significant overlap between the design solutions for both</li>
+						<li>There are not separate guidelines for mobile accessibility &mdash; mobile is covered in existing accessibility guidelines</li>
+					</ul>
+
+					<aside class="notes">
+						<p>People with disabilities using computers have similar interaction limitations as people without disabilities who are using mobile devices; As result, there is also significant overlap between the design solutions for both. So mobile accessibility is already covered in existing guidelines.</p>
+						<p>For example, let's say that something on a webpage is conveyed solely with color. In the context of someone who is disabled, the user could be blind or colorblind and therefore perceive color incorrectly or not at all. In the context of someone using a mobile device, the user could be outside in bright light, and therefore the color could be washed out.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Making AJAX and Related Technologies Accessible</h2>
+					<ul>
+						<li>Many web applications developed with AJAX pose additional accessibility challenges.</li>
+						<li>WAI-ARIA provides a framework for adding attributes to identify features for user interaction, how they relate to each other, and their current state.</li>
+						<li>For example, with WAI-ARIA, developers can identify regions of pages and enable keyboard users to easily move among regions rather than having to press Tab many times</li>
+						<li>WAI-ARIA also includes technologies to map controls, AJAX live regions, and events to accessibility APIs, including custom controls used for rich Internet applications</li>
+					</ul>
+					<aside class="notes">
+						<p>Websites and web applications are increasingly using more advanced and complex user interface controls. To provide an accessible user experience, assistive technologies need to be able to interact with these controls. In particular, the use of AJAX poses additional challenges. For example, if the content of a webpage changes in response to user actions or time- or event-based updates, that new content may not be available to some people. WAI-ARIA provides a framework for adding attributes to identify features for user interaction, how they relate to each other, and their current state.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Technical Solutions</h2>
+					<ul>
+						<li>WAI-ARIA provides web authors with the following:</li>
+						<ul>
+							<li>Roles to describe the type of widget presented, such as "menu", "slider", and "progressmeter"</li>
+							<li>Roles to describe the structure of the web page, such as headings, regions, and tables</li>
+							<li>Properties to describe the state widgets are in, such as "checked" for a checkbox, or "haspopup" for a menu</li>
+							<li>Properties for drag-and-drop that describe drag sources and drop targets*</li>
+							<li>Properties to define live regions of a page that are likely to get updates (AJAX-powered)</li>
+							<li>A way to provide keyboard navigation for the web objects and events</li>
+						</ul>
+					</ul>
+					<aside class="notes">
+						<p></p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Building Accessible Applications with WAI-ARIA</h2>
+					<p>The following steps are recommended when WAI-ARIA is applied to content:</p>
+					<ol>
+						<li>Use native markup when possible.</li>
+						<li>Apply the appropriate roles.</li>
+						<li>Preserve semantic structure.</li>
+						<li>Build relationships.</li>
+						<li>Set states and properties in response to events.</li>
+						<li>Support full, usable keyboard navigation.</li>
+						<li>Syncronize the visual interface with the accessible interface.</li>
+					</ol>
+					<aside class="notes"></aside>
+				</section>
+
+				<section>
+					<h2>1. Use Native Markup When Possible</h2>
+					<small>
+						<ul>
+							<li>Use the semantic elements that are defined in the host markup language.</li>
+							<li>For example, with HTML, it is better to use the native checkbox than to use a div element with the role "checkbox" as these should already by accessible through the browser.</li>
+							<li>WAI-ARIA roles, states, and properties are best used when the markup does not support all the semantics required.</li>
+							
+						</ul>
+					</small>
+<pre class="">
+	<code>
+// Ok
+<div role="navigation">
+  ...
+</div>
+
+// Better
+<nav role="navigation">
+  ...
+</nav>
+	</code>
+</pre>
+					<aside class="notes">
+						<p>Use the elements that are available in the markup language. For example, with HTML, it is better to use the native checkbox than to use a div element with a role attribute set to "checkbox" as these should already by accessible through the browser. We should also use markup to convey meaning and structure. This means using HTML5 elements such as nav, header, section, footer, rather than divs. If a native element doesn't exist for what you're trying to make, WAI-ARIA roles, states, and properties can provide additional meaning (ex. role="search" to identify search functionality). Keep in mind that if you add a role attribute to an element, it will override and change the behavior of that element</p>
+						<p></p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>2. Apply the Appropriate Roles</h2>
+					<small>
+						<ul>
+							<li>Roles convey additional information that the assistive technologies need to anticipate the behavior of the elements inside the application, such as how to present the corresponding WAI-ARIA states and properties to the user.</li>
+							<li>Set roles to make sure elements behave predictably and correctly describe the behavior of each element wihin the application.</li>
+              <li>When a role attribute is added to an element, the semantics and behavior of the element are augmented or overridden by the role behavior.</li>
+							<li>Roles are element types and you must not change role values over time or with user actions.</li>
+							<li>If you wish to change a role, you must do so by deleting the associated element and its children and replace it with a new element with the appropriate role</li>
+						</ul>
+					</small>
+<pre>
+	<code>
+<a href="http://example.com" role="button">Sign Up</a>
+	</code>
+</pre>
+					<aside class="notes">
+						<p>Set roles to make sure elements behave predictably and correctly describe the behavior of each element wihin the application, unless of course the element behaviors are fully described by the native markup language. Roles are element types and you must not change role values over time or with user actions. If you wish to change an element's role, you must delete the element and its children and replace it with a new element with a new role.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>3. Preserve Semantic Structure</h2>
+          <small>
+  					<ul>
+  						<li>Form logical groups within user interface widgets or components</li>
+  						<li>Identify large perceivable regions and apply a <a href="https://www.w3.org/TR/wai-aria/roles#landmark_roles">landmark role</a> to those areas.</li>
+  						<li>For areas that are likely to change through AJAX, you can specify it as a live region by using the aria-live attribute or a <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#chobet">special case live region role</a></li>
+  					</ul>
+          </small>
+<pre>
+  <code>
+// Example usage of landmark roles
+<div role="main">
+
+</div>
+
+
+// Example usage of live regions
+<ul id="members" aria-live="polite" aria-relevant="additions removals">
+  ...
+</ul>
+
+
+//Example of a special case live region role
+<div role="log" id="chatlog">
+</div>
+
+  </code>
+</pre>
+					<aside class="notes">
+						<p>Structural information is critical to providing context to persons with disabilities. Identify large perceivable regions and apply a "landmark" role to those areas as this will help facilitate keyboard navigation. For areas of the page that contain a group of elements that are likely to change with AJAX or other means, it may be specified as a live region, through the use of the aria-live attribute or it may be marked with pre-defined roles, such as "log" which has assumed behavior of a live region. Examples of live regions include dynamically updated content such as sports stats or stock information, logs where new information is being added like a Slack chat room, and notification areas. Live regions enable assistive technologies to be informed of updates without losing the users' place in the content.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>4. Build Relationships</h2>
+          <small>
+  					<ul>
+  						<li>Look for relationships between elements and mark them using the most appropriate property or attribute</li>
+  						<li>Some relationships are determined automatically from the markup language, like 'label' elements associated with 'input' elements in HTML</li>
+  						<li><a href="https://www.w3.org/TR/2010/WD-wai-aria-20100916/states_and_properties#attrs_relationships">List of Relationship Attributes</a></li>
+  					</ul>
+          </small>
+<pre>
+  <code>
+<button aria-label="Close" aria-describedby="description-close">X</button>
+
+  ...
+
+<p id="description-close ">Closing this window will discard any information entered.</p>
+  </code>
+</pre>
+					<aside class="notes">
+						<p>Look for relationships between elements and mark them using the most appropriate property or attribute. For example, if a page contains search form and a search results region, mark each container as a 'region' and set the 'aria-controls' attribute of the search form to reference the search results.</p>
+						<p>Some relationships are determined automatically from the markup language, like 'label' elements associated with 'input' elements in HTML. So these relationships don't need to be defined again.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>5. Set States &amp; Properties in Response to Events</h2>
+          <small>
+  					<ul>
+  						<li>Set and change states and properties during the element's life cycle</li>
+  						<li>Only use attributes supported for the chosen role or element.</li>
+  						<li><a href="https://www.w3.org/TR/2010/WD-wai-aria-20100916/states_and_properties#state_prop_def">WAI-ARIA: Definitions of States and Properties</a></li>
+  					</ul>
+          </small>
+<pre>
+  <code>
+// Example of a property
+<button aria-label="Close">X</button>
+
+// Example of a state
+<div tabindex="0" role="button" aria-pressed="false">Toggle</div>
+  </code>
+</pre>
+					<aside class="notes">
+						<p>Once the role for an element has been set, change states and properties as appropriate during the element's life cycle. You'll usually do this in response to user input events.</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>6. Support Full, Usable Keyboard Navigation</h2>
+          <small>
+  					<ul>
+  						<li>Rich internet applications should allow the user to tab to significant components and use the arrow keys to navigate within a complex component, such as a menu</li>
+  						<li>Tabbing on a page should follow a logical navigation structure</li>
+  					</ul>
+          </small>
+<pre>
+  <code>
+// tab-index=-1 makes element focusable, but cannot be tabbed to by the user
+<div role="group" id="error" tab-index="-1">
+  ...
+</div>
+
+/* tab-index=0 makes element focusable and adds it to the normal tab sequence 
+based on its location in the source code */
+<div tabindex="0" role="button" aria-pressed="false">Toggle</div>
+
+// tabindex=1+ makes element focusable and adds it to the tab sequence based on its value
+// Avoid using tabindex=1+!
+ 
+<label for="username">Username:</label>
+<input type="text" id="username" tabindex="3">
+
+<label for="password">Password:</label>
+<input type="password" id="password" tabindex="1">
+
+<input type="submit" value="Log in" tabindex="2">
+  </code>
+</pre>
+					<aside class="notes">
+						<p>Usable keyboard navigation in a rich internet application is different from the tabbing paradigm in a static document.</p>
+            <p>The tabindex attribute enables focus to be moved via keyboard to HTML elements. Each element that needs to receive keyboard focus needs to have a tabindex attribute set. Elements with tabindex of -1 will not be added to the tab sequence but are enabled to receive keyboard focus. Elements with tabindex = 0 will be added to the tab sequence based on document order. Elements with tabindex greater than 0 will be added to the tab sequence based on the tabindex value. Avoid using this because it causes problems and is difficult to maintain. </p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>7. Synchronize the Visual and Accessible Interfaces</h2>
+					<ul>
+						<li>Ensure that the visual interface is synced with the accessible interface</li>
+						<li>For example, the author should use the appropriate WAI-ARIA attribute on a form element that is visually styled to appear required ('aria-required')</li>
+					</ul>
+					<aside class="notes">
+						<p>The last step is to make sure that the visual interface is synced up with the accessible interface. What this does is it allows the UI to be perceivable to the user as well as assistive technologies. For example, the author should use the appropriate WAI-ARIA attribute on a form element that is visually styled to appear required ('aria-required')</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Accessibility Testing</h2>
+          <ul>
+            
+          </ul>
+
+					<aside class="notes">
+						<p></p>
+					</aside>
+				</section>
+
+        <section>
+          <h2>Resources</h2>
+          <ul>
+            
+          </ul>
+
+          <aside class="notes">
+            <p></p>
+          </aside>
+        </section>
+				
+
+			</div>
+
+		</div>
+
+		<script src="js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'js/plugin/zoom-js/zoom.js', async: true },
+					{ src: 'js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+		<!-- <script src="js/vendor.js"></script> -->
+		<script src="js/main.build.js"></script>
+
+	</body>
+</html>
