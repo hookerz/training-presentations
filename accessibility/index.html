@@ -53,21 +53,21 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Accessibility</h1>
+					<h1>Web Accessibility</h1>
 					<p>
-						<small>Created by <a href="#" target="_blank">Jessica Agyemang</a></small>
+						<small>Created by <a href="http://jessicaagyemang.com" target="_blank">Jessica Agyemang</a></small>
 					</p>
 				</section>
-
+ 
 				<section>
 					<h2>What is Web Accessibility?</h2>
 					<ul>
 						<li>Web accessibility means that people with disabilities can use the Web.</li>
-						<li>Web accessibility can also benefit people without disabilities in that accessible sites are more flexible</li>
+						<li>Web accessibility can also benefit people without disabilities in that accessible sites are more flexible.</li>
 					</ul>
 
 					<aside class="notes">
-						<p>Web accessibility means that people with disabilities can use the Web. More specifically, they can perceive, understand, navigate, and interact with the Web. Web accessibility encompasses all disabilities that affect access to the Web, including visual, auditory, physical, speech, cognitive, and neurological disabilities. Web accessibility also benefits people without disabilities in that accessible sites are flexible even for people with slow Internet connections, people with "temporary disabilities", such as a broken arm, and people with changing abilities due to aging, people with low literacy or not fluent in the language.</p>
+						<p>In the most simple terms, web accessibility means that people with disabilities can use the Web. More specifically, they can perceive, understand, navigate, and interact with the Web. Web accessibility encompasses all disabilities that affect access to the Web, including visual, auditory, physical, speech, cognitive, and neurological disabilities. Having a more accessible web also benefits people without disabilities in that accessible sites are more flexible for people with slow Internet connections, people with "temporary disabilities", such as a broken arm, people with changing abilities due to aging, and people with low literacy or those who are not fluent in the language.</p>
 					</aside>
 				</section>
 
@@ -76,11 +76,10 @@
 					<ul>
 						<li>The Web is an increasingly important resource in many aspects of life: education, employment, government, commerce, healthcare, recreation, and more.</li>
 						<li>The Web also offers the possibility of unprecedented access to information and interaction for many people with disabilities.</li>
-						<li>It is essential that the Web be accessible in order to provide equal access and equal opportunity to people with disabilities</li>
 					</ul>
 
 					<aside class="notes">
-						<p>The Web is an increasingly important resource in many aspects of life. Technology is being adopted rapidly in education, employment, government, commerce, healthcare, and recreation, which is great! But what this means is that it is essential for the Web to be equally accessible to everyone, including people with disabilities. This importance is especially underscored by the fact that accessibility barriers to print, audio, and visual media can be much more easily overcome through web technologies.</p>
+						<p>Why is web accessibility important? Why should we care? The Web has become a very important and integral part of many aspects of our lives. Technology is being adopted rapidly in education, employment, government, commerce, healthcare, and recreation, which is great! But what this means is that it is essential for the Web to be equally accessible to everyone, including people with disabilities. This importance is especially underscored by the fact that accessibility barriers to print, audio, and visual media can be much more easily overcome through web technologies. For these reasons, it is essential that the Web be accessible in order to provide equal access and equal opportunity to people with disabilities.</p>
 					</aside>
 				</section>
 
@@ -99,7 +98,7 @@
 						<li>For each guideline, there are testable success criteria, which fall under three levels: A, AA, AAA</li>
 					</ul>
 					<aside class="notes">
-						<p>The Web Content Accessibility Guidelines are a technical standard developed by the W3C with input from individuals and organizations around the world, with a goal of providing a common, widely-used standard for web content accessibility. WCAG is currently on version 2.0. WCAG is organized into 12 guidelines that are categorized under 4 principles.</p>
+						<p>The Web Content Accessibility Guidelines are a technical standard developed by the W3C with input from individuals and organizations around the world. Their main goal is to provide a common, widely-used standard for web content accessibility. WCAG is currently on version 2.0 and it's organized into 12 guidelines that are categorized under 4 principles, which we'll go over in the next slide.</p>
 						<p>For each guideline, there are testable success criteria, which fall under three levels: A, AA, AAA, with A meeting basic accessibility guidelines and AAA meeting the most advanced guidelines.</p>
 					</aside>
 				</section>
@@ -135,7 +134,8 @@
 						</ul>
 					</small>
 					<aside class="notes">
-						<p>Criteria for safe flashing content is a flash frequency of 3 times per second or fewer.</p></aside>
+						<p>Criteria for safe flashing content is a flash frequency of 3 times per second or fewer.</p>
+          </aside>
 				</section>
 
 				<section>
@@ -146,7 +146,7 @@
 						<li>It especially helps with dynamic content and advanced user interface controls developed with AJAX, HTML, JavaScript, and related technologies</li>
 					</ul>
 					<aside class="notes">
-						<p>The Web Accessibility Initiative (WAI) develops guidelines widely regarded as the international standard for web accessibility. These guidelines are known as WAI-ARIA, with ARIA meaning Accessible Rich Internet Applications. Currently certain functionality used in websites is not available to some users with disabilities, especially people who rely on screen readers and people who cannot use a mouse. WAI creates support materials to help understand and make implementing web accessibility easier for web authors, This includes defining new ways for functionality to be provided to assistive technology. It especially helps with dynamic content and advanced user interface controls developed with AJAX, HTML, JavaScript, and related technologies.</p>
+						<p>The Web Accessibility Initiative (WAI) develops guidelines widely regarded as the international standard for web accessibility. These guidelines are known as WAI-ARIA, with ARIA meaning Accessible Rich Internet Applications. Currently certain functionality used in websites is not available to some users with disabilities, especially people who rely on screen readers and people who cannot use a mouse. WAI creates support materials to help understand and make implementing web accessibility easier for web authors. This includes defining new ways for functionality to be provided to assistive technology. It especially helps with dynamic content and advanced user interface controls developed with AJAX, HTML, JavaScript, and related technologies.</p>
 					</aside>
 				</section>
 
@@ -159,7 +159,7 @@
 					</ul>
 
 					<aside class="notes">
-						<p>People with disabilities using computers have similar interaction limitations as people without disabilities who are using mobile devices; As result, there is also significant overlap between the design solutions for both. So mobile accessibility is already covered in existing guidelines.</p>
+						<p>People with disabilities using computers have similar interaction limitations as people without disabilities who are using mobile devices; As result, there is also significant overlap between the design solutions for both. So mobile accessibility is already covered in existing WAI-ARIA and WCAG guidelines.</p>
 						<p>For example, let's say that something on a webpage is conveyed solely with color. In the context of someone who is disabled, the user could be blind or colorblind and therefore perceive color incorrectly or not at all. In the context of someone using a mobile device, the user could be outside in bright light, and therefore the color could be washed out.</p>
 					</aside>
 				</section>
@@ -168,12 +168,11 @@
 					<h2>Making AJAX and Related Technologies Accessible</h2>
 					<ul>
 						<li>Many web applications developed with AJAX pose additional accessibility challenges.</li>
-						<li>WAI-ARIA provides a framework for adding attributes to identify features for user interaction, how they relate to each other, and their current state.</li>
-						<li>For example, with WAI-ARIA, developers can identify regions of pages and enable keyboard users to easily move among regions rather than having to press Tab many times</li>
+						<li>With WAI-ARIA, developers can identify regions of pages and enable keyboard users to easily move among regions rather than having to press Tab many times</li>
 						<li>WAI-ARIA also includes technologies to map controls, AJAX live regions, and events to accessibility APIs, including custom controls used for rich Internet applications</li>
 					</ul>
 					<aside class="notes">
-						<p>Websites and web applications are increasingly using more advanced and complex user interface controls. To provide an accessible user experience, assistive technologies need to be able to interact with these controls. In particular, the use of AJAX poses additional challenges. For example, if the content of a webpage changes in response to user actions or time- or event-based updates, that new content may not be available to some people. WAI-ARIA provides a framework for adding attributes to identify features for user interaction, how they relate to each other, and their current state.</p>
+						<p>Websites and web applications are increasingly using more advanced and complex user interface controls. To provide an accessible user experience, assistive technologies need to be able to interact with these controls. In particular, the use of AJAX poses additional challenges. For example, if the content of a webpage changes in response to user actions or time- or event-based updates, that new content may not be available to some people. With WAI-ARIA, you can map out controls and specify AJAX live regions to give assistive technologies the access they need. WAI-ARIA also provides a framework for adding attributes to identify features for user interaction, how they relate to each other, and their current state.</p>
 					</aside>
 				</section>
 
@@ -191,7 +190,8 @@
 						</ul>
 					</ul>
 					<aside class="notes">
-						<p></p>
+						<p>WAI-ARIA provides web authors with quite a few tools to make our websites more accessible. They have roles that describe the type of widget being presented. These are known as widget roles. Some examples are a menu, a slider, or a progressmeter.</p>
+						<p>There are also landmark roles, which are roles that describe major parts of a webpage. For instance, there are roles for headings, regions, tables, and navigation.</p>
 					</aside>
 				</section>
 
@@ -207,7 +207,9 @@
 						<li>Support full, usable keyboard navigation.</li>
 						<li>Syncronize the visual interface with the accessible interface.</li>
 					</ol>
-					<aside class="notes"></aside>
+					<aside class="notes">
+						<p>Next, we'll be getting into building accessible applications with WAI-ARIA and taking a closer look at each of the recommended steps with some simple code examples.</p>
+					</aside>
 				</section>
 
 				<section>
@@ -217,10 +219,9 @@
 							<li>Use the semantic elements that are defined in the host markup language.</li>
 							<li>For example, with HTML, it is better to use the native checkbox than to use a div element with the role "checkbox" as these should already by accessible through the browser.</li>
 							<li>WAI-ARIA roles, states, and properties are best used when the markup does not support all the semantics required.</li>
-							
 						</ul>
 					</small>
-<pre class="">
+<pre>
 	<code>
 // Ok
 <div role="navigation">
@@ -234,29 +235,24 @@
 	</code>
 </pre>
 					<aside class="notes">
-						<p>Use the elements that are available in the markup language. For example, with HTML, it is better to use the native checkbox than to use a div element with a role attribute set to "checkbox" as these should already by accessible through the browser. We should also use markup to convey meaning and structure. This means using HTML5 elements such as nav, header, section, footer, rather than divs. If a native element doesn't exist for what you're trying to make, WAI-ARIA roles, states, and properties can provide additional meaning (ex. role="search" to identify search functionality). Keep in mind that if you add a role attribute to an element, it will override and change the behavior of that element</p>
-						<p></p>
+						<p> The first step is to use the elements that are available in the markup language. For example, with HTML, it is better to use the native checkbox than to use a div element with a role attribute set to "checkbox" as these should already by accessible through the browser. We should also use markup to convey meaning and structure. This means using HTML5 elements such as nav, header, section, footer, rather than divs. If a native element doesn't exist for what you're trying to make, WAI-ARIA roles, states, and properties can provide additional meaning (ex. role="search" to identify search functionality). Keep in mind that if you add a role attribute to an element, it will override and change the behavior of that element.</p>
 					</aside>
 				</section>
 
 				<section>
 					<h2>2. Apply the Appropriate Roles</h2>
-					<small>
 						<ul>
 							<li>Roles convey additional information that the assistive technologies need to anticipate the behavior of the elements inside the application, such as how to present the corresponding WAI-ARIA states and properties to the user.</li>
 							<li>Set roles to make sure elements behave predictably and correctly describe the behavior of each element wihin the application.</li>
-              <li>When a role attribute is added to an element, the semantics and behavior of the element are augmented or overridden by the role behavior.</li>
 							<li>Roles are element types and you must not change role values over time or with user actions.</li>
-							<li>If you wish to change a role, you must do so by deleting the associated element and its children and replace it with a new element with the appropriate role</li>
 						</ul>
-					</small>
 <pre>
 	<code>
 <a href="http://example.com/sign-up" role="button">Sign Up</a>
 	</code>
 </pre>
 					<aside class="notes">
-						<p>Set roles to make sure elements behave predictably and correctly describe the behavior of each element wihin the application, unless of course the element behaviors are fully described by the native markup language. Roles are element types and you must not change role values over time or with user actions. If you wish to change an element's role, you must delete the element and its children and replace it with a new element with a new role.</p>
+						<p>WAI-ARIA roles give additional information to assistive technologies that help them interpret elements on a webpage better. This extra information is passed on to the user. So we want to set roles to make sure elements behave predictably and also correctly describe the behavior of each element within the application, unless of course the element behaviors are fully described by the native markup language. Roles are element types and you must not change role values over time or with user actions. If you wish to change an element's role, you must delete the element and its children and replace it with a new element that has the new role you want.</p>
 					</aside>
 				</section>
 
@@ -273,7 +269,7 @@
   <code>
 // Example usage of landmark roles
 <div role="main">
-
+  ...
 </div>
 
 
@@ -283,33 +279,32 @@
 </ul>
 
 
-//Example of a special case live region role
-<div role="log" id="chatlog">
-</div>
+// Example of a special case live region role
+<div role="log" id="chatlog"></div>
 
   </code>
 </pre>
 					<aside class="notes">
-						<p>Structural information is critical to providing context to persons with disabilities. Identify large perceivable regions and apply a "landmark" role to those areas as this will help facilitate keyboard navigation. For areas of the page that contain a group of elements that are likely to change with AJAX or other means, it may be specified as a live region, through the use of the aria-live attribute or it may be marked with pre-defined roles, such as "log" which has assumed behavior of a live region. Examples of live regions include dynamically updated content such as sports stats or stock information, logs where new information is being added like a Slack chat room, and notification areas. Live regions enable assistive technologies to be informed of updates without losing the users' place in the content.</p>
+						<p>Structural information is critical to providing context to persons with disabilities. While writing your markup, we want to identify large perceivable regions and apply a "landmark" role to those areas as this will help facilitate keyboard navigation.  </p>
+						<p>For areas of the page that contain a group of elements that are likely to change with AJAX or other means, you can specify it as a live region, through the use of the aria-live attribute or it may be marked with pre-defined roles, such as "log" which has assumed behavior of a live region.</p>
+						<p>Examples of live regions include dynamically updated content such as sports stats or stock information, logs where new information is being added like a Slack chat room, and notification areas. By specifing live regions, we are enabling assistive technologies to be informed of updates without losing the users' place in the content.</p>
 					</aside>
 				</section>
 
 				<section>
 					<h2>4. Build Relationships</h2>
-          <small>
-  					<ul>
-  						<li>Look for relationships between elements and mark them using the most appropriate property or attribute</li>
-  						<li>Some relationships are determined automatically from the markup language, like 'label' elements associated with 'input' elements in HTML</li>
-  						<li><a href="https://www.w3.org/TR/2010/WD-wai-aria-20100916/states_and_properties#attrs_relationships">List of Relationship Attributes</a></li>
-  					</ul>
-          </small>
+					<ul>
+						<li>Look for relationships between elements and mark them using the most appropriate property or attribute</li>
+						<li>Some relationships are determined automatically from the markup language, like 'label' elements associated with 'input' elements in HTML</li>
+						<li><a href="https://www.w3.org/TR/2010/WD-wai-aria-20100916/states_and_properties#attrs_relationships">List of Relationship Attributes</a></li>
+					</ul>
 <pre>
   <code>
 <button aria-label="Close" aria-describedby="description-close">X</button>
 
   ...
 
-<p id="description-close ">Closing this window will discard any information entered.</p>
+<p id="description-close">Closing this window will discard any information entered.</p>
   </code>
 </pre>
 					<aside class="notes">
@@ -320,13 +315,11 @@
 
 				<section>
 					<h2>5. Set States &amp; Properties in Response to Events</h2>
-          <small>
-  					<ul>
-  						<li>Set and change states and properties during the element's life cycle.</li>
-  						<li>Only use attributes supported for the chosen role or element.</li>
-  						<li><a href="https://www.w3.org/TR/2010/WD-wai-aria-20100916/states_and_properties#state_prop_def">WAI-ARIA: Definitions of States and Properties</a></li>
-  					</ul>
-          </small>
+					<ul>
+						<li>Set and change states and properties during the element's life cycle.</li>
+						<li>Only use attributes supported for the chosen role or element.</li>
+						<li><a href="https://www.w3.org/TR/2010/WD-wai-aria-20100916/states_and_properties#state_prop_def">WAI-ARIA: Definitions of States and Properties</a></li>
+					</ul>
 <pre>
   <code>
 // Example of a property
@@ -337,7 +330,8 @@
   </code>
 </pre>
 					<aside class="notes">
-						<p>Once the role for an element has been set, change states and properties as appropriate during the element's life cycle. You'll usually do this in response to user input events.</p>
+						<p>As mentioned before, once the role for an element has been set, it shouldn't be changed. What should be changed are the states and properties. You should change these as appropriate during the element's life cycle and you'll usually do this in response to user input events.</p>
+						<p>You want to use aria-label in cases where a text label is not visible on the screen. Otherwise, you can use aria-describedby or aria-labelledby depending on which one suits you best.</p>
 					</aside>
 				</section>
 
@@ -345,16 +339,14 @@
 					<h2>6. Support Full, Usable Keyboard Navigation</h2>
           <small>
   					<ul>
-  						<li>Rich internet applications should allow the user to tab to significant components and use the arrow keys to navigate within a complex component, such as a menu</li>
+  						<li>Rich internet applications should allow the user to tab to significant components and use the arrow keys to navigate within a complex component</li>
   						<li>Tabbing on a page should follow a logical navigation structure</li>
   					</ul>
           </small>
 <pre>
   <code>
 // tab-index=-1 makes element focusable, but cannot be tabbed to by the user
-<div role="alert" id="error" tab-index="-1">
-  ...
-</div>
+<div role="alert" id="error" tab-index="-1">...</div>
 
 /* tab-index=0 makes element focusable and adds it to the normal tab sequence 
 based on its location in the source code */
@@ -373,8 +365,9 @@ based on its location in the source code */
   </code>
 </pre>
 					<aside class="notes">
-						<p>Usable keyboard navigation in a rich internet application is different from the tabbing paradigm in a static document.</p>
-            <p>The tabindex attribute enables focus to be moved via keyboard to HTML elements. Each element that needs to receive keyboard focus needs to have a tabindex attribute set. Elements with tabindex of -1 will not be added to the tab sequence but are enabled to receive keyboard focus. Elements with tabindex = 0 will be added to the tab sequence based on document order. Elements with tabindex greater than 0 will be added to the tab sequence based on the tabindex value. Avoid using this because it causes problems and is difficult to maintain. </p>
+						<p>Usable keyboard navigation in a rich internet application is different from the tabbing paradigm in a static document. Internet applications should allow the user to tab to significant components and use the arrow keys to navigate within a complex component, such as a menu.</p>
+            <p>To make an application navigable, we need to use the tabindex attribute. The tabindex attribute enables focus to be moved via keyboard to HTML elements. As a result, each element that needs to receive keyboard focus needs to have a tabindex attribute set.</p>
+            <p>Elements with tabindex of -1 will not be added to the tab sequence but are enabled to receive keyboard focus. Elements with tabindex = 0 will be added to the tab sequence based on document order. Elements with tabindex greater than 0 will be added to the tab sequence based on the tabindex value. Avoid using this because it causes problems and is difficult to maintain.</p>
 					</aside>
 				</section>
 
@@ -384,34 +377,95 @@ based on its location in the source code */
 						<li>Ensure that the visual interface is synced with the accessible interface</li>
 						<li>For example, the author should use the appropriate WAI-ARIA attribute on a form element that is visually styled to appear required ('aria-required')</li>
 					</ul>
+<pre>
+	<code>
+<form action="post">
+ <label for="firstName">First name:</label>
+ <input id="firstName" type="text" aria-required="true" />
+ <br/>
+ <label for="lastName">Last name:</label>
+ <input id="lastName" type="text" aria-required="true" />
+ <br/>
+ <label for="streetAddress">Street address:</label>
+ <input id="streetAddress" type="text" />
+</form>
+	</code>
+</pre>
 					<aside class="notes">
-						<p>The last step is to make sure that the visual interface is synced up with the accessible interface. What this does is it allows the UI to be perceivable to the user as well as assistive technologies. For example, the author should use the appropriate WAI-ARIA attribute on a form element that is visually styled to appear required ('aria-required')</p>
+						<p>The last step is to make sure that the visual interface is synced up with the accessible interface. What this does is it allows the UI to be perceivable to the user as well as assistive technologies. For example, the author should use the appropriate WAI-ARIA attribute on a form element that is visually styled to appear required.</p>
 					</aside>
 				</section>
 
 				<section>
 					<h2>Accessibility Testing</h2>
+          <h3>Tools</h3>
           <ul>
-            
+            <li><a href="https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en">Google Accessibility: Accessibility Developer Tools Extension</a></li>
+            <li><a href="https://chrome.google.com/webstore/detail/see/dkihcccbkkakkbpikjmpnbamkgbjfdcn">SEE: Visual Impairment Simulator</a></li>
+            <li>Your keyboard</li>
           </ul>
 
 					<aside class="notes">
-						<p></p>
+						<p>This extension will add an accessibility audit and an accessibility properties sidebar pane in the Elements tab of your Chrome Developer Tools. This tool is really helpful in that it returns violations then points you to the Google Accessibility Wiki where it gives an explanation, and has code snippets on the correct and incorrect way to do things.</p>
+            <p>SEE is another Chrome extension that lets you view the web as someone with a visual impairment might. One in 12 men and one in 200 women are affected by colorblindness which adds up to hundreds of millions of people around the world. Given these statistics, it could be helpful to know how a webpage looks to this demographic of users. The SEE extension includes settings for different kinds of colorblindness as well as other eye conditions, such as glaucoma and diabetic retinopathy.</p>
+            <p>You can test the website using your keyboard and no mouse to see if you can actually navigate through all the content and interact with all its components.</p>
 					</aside>
 				</section>
 
         <section>
-          <h2>Resources</h2>
+          <h2>Accessibility Testing</h2>
+          <h3>Screen Readers</h3>
           <ul>
-            
+            <li>For Chrome: ChromeVox</li>
+            <li>On Mac: built-in screen reader, VoiceOver</li>
+            <li>On Windows: NVDA and JAWS</li>
           </ul>
 
           <aside class="notes">
-            <p></p>
+            <p>In addition to the Chrome Accessibility Tools Extension, Chrome also offers a screen reader that you can download for testing purposes. For Mac, their screen reader VoiceOver comes already installed. For Windows, there are two options: NVDA and JAWS. NVDA is a free screen reader that you can just download from their website, while JAWS costs money. Out of all of these JAWS is the most popular worldwide.</p>
           </aside>
         </section>
-				
 
+         <section>
+          <h2>Google Accessibility Rating (GAR)</h2>
+          <ul>
+          	<li>GAR is a rating scale for measuring the level of accessibility of software</li>
+          	<li>Ratings range from 1-5</li>
+          	<li>Tests are split into "Basic" and "Advanced"</li>
+          	<li>Achieving a level 5 rating requires user testing</li>
+          </ul>
+
+          <aside class="notes">
+            <p>The Google Accessibility Rating is a rating scale created by Google for measuring the level of accessibility for a software product. The ratings scale ranges from 1-5 with one being the most basic and 5 the most advanced.</p>
+            <p>There is a five step process in order to make sure your product meets the rating level that you're looking to achieve. The steps involve filling out a self assestment template, defining your product's use cases, performing tests, and submitting it for reviews and then approval.</p>
+            <p>Tests are split into 2 categories: Basic and Advanced. The tests are basically a series of questions that help you to evaluate if your product meets all the various WCAG guidelines that we've discussed, such as color contrast, keyboard operability, text alternatives, etc. If you're aiming for a rating level of 2 or higher, then the advanced tests also need to be performed. If you want to achieve a level 5 rating, user testing is required with people who exhibit various types of disabilities.</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Resources</h2>
+          <ul>
+            <li><a href="https://www.w3.org/TR/WCAG20/">WCAG 2.0 Documentation</a></li>
+            <li><a href="https://www.w3.org/WAI/WCAG20/quickref/?currentsidebar=%23col_customize">How to Meet WCAG 2.0: A Customizable Quick Reference</a></li>
+            <li><a href="https://www.w3.org/TR/mobile-accessibility-mapping/">Mobile Accessibility: How WCAG 2.0 and Other W3c/WAI Guidelines Apply to Mobile</a></li>
+            <li><a href="https://www.w3.org/TR/wai-aria-practices-1.1/">WAI-ARIA Authoring Practices 1.1</a></li>
+            <li><a href="https://www.w3.org/TR/wai-aria/">WAI-ARIA 1.0 Documentation</a></li>
+            <li><a href="http://lab.abhinayrathore.com/aria-cheatsheet/">WAI-ARIA Cheatsheet</a></li>
+            <li><a href="https://www.google.com/events/io/io14videos/d96291b8-d7b9-e311-b297-00155d5066d7">Video: Polymer - Making Web Components Accessible</a></li>
+          </ul>
+
+          <aside class="notes">
+            <p>Here are a list of resources that I found helpful while putting this presentation together. I want to point out a few that I think will come in handy as we start making our projects more accessible.</p>
+            <p>How to Meet WCAG 2.0: A Customizable Quick Reference is a great resource because it lets you filter down accessibility guidelines based on levels (A, AA, AAA) and even by technologies like HTML, CSS, and client- or server-side scripting.</p>
+            <p>The WAI-ARIA Authoring Practices 1.1 has comprehensive design patterns for common widgets/components. It gives a description of what the component does, what keyboard interactions should be implemented, the states and properties that should be used, and in some cases there's a code example.</p>
+            <p>Lastly, I found a 9 minute video on how to make your web components accessible in Polymer. This video was released during Google I/O 2014, so some of the Polymer methods or properties could've changed with the most recent version of Polymer.</p>
+          </aside>
+        </section>
+
+        <section>
+        	<h2>The End</h2>
+        </section>
+				
 			</div>
 
 		</div>
