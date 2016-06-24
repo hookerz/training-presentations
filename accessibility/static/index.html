@@ -53,12 +53,12 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Accessibility</h1>
+					<h1>Web Accessibility</h1>
 					<p>
-						<small>Created by <a href="#" target="_blank">Jessica Agyemang</a></small>
+						<small>Created by <a href="http://jessicaagyemang.com" target="_blank">Jessica Agyemang</a></small>
 					</p>
 				</section>
-
+ 
 				<section>
 					<h2>What is Web Accessibility?</h2>
 					<ul>
@@ -67,7 +67,7 @@
 					</ul>
 
 					<aside class="notes">
-						<p>Web accessibility means that people with disabilities can use the Web. More specifically, they can perceive, understand, navigate, and interact with the Web. Web accessibility encompasses all disabilities that affect access to the Web, including visual, auditory, physical, speech, cognitive, and neurological disabilities. Web accessibility also benefits people without disabilities in that accessible sites are flexible even for people with slow Internet connections, people with "temporary disabilities", such as a broken arm, and people with changing abilities due to aging, people with low literacy or not fluent in the language.</p>
+						<p>In the most simple terms, web accessibility means that people with disabilities can use the Web. More specifically, they can perceive, understand, navigate, and interact with the Web. Web accessibility encompasses all disabilities that affect access to the Web, including visual, auditory, physical, speech, cognitive, and neurological disabilities. Web accessibility also benefits people without disabilities in that accessible sites are flexible even for people with slow Internet connections, people with "temporary disabilities", such as a broken arm, and people with changing abilities due to aging, people with low literacy or not fluent in the language.</p>
 					</aside>
 				</section>
 
@@ -135,7 +135,8 @@
 						</ul>
 					</small>
 					<aside class="notes">
-						<p>Criteria for safe flashing content is a flash frequency of 3 times per second or fewer.</p></aside>
+						<p>Criteria for safe flashing content is a flash frequency of 3 times per second or fewer.</p>
+          </aside>
 				</section>
 
 				<section>
@@ -217,10 +218,9 @@
 							<li>Use the semantic elements that are defined in the host markup language.</li>
 							<li>For example, with HTML, it is better to use the native checkbox than to use a div element with the role "checkbox" as these should already by accessible through the browser.</li>
 							<li>WAI-ARIA roles, states, and properties are best used when the markup does not support all the semantics required.</li>
-							
 						</ul>
 					</small>
-<pre class="">
+<pre>
 	<code>
 // Ok
 <div role="navigation">
@@ -234,8 +234,7 @@
 	</code>
 </pre>
 					<aside class="notes">
-						<p>Use the elements that are available in the markup language. For example, with HTML, it is better to use the native checkbox than to use a div element with a role attribute set to "checkbox" as these should already by accessible through the browser. We should also use markup to convey meaning and structure. This means using HTML5 elements such as nav, header, section, footer, rather than divs. If a native element doesn't exist for what you're trying to make, WAI-ARIA roles, states, and properties can provide additional meaning (ex. role="search" to identify search functionality). Keep in mind that if you add a role attribute to an element, it will override and change the behavior of that element</p>
-						<p></p>
+						<p>Use the elements that are available in the markup language. For example, with HTML, it is better to use the native checkbox than to use a div element with a role attribute set to "checkbox" as these should already by accessible through the browser. We should also use markup to convey meaning and structure. This means using HTML5 elements such as nav, header, section, footer, rather than divs. If a native element doesn't exist for what you're trying to make, WAI-ARIA roles, states, and properties can provide additional meaning (ex. role="search" to identify search functionality). Keep in mind that if you add a role attribute to an element, it will override and change the behavior of that element.</p>
 					</aside>
 				</section>
 
@@ -247,7 +246,7 @@
 							<li>Set roles to make sure elements behave predictably and correctly describe the behavior of each element wihin the application.</li>
               <li>When a role attribute is added to an element, the semantics and behavior of the element are augmented or overridden by the role behavior.</li>
 							<li>Roles are element types and you must not change role values over time or with user actions.</li>
-							<li>If you wish to change a role, you must do so by deleting the associated element and its children and replace it with a new element with the appropriate role</li>
+							<li>If you wish to change a role, you must do so by deleting the associated element and its children and replace it with a new element with the appropriate role.</li>
 						</ul>
 					</small>
 <pre>
@@ -273,7 +272,7 @@
   <code>
 // Example usage of landmark roles
 <div role="main">
-
+  ...
 </div>
 
 
@@ -284,8 +283,7 @@
 
 
 //Example of a special case live region role
-<div role="log" id="chatlog">
-</div>
+<div role="log" id="chatlog"></div>
 
   </code>
 </pre>
@@ -385,32 +383,81 @@ based on its location in the source code */
 						<li>For example, the author should use the appropriate WAI-ARIA attribute on a form element that is visually styled to appear required ('aria-required')</li>
 					</ul>
 					<aside class="notes">
-						<p>The last step is to make sure that the visual interface is synced up with the accessible interface. What this does is it allows the UI to be perceivable to the user as well as assistive technologies. For example, the author should use the appropriate WAI-ARIA attribute on a form element that is visually styled to appear required ('aria-required')</p>
+						<p>The last step is to make sure that the visual interface is synced up with the accessible interface. What this does is it allows the UI to be perceivable to the user as well as assistive technologies. For example, the author should use the appropriate WAI-ARIA attribute on a form element that is visually styled to appear required </p>
 					</aside>
 				</section>
 
 				<section>
 					<h2>Accessibility Testing</h2>
+          <h3>Tools</h3>
           <ul>
-            
+            <li><a href="https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en">Google Accessibility: Accessibility Developer Tools Extension</a></li>
+            <li><a href="https://chrome.google.com/webstore/detail/see/dkihcccbkkakkbpikjmpnbamkgbjfdcn">SEE: Visual Impairment Simulator</a></li>
+            <li>Your keyboard</li>
           </ul>
 
 					<aside class="notes">
-						<p></p>
+						<p>This extension will add an accessibility audit and an accessibility properties sidebar pane in the Elements tab of your Chrome Developer Tools. To run an audit, you would just go to the Audits tab, select the Accessibility audit, and click Run. This tool is really helpful in that it returns violations then points you to the Google Accessibility Wiki where it explains the violation, and has code snippets on the correct and incorrect way to do things.</p>
+            <p>SEE is another Chrome extension that lets you view the web as someone with a visual impairment might. One in 12 men and one in 200 women are affected by colorblindness which adds up to millions of people around the world. Given these statistics, it could be helpful to know how a webpage looks to this demographic of users. The SEE extension includes settings for different kinds of colorblindness as well as other eye conditions, such as glaucoma and diabetic retinopathy.</p>
+            <p>You can test</p>
 					</aside>
 				</section>
 
         <section>
-          <h2>Resources</h2>
+          <h2>Accessibility Testing</h2>
+          <h3>Screen Readers</h3>
           <ul>
-            
+            <li>For Chrome: ChromeVox</li>
+            <li>On Mac: built-in screen reader, VoiceOver</li>
+            <li>On Windows: NVDA and JAWS</li>
           </ul>
 
           <aside class="notes">
-            <p></p>
+            <p>In addition to the Chrome Accessibility Tools Extension, Chrome also offers a screen reader that you can download for testing purposes. For Mac, their screen reader VoiceOver comes already installed. For Windows, there are two options: NVDA and JAWS. NVDA is a free screen reader that you can just download from their website, while JAWS costs money. Out of all of these JAWS is the most popular worldwide.</p>
           </aside>
         </section>
+
+         <section>
+          <h2>Google Accessibility Rating (GAR)</h2>
+          <ul>
+          	<li>GAR is a rating scale for measuring the level of accessibility of software</li>
+          	<li>Ratings range from 1-5</li>
+          	<li>Tests are split into "Basic" and "Advanced"</li>
+          	<li>Achieving a level 5 rating requires user testing</li>
+          </ul>
+
+          <aside class="notes">
+            <p>The Google Accessibility Rating is a rating scale created by Google for measuring the level of accessibility for a software product. The ratings scale ranges from 1-5 with one being the most basic and 5 the most advanced.</p>
+            <p>There is a five step process in order to make sure your product meets the rating level that you're looking to achieve. The steps involve filling out a self assestment template, defining your product's use cases, performing tests, and submitting it for reviews and then approval.</p>
+            <p>Tests are split into 2 categories: Basic and Advanced. The tests are basically a series of questions that help you to evaluate if your product meets all the various WCAG guidelines that we've discussed, such as color contrast, keyboard operability, text alternatives, etc. If you're aiming for a rating level of 2 or higher, then the advanced tests also need to be performed. If you want to achieve a level 5 rating, user testing is required with people who have disabilities.</p>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Resources</h2>
+          <ul>
+            <li><a href="https://www.w3.org/TR/WCAG20/">WCAG 2.0 Documentation</a></li>
+            <li><a href="https://www.w3.org/WAI/WCAG20/quickref/?currentsidebar=%23col_customize">How to Meet WCAG 2.0: A Customizable Quick Reference</a></li>
+            <li><a href="https://www.w3.org/TR/mobile-accessibility-mapping/">Mobile Accessibility: How WCAG 2.0 and Other W3c/WAI Guidelines Apply to Mobile</a></li>
+            <li><a href="https://www.w3.org/TR/wai-aria-practices-1.1/">WAI-ARIA Authoring Practices 1.1</a></li>
+            <li><a href="https://www.w3.org/TR/wai-aria/">WAI-ARIA 1.0 Documentation</a></li>
+            <li><a href="http://lab.abhinayrathore.com/aria-cheatsheet/">WAI-ARIA Cheatsheet</a></li>
+            <li><a href="https://www.google.com/events/io/io14videos/d96291b8-d7b9-e311-b297-00155d5066d7">Video: Polymer - Making Web Components Accessible</a></li>
+          </ul>
+
+          <aside class="notes">
+            <p>Here are a list of resources that I found helpful while putting this presentation together. I want to point out a few that I think will come in handy as we start making our projects more accessible.</p>
+            <p>How to Meet WCAG 2.0: A Customizable Quick Reference is a great resource because it lets you filter down accessibility guidelines based on levels (A, AA, AAA) and even by technologies like HTML, CSS, and client- or server-side scripting.</p>
+            <p>The WAI-ARIA Authoring Practices 1.1 has comprehensive design patterns for common widgets/components. It gives a description of what the component does, what keyboard interactions should be implemented, the states and properties that should be used, and in some cases there's a code example.</p>
+            <p>Lastly, I found a 9 minute video on how to make your web components accessible in Polymer. This video was released during Google I/O 2014, so some of the Polymer methods or properties could've changed with the most recent version of Polymer.</p>
+          </aside>
+        </section>
+
+        <section>
+        	<h2>The End</h2>
+        </section>
 				
+       
 
 			</div>
 
